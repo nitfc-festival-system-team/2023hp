@@ -17,7 +17,9 @@
   "overrides": [
     {
       "files": ["**/*.tsx"],
-      "rules": { "quotes": "off" }
+      "rules": {
+        "quotes": "off"
+      }
     }
   ],
   "parser": "@typescript-eslint/parser",
@@ -39,15 +41,13 @@
     ],
     "@typescript-eslint/no-unused-vars": "off",
     "@typescript-eslint/no-var-requires": 0,
-    "@typescript-eslint/quotes": ["error", "double"],
+    "jsx-quotes": ["error", "prefer-double"],
     "prettier/prettier": [
       "error",
       {
         "endOfLine": "auto"
       }
     ],
-    "quotes": ["error", "single"],
-    "jsx-quotes": ["error", "prefer-double"],
     "react/jsx-uses-react": "off",
     "react/react-in-jsx-scope": "off"
   }
