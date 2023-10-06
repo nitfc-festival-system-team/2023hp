@@ -11,4 +11,6 @@ npm run dev
 npm run fmt
 # リンタをかける。PR前とかにやっておくと安心
 npm run lint
+# コンパイルエラーを発見できる。PR前とかにやっておくと安心
+npm run lint
 ```
