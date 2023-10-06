@@ -9,14 +9,11 @@ jobs:
   frontend:
     defaults:
       run:
-        working-directory: frontend
+        working-directory: ./
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
-
-      - name: Create frontend directory
-        run: mkdir frontend
 
       - name: Get npm cache directory path
         id: npm-cache-dir-path
