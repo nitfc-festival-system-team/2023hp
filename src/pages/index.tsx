@@ -1,3 +1,3 @@
 export default function Page() {
-  return <p>index</p>;
+  return <p>default page</p>;
 }
