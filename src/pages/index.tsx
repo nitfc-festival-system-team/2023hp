@@ -1,9 +1,10 @@
+import { useRouter } from "next/router";
+
 import { Title } from "@/components/Title";
-import { Notice } from "@/components/Notice";
-import { Map } from "@/components/Map";
-import { Schedule } from "@/components/Schedule";
 
 export default function Page() {
+  const router = useRouter();
+
   return (
     <div
       style={{
@@ -14,9 +15,27 @@ export default function Page() {
       }}
     >
       <Title />
-      <Notice />
-      <Map />
-      <Schedule />
+      <h1
+        onClick={() => {
+          router.push("/contents/notice");
+        }}
+      >
+        お知らせ
+      </h1>
+      <h1
+        onClick={() => {
+          router.push("/contents/map");
+        }}
+      >
+        全体マップ
+      </h1>
+      <h1
+        onClick={() => {
+          router.push("/contents/schedule");
+        }}
+      >
+        スケジュール
+      </h1>
     </div>
   );
 }
