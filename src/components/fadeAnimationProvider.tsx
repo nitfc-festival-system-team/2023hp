@@ -2,13 +2,11 @@ import { ReactNode } from "react";
 import { useInView } from "react-intersection-observer";
 import styled from "styled-components";
 
-type fadeAnimationType = {
+export const FadeAnimationProvider = ({
+  children,
+}: {
   children: ReactNode;
-};
-
-export const FadeAnimation = (props: fadeAnimationType) => {
-  const { children } = props;
-
+}) => {
   /**
    * スクロールイベントのオプション
    * 「ref」検知する要素
