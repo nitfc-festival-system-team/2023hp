@@ -2,6 +2,8 @@ import { useRouter } from "next/router";
 
 import { Title } from "@/components/Title";
 
+import { FadeAnimation } from "@/components/fadeAnimation";
+
 export default function Page() {
   const router = useRouter();
 
@@ -22,20 +24,22 @@ export default function Page() {
       >
         お知らせ
       </h1>
-      <h1
-        onClick={() => {
-          router.push("/contents/map");
-        }}
-      >
-        全体マップ
-      </h1>
-      <h1
-        onClick={() => {
-          router.push("/contents/schedule");
-        }}
-      >
-        スケジュール
-      </h1>
+      <FadeAnimation>
+        <h1
+          onClick={() => {
+            router.push("/contents/map");
+          }}
+        >
+          全体マップ
+        </h1>
+        <h1
+          onClick={() => {
+            router.push("/contents/schedule");
+          }}
+        >
+          スケジュール
+        </h1>
+      </FadeAnimation>
     </div>
   );
 }
