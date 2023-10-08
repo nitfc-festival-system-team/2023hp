@@ -2,7 +2,11 @@ import { useRouter } from "next/router";
 
 import { Title } from "@/components/Title";
 
+import { ScrollView } from "@/components/scrollStyle";
+
 import { FadeAnimationProvider } from "@/components/fadeAnimationProvider";
+
+import React from "react";
 
 export default function Page() {
   const router = useRouter();
@@ -17,6 +21,7 @@ export default function Page() {
       }}
     >
       <Title />
+      <ScrollView />
       <h1
         onClick={() => {
           router.push("/contents/notice");
