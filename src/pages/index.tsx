@@ -1,7 +1,6 @@
 import { useRouter } from "next/router";
 
 import { Title } from "@/components/Title";
-
 import { FadeAnimationProvider } from "@/components/fadeAnimationProvider";
 
 import React from "react";
