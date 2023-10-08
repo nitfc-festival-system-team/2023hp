@@ -34,7 +34,7 @@ export default function Page() {
       <FadeAnimationProvider>
         <div style={{ display: "flex", flexDirection: "row", gap: "20px" }}>
           <PageTransitionButton buttonText={"企画"} nextPage={"schedule"} />
-          <PageTransitionButton buttonText={"露天"} nextPage={"stand"} />
+          <PageTransitionButton buttonText={"露店"} nextPage={"stand"} />
         </div>
       </FadeAnimationProvider>
     </div>
