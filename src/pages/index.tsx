@@ -5,7 +5,10 @@ import { Title } from "@/components/Title";
 import { ScrollView } from "@/components/scrollStyle";
 
 import { FadeAnimationProvider } from "@/components/fadeAnimationProvider";
+
 import { PageTransitionButton } from "@/components/PageTransitionButton";
+
+import { Notice } from "@/components/Notice";
 
 import React from "react";
 
@@ -29,7 +32,7 @@ export default function Page() {
         }}
         style={{ padding: "5rem" }}
       >
-        お知らせ
+        <Notice />
       </h1>
       <FadeAnimationProvider>
         <div style={{ display: "flex", flexDirection: "row", gap: "20px" }}>
