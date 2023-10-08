@@ -33,8 +33,8 @@ export default function Page() {
       </h1>
       <FadeAnimationProvider>
         <div style={{ display: "flex", flexDirection: "row", gap: "20px" }}>
-          <PageTransitionButton buttonText={"全体マップ"} nextPage={"map"} />
           <PageTransitionButton buttonText={"企画"} nextPage={"schedule"} />
+          <PageTransitionButton buttonText={"露天"} nextPage={"stand"} />
         </div>
       </FadeAnimationProvider>
     </div>
