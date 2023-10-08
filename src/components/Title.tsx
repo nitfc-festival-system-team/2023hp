@@ -8,12 +8,17 @@ export const Title = () => {
 
   const [count, setCount] = useState(0);
 
+  type WritingMode = "horizontal-tb" | "vertical-rl" | "vertical-lr";
+
+  const writingModeValue: WritingMode | undefined =
+    "vertical-rl" as WritingMode;
+
   const titleStyle = {
     padding: "20px",
     marginTop: "20px",
     letterSpacing: "10px",
     fontSize: "50px",
-    writingMode: "vertical-rl",
+    writingMode: writingModeValue,
     fontFamily: "Zen Maru Gothic",
   };
 
@@ -32,7 +37,7 @@ export const Title = () => {
 
   return (
     <div>
-      <p style={{ ...titleStyle }}>
+      <p style={titleStyle}>
         {titletxt.map((char, index) => (
           <span
             key={index}
