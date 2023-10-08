@@ -6,6 +6,8 @@ import { ScrollView } from "@/components/scrollStyle";
 
 import { FadeAnimationProvider } from "@/components/fadeAnimationProvider";
 
+import { Notice } from "@/components/Notice";
+
 import React from "react";
 
 export default function Page() {
@@ -27,7 +29,7 @@ export default function Page() {
           router.push("/contents/notice");
         }}
       >
-        お知らせ
+        <Notice />
       </h1>
       <FadeAnimationProvider>
         <h1
