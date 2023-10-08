@@ -8,11 +8,13 @@ body {
   font-family:
     Zen Maru Gothic,
     sans-serif;
-  margin-top: 50px;
+  padding: 20px;
+  margin-top: 20px;
   letter-spacing: 10px;
   font-size: 50px;
   writing-mode: vertical-rl;
 }
+
 @keyframes fadeIn {
   from {
     opacity: 0;
