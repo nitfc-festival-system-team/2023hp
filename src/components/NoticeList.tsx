@@ -1,7 +1,7 @@
 import { NoticeType } from "@/types/notice";
 import { notices } from "@/db/notice";
 
-const NoticeList = () => {
+export const NoticeList = () => {
   return (
     <>
       {notices.map((notice: NoticeType, index) => {
@@ -12,11 +12,17 @@ const NoticeList = () => {
 };
 
 const NoticeItem = ({ notice }: { notice: NoticeType }) => {
-  const date = notice.date.getMonth() + " " + notice.date.getDay();
+  const date = notice.date.getMonth() + "/" + notice.date.getDay();
   return (
-    <>
-      <div>{notice.title}</div>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "row",
+        gap: "25px",
+      }}
+    >
       <div>{date}</div>
-    </>
+      <div>{"  " + notice.title}</div>
+    </div>
   );
 };

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { NoticeList } from "@/components/NoticeList";
 
 class NoticeScrollableComponent extends Component {
   render() {
@@ -9,15 +10,10 @@ class NoticeScrollableComponent extends Component {
           height: "200px" /* コンテナの高さを設定 */,
           overflow:
             "scroll" /* スクロールバーを表示するためのオーバーフロー設定 */,
+          color: "black" /* 文字色を設定 */,
         }}
       >
-        <div className="content">{"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"}</div>
-        <div className="content">{"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"}</div>
-        <div className="content">{"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"}</div>
-        <div className="content">{"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"}</div>
-        <div className="content">{"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"}</div>
-        <div className="content">{"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"}</div>
-        <div className="content">{"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"}</div>
+        <NoticeList />
       </div>
     );
   }
