@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { RefObject, useState, useEffect } from "react";
 import NoticeScrollableComponent from "./NoticeScrollableComponent";
+
 const Title = styled.h1`
   font-size: 1em;
   padding: 0 em;
