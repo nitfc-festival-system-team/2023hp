@@ -5,6 +5,7 @@ import { Title } from "@/components/Title";
 import { ScrollView } from "@/components/scrollStyle";
 
 import { FadeAnimationProvider } from "@/components/fadeAnimationProvider";
+import { PageTransitionButton } from "@/components/PageTransitionButton";
 
 import React from "react";
 
@@ -26,24 +27,15 @@ export default function Page() {
         onClick={() => {
           router.push("/contents/notice");
         }}
+        style={{ padding: "5rem" }}
       >
         お知らせ
       </h1>
       <FadeAnimationProvider>
-        <h1
-          onClick={() => {
-            router.push("/contents/map");
-          }}
-        >
-          全体マップ
-        </h1>
-        <h1
-          onClick={() => {
-            router.push("/contents/schedule");
-          }}
-        >
-          スケジュール
-        </h1>
+        <div style={{ display: "flex", flexDirection: "row", gap: "20px" }}>
+          <PageTransitionButton buttonText={"全体マップ"} nextPage={"map"} />
+          <PageTransitionButton buttonText={"企画"} nextPage={"schedule"} />
+        </div>
       </FadeAnimationProvider>
     </div>
   );
