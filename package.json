@@ -10,8 +10,6 @@
     "fmt": "npx eslint --fix --plugin unused-imports --rule 'unused-imports/no-unused-imports: error' ./"
   },
   "dependencies": {
-    "@chakra-ui/next-js": "^2.1.5",
-    "@chakra-ui/react": "^2.8.1",
     "@typescript-eslint/eslint-plugin": "^6.7.4",
     "next": "13.5.4",
     "react": "^18",

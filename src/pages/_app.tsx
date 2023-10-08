@@ -4,7 +4,6 @@ import type { NextPage } from "next";
 import type { ReactElement, ReactNode } from "react";
 
 // 1. Import the extendTheme function
-import { Providers } from "@/app/providers";
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
   getLayout?: (page: ReactElement) => ReactNode;
@@ -19,7 +18,7 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   // Use the layout defined at the page level, if available
   const getLayout = Component.getLayout ?? ((page) => page);
 
-  return <Providers>{getLayout(<Component {...pageProps} />)}</Providers>;
+  return getLayout(<Component {...pageProps} />);
 }
 
 export default MyApp;
