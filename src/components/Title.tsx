@@ -1,12 +1,26 @@
 import { useState, useEffect } from "react";
-import "../styles/title.css";
+import styles from "../styles/title.module.css";
 
 export const Title = () => {
-  const titletxt = "福井高専高専祭".split("");
+  const titletxt = "福井高専 高専祭".split("");
   // 文字が浮き上がってくる時間の調整;
   const intervaltime = 250;
 
   const [count, setCount] = useState(0);
+
+  const titleStyle = {
+    padding: "20px",
+    marginTop: "20px",
+    letterSpacing: "10px",
+    fontSize: "50px",
+    writingMode: "vertical-rl",
+    fontFamily: "Zen Maru Gothic",
+  };
+
+  const spanStyle = {
+    animationDuration: "0.25s",
+    animationFillMode: "forwards",
+  };
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -18,12 +32,13 @@ export const Title = () => {
 
   return (
     <div>
-      <p className="title">
+      <p style={{ ...titleStyle }}>
         {titletxt.map((char, index) => (
           <span
             key={index}
-            className={index <= count ? "fadeIn" : ""}
+            className={index <= count ? styles.fadeIn : ""}
             style={{
+              ...spanStyle,
               animationDelay: `${index * (intervaltime / 1000)}s`,
               opacity: 0,
             }}

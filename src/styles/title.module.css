@@ -1,0 +1,17 @@
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.fadeIn {
+  animation-name: fadeIn;
+  animation-duration: 0.2s;
+  animation-fill-mode: forwards;
+}
+@font-face {
+  font-family: "Zen Maru Gothic";
+  src: url("/fonts/ZenMaruGothic-Medium.ttf") format("truetype");
+}
