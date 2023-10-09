@@ -1,5 +1,7 @@
 import { useRouter } from "next/router";
 
+import { EventHeader } from "@/components/EventOverlay";
+
 import { Title } from "@/components/Title";
 
 import { ScrollView } from "@/components/scrollStyle";
@@ -12,39 +14,42 @@ export default function Page() {
   const router = useRouter();
 
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        flexDirection: "column",
-      }}
-    >
-      <Title />
-      <ScrollView />
-      <h1
-        onClick={() => {
-          router.push("/contents/notice");
+    <>
+      <EventHeader />
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          flexDirection: "column",
         }}
       >
-        お知らせ
-      </h1>
-      <FadeAnimationProvider>
+        <Title />
+        <ScrollView />
         <h1
           onClick={() => {
-            router.push("/contents/map");
+            router.push("/contents/notice");
           }}
         >
-          全体マップ
+          お知らせ
         </h1>
-        <h1
-          onClick={() => {
-            router.push("/contents/schedule");
-          }}
-        >
-          スケジュール
-        </h1>
-      </FadeAnimationProvider>
-    </div>
+        <FadeAnimationProvider>
+          <h1
+            onClick={() => {
+              router.push("/contents/map");
+            }}
+          >
+            全体マップ
+          </h1>
+          <h1
+            onClick={() => {
+              router.push("/contents/schedule");
+            }}
+          >
+            スケジュール
+          </h1>
+        </FadeAnimationProvider>
+      </div>
+    </>
   );
 }
