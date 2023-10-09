@@ -7,6 +7,7 @@ import { ScrollView } from "@/components/scrollStyle";
 import { FadeAnimationProvider } from "@/components/fadeAnimationProvider";
 
 import { PageTransitionButton } from "@/components/PageTransitionButton";
+import { Map } from "@/components/Map";
 
 import { Notice } from "@/components/Notice";
 
@@ -40,6 +41,8 @@ export default function Page() {
           <PageTransitionButton buttonText={"露店"} nextPage={"stand"} />
         </div>
       </FadeAnimationProvider>
+      MAP
+      <Map />
     </div>
   );
 }
