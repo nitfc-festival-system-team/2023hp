@@ -8,7 +8,7 @@ export const EventHeader = () => {
   };
 
   return (
-    <>
+    <div style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 100 }}>
       <div
         style={{
           position: "relative",
@@ -56,6 +56,6 @@ export const EventHeader = () => {
         {isHidden ? <span>&#x25BC;</span> : <span>&#x25B2;</span>}
       </button>
       <div style={{ marginBottom: "1.25rem" }} />
-    </>
+    </div>
   );
 };
