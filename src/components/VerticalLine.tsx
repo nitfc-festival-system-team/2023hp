@@ -4,7 +4,7 @@ export const VerticalLine = () => {
       <div
         style={{
           position: "fixed",
-          left: "3%",
+          left: "42px",
           top: 0,
           height: "100%",
           width: "1px",
@@ -18,10 +18,10 @@ export const VerticalLine = () => {
           top: "13%",
           writingMode: "vertical-rl",
           textAlign: "center",
-          fontSize: "2rem",
+          fontSize: "35px",
         }}
       >
-        nitcf festival system team
+        nitcf festival 2023
       </div>
     </>
   );
