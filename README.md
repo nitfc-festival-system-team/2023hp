@@ -1,6 +1,6 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## コマンド説明
+## コマンド説明あああ
 
 ```bash
 #必要なライブラリをインストールする。リモートからPullした時やブランチ切り替え時に実行すること(新しいライブラリがインストールされているかも)
