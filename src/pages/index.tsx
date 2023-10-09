@@ -1,14 +1,10 @@
 import { useRouter } from "next/router";
 
 import { Title } from "@/components/Title";
-
 import { ScrollView } from "@/components/scrollStyle";
-
 import { FadeAnimationProvider } from "@/components/fadeAnimationProvider";
-
 import { PageTransitionButton } from "@/components/PageTransitionButton";
 import { Map } from "@/components/Map";
-
 import { Notice } from "@/components/Notice";
 
 import React from "react";
