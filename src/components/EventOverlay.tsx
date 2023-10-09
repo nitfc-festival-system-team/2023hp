@@ -1,4 +1,21 @@
 import React, { useState } from "react";
+import { schedules } from "@/db/schedule";
+
+const now = new Date();
+const eventSorted = schedules.sort((a, b) => {
+  const diffA = a.startDate.getTime() - now.getTime();
+  const diffB = b.startDate.getTime() - now.getTime();
+  return diffA - diffB;
+});
+
+const nowHeld = schedules.filter((event) => {
+  const startTime = event.startDate.getTime();
+  const endTime = event.endDate?.getTime();
+
+  return startTime <= now.getTime() && (!endTime || endTime >= now.getTime());
+});
+
+const latestEvent = eventSorted[0];
 
 export const EventHeader = () => {
   const [isHidden, setIsHidden] = useState(false);
@@ -35,7 +52,11 @@ export const EventHeader = () => {
               {!isHidden && (
                 <>
                   <h3 style={{ margin: 0 }}>注目！</h3>
-                  <h2 style={{ margin: 0 }}>イベント名</h2>
+                  <h2 style={{ margin: 0 }}>
+                    {nowHeld.length === 0
+                      ? latestEvent.title
+                      : nowHeld[0].title}
+                  </h2>
                 </>
               )}
             </header>
