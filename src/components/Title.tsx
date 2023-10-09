@@ -37,7 +37,13 @@ export const Title = () => {
   }, []);
 
   return (
-    <div>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+      }}
+    >
       <p style={titleStyle}>
         {titleText.map((char, index) => (
           <span
