@@ -1,6 +1,6 @@
 import { StandType } from "@/types/stand";
 
-export const notice: StandType[] = [
+export const stands: StandType[] = [
   {
     name: "露店1",
     organizer: "5EI",

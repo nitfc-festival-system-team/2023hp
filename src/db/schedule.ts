@@ -1,6 +1,6 @@
 import { ScheduleType } from "@/types/schedule";
 
-export const notice: ScheduleType[] = [
+export const schedules: ScheduleType[] = [
   {
     title: "イベント1",
     place: "メインステージ",

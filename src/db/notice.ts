@@ -1,6 +1,6 @@
 import { NoticeType } from "@/types/notice";
 
-export const notice: NoticeType[] = [
+export const notices: NoticeType[] = [
   {
     title: "お知らせ1",
     url: "https://example.com",
