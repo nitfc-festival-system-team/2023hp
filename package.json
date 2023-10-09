@@ -1,32 +1,32 @@
 {
-  "name": "2023hp",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build && next export",
-    "start": "next start",
-    "lint": "next lint",
-    "fmt": "npx eslint --fix --plugin unused-imports --rule 'unused-imports/no-unused-imports: error' ./"
-  },
-  "dependencies": {
-    "@typescript-eslint/eslint-plugin": "^6.7.4",
-    "next": "13.5.4",
-    "react": "^18",
-    "react-dom": "^18",
-    "react-intersection-observer": "^9.5.2",
-    "styled-components": "^6.0.8"
-  },
-  "devDependencies": {
-    "@types/node": "^20",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
-    "eslint": "^8.50.0",
-    "eslint-config-next": "13.5.4",
-    "eslint-config-prettier": "^9.0.0",
-    "eslint-plugin-prettier": "^5.0.0",
-    "eslint-plugin-unused-imports": "^3.0.0",
-    "prettier": "^3.0.3",
-    "typescript": "^5"
-  }
+	"name": "2023hp",
+	"version": "0.1.0",
+	"private": true,
+	"scripts": {
+		"dev": "next dev",
+		"build": "next build && next export",
+		"start": "next start",
+		"lint": "next lint",
+		"fmt": "npx eslint --fix --ext .jsx,.js,.tsx,.ts ."
+	},
+	"dependencies": {
+		"@typescript-eslint/eslint-plugin": "^6.7.4",
+		"next": "13.5.4",
+		"react": "^18",
+		"react-dom": "^18",
+		"react-intersection-observer": "^9.5.2",
+		"styled-components": "^6.0.8"
+	},
+	"devDependencies": {
+		"@types/node": "^20",
+		"@types/react": "^18",
+		"@types/react-dom": "^18",
+		"eslint": "^8.50.0",
+		"eslint-config-next": "13.5.4",
+		"eslint-config-prettier": "^9.0.0",
+		"eslint-plugin-prettier": "^5.0.0",
+		"eslint-plugin-unused-imports": "^3.0.0",
+		"prettier": "^3.0.3",
+		"typescript": "^5"
+	}
 }

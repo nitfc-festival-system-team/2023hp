@@ -16,4 +16,9 @@ export const notices: NoticeType[] = [
     url: "https://example.com",
     date: new Date(2023, 10, 11),
   },
+  {
+    title: "お知らせ4",
+    url: "https://example.com",
+    date: new Date(2023, 10, 12),
+  },
 ];

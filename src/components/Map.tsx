@@ -1,11 +1,6 @@
-import Link from "next/link";
-import { useRouter } from "next/router";
-import { MouseEvent } from "react";
 import React, { useState } from "react";
 
 export const Map = () => {
-  const router = useRouter();
-
   const [clickedArea, setClickedArea] = useState<string | null>(null);
   const [clickedCoords, setClickedCoords] = useState<string | null>(null);
 
