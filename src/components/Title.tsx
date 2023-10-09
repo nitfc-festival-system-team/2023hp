@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+
 import styles from "../styles/title.module.css";
 
 export const Title = () => {
