@@ -1,21 +1,25 @@
 import React, { useState } from "react";
 import { schedules } from "@/db/schedule";
 
-const now = new Date();
+const now = new Date(); //現在時刻を取得
+
+//現在時刻以降で開催されるイベントのうち直近のもの順にソート
 const eventSorted = schedules.sort((a, b) => {
   const diffA = a.startDate.getTime() - now.getTime();
   const diffB = b.startDate.getTime() - now.getTime();
   return diffA - diffB;
 });
 
+//先頭を取得
+const latestEvent = eventSorted[0];
+
+//現在開催中のイベントを取得
 const nowHeld = schedules.filter((event) => {
   const startTime = event.startDate.getTime();
   const endTime = event.endDate?.getTime();
 
   return startTime <= now.getTime() && (!endTime || endTime >= now.getTime());
 });
-
-const latestEvent = eventSorted[0];
 
 export const EventHeader = () => {
   const [isHidden, setIsHidden] = useState(false);
