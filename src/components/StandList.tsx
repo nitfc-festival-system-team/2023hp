@@ -25,13 +25,25 @@ const StandItem = ({ stand }: { stand: StandType }) => {
       <h2>
         {stand.url && (
           <div onClick={handleRedirect} style={{ cursor: "pointer" }}>
-            {stand.organizer + "  " + stand.name + " : " + stand.place}
-            <img
-              src="/image/gadget24.png"
-              alt="link mark"
-              width="3%"
-              height="3%"
-            />
+            <span
+              style={{
+                textAlignLast: "justify",
+                display: "inline-block",
+                width: "70px",
+              }}
+            >
+              {stand.organizer}
+            </span>
+
+            <span>
+              {stand.name + ": " + stand.place}
+              <img
+                src="/image/gadget24.png"
+                alt="link mark"
+                width="3%"
+                height="3%"
+              />
+            </span>
           </div>
         )}
       </h2>
