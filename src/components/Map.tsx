@@ -17,8 +17,25 @@ export const Map = () => {
   };
 
   return (
-    <div>
-      <img src="/image/campus_map.gif" alt="Map" useMap="#map" />
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        flexDirection: "column",
+        //レスポンシブ対応
+        width: "100%",
+      }}
+    >
+      <img
+        src="/image/campus_map.gif"
+        alt="Map"
+        useMap="#map"
+        style={{
+          maxWidth: "80vw", // 画像の幅が親要素に合わせる
+          height: "auto", // アスペクト比を保つ
+        }}
+      />
       <map name="map">
         <area
           id="area1"
