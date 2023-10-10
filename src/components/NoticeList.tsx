@@ -1,3 +1,5 @@
+import { useRouter } from "next/router";
+
 import { NoticeType } from "@/types/notice";
 import { notices } from "@/db/notice";
 
@@ -12,17 +14,29 @@ export const NoticeList = () => {
 };
 
 const NoticeItem = ({ notice }: { notice: NoticeType }) => {
+  const router = useRouter();
   const date = notice.date.getMonth() + "/" + notice.date.getDay();
+
+  const handleNoticeClick = () => {
+    if (notice.url) {
+      router.push(notice.url);
+    }
+  };
+
   return (
     <div
       style={{
         display: "flex",
         flexDirection: "row",
         gap: "25px",
+        fontSize: "3vw",
       }}
     >
       <div>{date}</div>
       <div>{"  " + notice.title}</div>
+      <div onClick={handleNoticeClick} style={{ cursor: "pointer" }}>
+        {"[link]"}
+      </div>
     </div>
   );
 };
