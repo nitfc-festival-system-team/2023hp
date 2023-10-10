@@ -28,8 +28,7 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
           content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=yes"
         ></meta>
       </Head>
-      getLayout(
-      <Component {...pageProps} />)
+      {getLayout(<Component {...pageProps} />)}
     </>
   );
 }
