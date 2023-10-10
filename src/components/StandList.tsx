@@ -21,13 +21,7 @@ const StandItem = ({ stand }: { stand: StandType }) => {
     }
   };
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "row",
-        gap: "25px",
-      }}
-    >
+    <div>
       <h2>
         {stand.url && (
           <div onClick={handleRedirect} style={{ cursor: "pointer" }}>
