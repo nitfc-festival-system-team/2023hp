@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+
 import styles from "../styles/title.module.css";
 
 export const Title = () => {
@@ -37,7 +38,13 @@ export const Title = () => {
   }, []);
 
   return (
-    <div>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+      }}
+    >
       <p style={titleStyle}>
         {titleText.map((char, index) => (
           <span

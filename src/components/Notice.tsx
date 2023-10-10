@@ -7,12 +7,14 @@ const Title = styled.h1`
   margin: 0.5em 0.5em;
   //coler属性は値が渡されれば値に応じて設定
   color: ${(props) => (props.color ? props.color : "black")};
-  border-bottom: 3px solid #000;
+  border-bottom: 2px solid #000;
+  font-size: 1.5em;
 `;
 
 const Wrapper = styled.div`
-  width: 1000px;
-  margin: 2em 0;
+  width: 70vw; /* 画面サイズの横幅の70% */
+  height: 30vw;
+  margin: 0 0 2em;
   background: #f0f7ff;
   border: dashed 2px #000000; /*点線*/
 `;
@@ -20,15 +22,8 @@ const Wrapper = styled.div`
 export const Notice = () => {
   return (
     <div>
-      <Wrapper
-        style={{
-          display: "flex",
-          justifyContent: "flex-start",
-          alignItems: "flex-start",
-          flexDirection: "column",
-        }}
-      >
-        <Title>お知らせ</Title>
+      <Title>お知らせ</Title>
+      <Wrapper>
         <NoticeScrollableComponent />
       </Wrapper>
     </div>
