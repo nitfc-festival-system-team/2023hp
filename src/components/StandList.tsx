@@ -26,6 +26,12 @@ const StandItem = ({ stand }: { stand: StandType }) => {
         {stand.url && (
           <div onClick={handleRedirect} style={{ cursor: "pointer" }}>
             {stand.organizer + "  " + stand.name + " : " + stand.place}
+            <img
+              src="/image/gadget24.png"
+              alt="link mark"
+              width="3%"
+              height="3%"
+            />
           </div>
         )}
       </h2>
