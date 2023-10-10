@@ -5,11 +5,13 @@ export const stands: StandType[] = [
     name: "露店1",
     organizer: "5EI",
     place: "図書館前",
+    url: "https://www.youtube.com/",
   },
   {
     name: "露店2",
     organizer: "5M",
     place: "図書館前",
+    url: "https://www.dlsite.com/index.html",
   },
   {
     name: "露店3",
