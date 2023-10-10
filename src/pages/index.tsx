@@ -28,14 +28,7 @@ export default function Page() {
         <VerticalLine />
         <Title />
         <ScrollView />
-        <h1
-          onClick={() => {
-            router.push("/contents/notice");
-          }}
-          style={{ padding: "5rem" }}
-        >
-          <Notice />
-        </h1>
+        <Notice />
         <FadeAnimationProvider>
           <div style={{ display: "flex", flexDirection: "row", gap: "20px" }}>
             <PageTransitionButton buttonText={"企画"} nextPage={"schedule"} />
