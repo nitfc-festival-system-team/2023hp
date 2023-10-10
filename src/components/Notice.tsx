@@ -8,6 +8,7 @@ const Title = styled.h1`
   //coler属性は値が渡されれば値に応じて設定
   color: ${(props) => (props.color ? props.color : "black")};
   border-bottom: 2px solid #000;
+  font-size: 1.5em;
 `;
 
 const Wrapper = styled.div`
@@ -21,12 +22,10 @@ const Wrapper = styled.div`
 export const Notice = () => {
   return (
     <div>
-      <h2>
-        <Title>お知らせ</Title>
-        <Wrapper>
-          <NoticeScrollableComponent />
-        </Wrapper>
-      </h2>
+      <Title>お知らせ</Title>
+      <Wrapper>
+        <NoticeScrollableComponent />
+      </Wrapper>
     </div>
   );
 };

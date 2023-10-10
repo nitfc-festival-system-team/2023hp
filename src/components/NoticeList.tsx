@@ -29,7 +29,7 @@ const NoticeItem = ({ notice }: { notice: NoticeType }) => {
         display: "flex",
         flexDirection: "row",
         gap: "25px",
-        fontSize: "3vw",
+        fontSize: "2.5vw",
       }}
     >
       <div>{date}</div>
