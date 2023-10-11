@@ -2,35 +2,30 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { schedules } from "@/db/schedule";
 
-// const now = new Date();
-const now = new Date(2023, 10, 27, 12, 30);
+const now = new Date();
+// const now = new Date(2023, 10, 27, 9, 55);    //デバッグ例
 
+//10分を定義
+const tenMin = Math.abs(
+  new Date(1900, 0, 1, 0, 0).getTime() - new Date(1900, 0, 1, 0, 10).getTime(),
+);
+
+//開催時刻が現在時刻に近い順にソート
 const eventSorted = schedules.sort((a, b) => {
   const diffA = Math.abs(a.startDate.getTime() - now.getTime());
-  console.log(diffA);
   const diffB = Math.abs(b.startDate.getTime() - now.getTime());
-  console.log(diffB);
   return diffA - diffB;
 });
 
-console.log(eventSorted);
-
 const latestEvent = eventSorted[0];
 
+//現在時刻が開催時刻と終了時刻の合間にあるイベントを取得
 const nowHeld = schedules.filter((event) => {
   const startTime = event.startDate.getTime();
   const endTime = event.endDate?.getTime();
 
   return startTime <= now.getTime() && (!endTime || endTime >= now.getTime());
 });
-
-console.log(latestEvent);
-console.log(nowHeld);
-
-// const currentEvent = nowHeld.map((a, b) => {
-//   const diffA = a.startDate.getTime() - now.getTime();
-//   const diffB = b.startDate.getTime() - now.getTime();
-// });
 
 const HeaderWrapper = styled.div`
   position: fixed;
@@ -102,9 +97,17 @@ export const EventHeader = () => {
             <Header>
               {!isHidden && (
                 <>
-                  <SubTitle>{nowHeld.length !== 0 ? "注目!" : "Next"}</SubTitle>
+                  <SubTitle>
+                    {nowHeld.length !== 0 &&
+                    nowHeld[0].startDate.getTime() >
+                      latestEvent.startDate.getTime()
+                      ? "注目!"
+                      : "Next"}
+                  </SubTitle>
                   <Title>
-                    {nowHeld.length === 0
+                    {nowHeld.length === 0 ||
+                    Math.abs(now.getTime() - latestEvent.startDate.getTime()) <=
+                      tenMin
                       ? latestEvent.title
                       : nowHeld[0].title}
                   </Title>
