@@ -20,39 +20,72 @@ const StandItem = ({ stand }: { stand: StandType }) => {
       router.push(stand.url);
     }
   };
+
   return (
-    <div>
-      <h2>
-        <span
+    <div
+      style={{
+        width: "50vw",
+        height: "18vw",
+        borderBottom: "1.3px solid #000",
+      }}
+    >
+      <div
+        style={{
+          marginBottom: "10px",
+        }}
+      >
+        <div
           style={{
-            textAlignLast: "justify",
-            display: "inline-block",
-            width: "70px",
+            display: "flex",
+            alignItems: "start",
+            marginLeft: "10px",
           }}
         >
-          {stand.organizer}
-        </span>
-
-        {stand.name + ": " + stand.place}
-        {stand.url && (
-          <span
-            onClick={handleRedirect}
+          <div
             style={{
-              cursor: "pointer",
-              filter:
-                "invert(8%) sepia(100%) saturate(7044%) hue-rotate(227deg) brightness(100%) contrast(125%)",
-              marginLeft: "2em",
+              display: "flex",
+              flexDirection: "column",
             }}
           >
-            <img
-              src="/image/gadget24.png"
-              alt="link mark"
-              width="3%"
-              height="3%"
-            ></img>
-          </span>
-        )}
-      </h2>
+            <span style={{ fontSize: "2.5vw" }}>{stand.organizer}</span>
+            <span style={{ fontSize: "3.3vw" }}>{stand.name}</span>
+            <span style={{ fontSize: "1.7vw" }}>{stand.place}</span>
+
+            {stand.url ? (
+              <span
+                onClick={handleRedirect}
+                style={{
+                  cursor: "pointer",
+                  filter:
+                    "invert(8%) sepia(100%) saturate(7044%) hue-rotate(227deg) brightness(100%) contrast(125%)",
+                  marginLeft: "2px",
+                  fontSize: "1.5vw",
+                }}
+              >
+                <img
+                  src="/image/gadget24.png"
+                  alt="link mark"
+                  width="3%"
+                  height="3%"
+                />
+                {" 露店リンク"}
+              </span>
+            ) : null}
+          </div>
+          <div style={{ marginLeft: "10px" }}>
+            {stand.image && (
+              <img
+                src={stand.image}
+                alt="stand image"
+                style={{
+                  width: "auto",
+                  height: "100px",
+                }}
+              />
+            )}
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

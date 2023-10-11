@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import StandScrollableComponent from "./StandScrollableComponent";
+import { StandList } from "@/components/StandList";
 
 const Title = styled.h1`
   font-size: 2em;
@@ -23,7 +23,7 @@ export const Stand = () => {
       }}
     >
       <Title>露店一覧</Title>
-      <StandScrollableComponent />
+      <StandList />
     </div>
   );
 };
