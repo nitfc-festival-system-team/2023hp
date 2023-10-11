@@ -1,4 +1,5 @@
 import { useRouter } from "next/router";
+import { motion } from "framer-motion";
 
 export const PageTransitionButton = ({
   buttonText,
@@ -9,27 +10,39 @@ export const PageTransitionButton = ({
 }) => {
   const router = useRouter();
 
-  const buttonStyle = {
-    width: "150px",
-    height: "70px",
-    backgroundColor: "#cccccc",
-    color: "black",
-    borderRadius: "0.2rem",
-    cursor: "pointer",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    fontSize: "1.3rem",
+  const handleClick = () => {
+    router.push("/contents/" + nextPage);
+    return;
   };
 
   return (
-    <span
-      style={buttonStyle}
-      onClick={() => {
-        router.push("/contents/" + nextPage);
-      }}
-    >
-      {buttonText}
-    </span>
+    <div>
+      <motion.div
+        style={{
+          width: "8vw",
+          height: "4vw",
+          backgroundColor: "white",
+        }}
+        whileHover={{ scale: 1.2, fillOpacity: 0.5 }}
+        whileTap={{
+          scale: 0.8,
+          rotate: -90,
+        }}
+        onClick={handleClick}
+      >
+        <p
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "100%",
+            color: "black",
+            fontSize: "1.3vw",
+          }}
+        >
+          {buttonText}
+        </p>
+      </motion.div>
+    </div>
   );
 };
