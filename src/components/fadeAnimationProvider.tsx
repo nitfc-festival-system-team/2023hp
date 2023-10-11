@@ -1,43 +1,33 @@
+import { motion } from "framer-motion";
 import { ReactNode } from "react";
-import { useInView } from "react-intersection-observer";
-import styled from "styled-components";
 
 export const FadeAnimationProvider = ({
   children,
 }: {
   children: ReactNode;
 }) => {
-  /**
-   * スクロールイベントのオプション
-   * 「ref」検知する要素
-   * 「inView」要素が見えたかどうか(見えたらtrue)
-   * 「rootMargin」要素の検知の「余白」を設定
-   * 「triggerOnce」検知を一度だけ行うかどうか
-   */
-  const { ref, inView } = useInView({
-    rootMargin: "-100px",
-    triggerOnce: true,
-  });
-
   return (
-    /**
-     * ★スクロールさせたい要素を囲む
-     * refで指定すると対象の要素になる
-     * inViewのtrueかfalseを受け取り、styled-componentに渡す
-     */
-    <SFadeElem inView={inView} ref={ref}>
+    <motion.div
+      variants={{
+        offscreen: {
+          // 画面外の場合のスタイル
+          y: 100,
+          opacity: 0,
+        },
+        onscreen: {
+          // 画面内の場合のスタイル
+          y: 0,
+          opacity: 1,
+          transition: {
+            duration: 0.5,
+          },
+        },
+      }}
+      initial="offscreen" // 初期表示はoffscreen
+      whileInView="onscreen" // 画面内に入ったらonscreen
+      viewport={{ once: false, amount: 0 }}
+    >
       {children}
-    </SFadeElem>
+    </motion.div>
   );
 };
-
-/**
- * ★inView(trueかfalse)で受け取り、それに応じてcssを切り替える
- */
-const SFadeElem = styled.span<{ inView: boolean }>`
-  display: inline-block;
-  transition: opacity 0.5s cubic-bezier(0.47, 0, 0.745, 0.715);
-
-  //opacityをtrueなら1、falseなら0とする
-  opacity: ${(props) => (props.inView ? 1 : 0)};
-`;
