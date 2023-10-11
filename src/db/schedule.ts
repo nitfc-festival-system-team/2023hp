@@ -19,4 +19,10 @@ export const schedules: ScheduleType[] = [
     endDate: new Date(2023, 10, 27, 12, 0),
     description: "イベント3の説明",
   },
+  {
+    title: "イベント",
+    place: "お外",
+    startDate: new Date(2023, 10, 27, 13, 0),
+    endDate: new Date(2023, 10, 27, 14, 0),
+  },
 ];
