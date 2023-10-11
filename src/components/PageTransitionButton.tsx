@@ -22,6 +22,7 @@ export const PageTransitionButton = ({
           width: "8vw",
           height: "4vw",
           backgroundColor: "white",
+          cursor: "pointer",
         }}
         whileHover={{ scale: 1.2, fillOpacity: 0.5 }}
         whileTap={{
