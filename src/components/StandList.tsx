@@ -20,20 +20,27 @@ const StandItem = ({ stand }: { stand: StandType }) => {
       router.push(stand.url);
     }
   };
-  return (
-    <div>
-      <h2>
-        <span
-          style={{
-            textAlignLast: "justify",
-            display: "inline-block",
-            width: "70px",
-          }}
-        >
-          {stand.organizer}
-        </span>
 
-        {stand.name + ": " + stand.place}
+  return (
+    <div
+      style={{
+        width: "60vw",
+        height: "16vw",
+        borderBottom: "1.3px solid #000",
+        display: "flex",
+        justifyContent: "space-between", // 左右に均等に配置
+        alignItems: "center", // 垂直方向に中央揃え
+      }}
+    >
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column", // 縦に要素を配置
+        }}
+      >
+        <span style={{ fontSize: "2.5vw" }}>{stand.organizer}</span>
+        <span style={{ fontSize: "3.3vw" }}>{stand.name}</span>
+        <span style={{ fontSize: "1.7vw" }}>{stand.place}</span>
         {stand.url && (
           <span
             onClick={handleRedirect}
@@ -41,7 +48,7 @@ const StandItem = ({ stand }: { stand: StandType }) => {
               cursor: "pointer",
               filter:
                 "invert(8%) sepia(100%) saturate(7044%) hue-rotate(227deg) brightness(100%) contrast(125%)",
-              marginLeft: "2em",
+              fontSize: "1.5vw",
             }}
           >
             <img
@@ -49,10 +56,28 @@ const StandItem = ({ stand }: { stand: StandType }) => {
               alt="link mark"
               width="3%"
               height="3%"
-            ></img>
+            />
+            {" 露店リンク"}
           </span>
         )}
-      </h2>
+      </div>
+      {stand.image && (
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center", // 垂直方向に中央揃え
+          }}
+        >
+          <img
+            src={stand.image}
+            alt="stand image"
+            style={{
+              width: "auto",
+              height: "10vw",
+            }}
+          />
+        </div>
+      )}
     </div>
   );
 };
