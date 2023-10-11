@@ -1,7 +1,7 @@
 import { EventHeader } from "@/components/EventOverlay";
 import { Title } from "@/components/Title";
 import { ScrollView } from "@/components/scrollStyle";
-import { FadeAnimationProvider } from "@/components/fadeAnimationProvider";
+import { FadeAnimationProvider } from "@/components/FadeAnimationProvider";
 import { PageTransitionButton } from "@/components/PageTransitionButton";
 import { Map } from "@/components/Map";
 import { Notice } from "@/components/Notice";
