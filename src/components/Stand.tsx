@@ -17,12 +17,12 @@ export const Stand = () => {
     <div
       style={{
         position: "absolute",
-        top: "30%",
+        top: "50%",
         left: "50%",
         transform: "translate(-50%,-50%)",
       }}
     >
-      <Title>露店一覧</Title>
+      <Title style={{ fontSize: "6vw" }}>露店一覧</Title>
       <StandList />
     </div>
   );

@@ -20,4 +20,18 @@ export const stands: StandType[] = [
     image: "https://placehold.jp/150x150.png",
     url: "https://google.com",
   },
+  {
+    name: "春マソのパンケーキ屋さん",
+    organizer: "5E",
+    place: "図書館前",
+    image: "https://placehold.jp/150x150.png",
+    url: "https://google.com",
+  },
+  {
+    name: "春マソのパンケーキ屋さん",
+    organizer: "5E",
+    place: "図書館前",
+    image: "https://placehold.jp/150x150.png",
+    url: "https://google.com",
+  },
 ];
