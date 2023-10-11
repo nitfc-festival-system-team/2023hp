@@ -5,6 +5,7 @@ import type { NextRouter } from "next/router";
 import type { ReactElement, ReactNode } from "react";
 import Head from "next/head";
 import { AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 // 1. Import the extendTheme function
 
@@ -32,7 +33,15 @@ function MyApp({ Component, pageProps, router }: AppPropsWithLayout) {
         ></meta>
       </Head>
       <AnimatePresence mode="wait">
-        {getLayout(<Component key={router.asPath} {...pageProps} />)}
+        <motion.div
+          key={router.asPath}
+          initial={{ opacity: 0 }} // 初期状態
+          animate={{ opacity: 1 }} // マウント時
+          exit={{ opacity: 0 }} // アンマウント時
+          transition={{ ease: "easeOut", duration: 1 }}
+        >
+          {getLayout(<Component {...pageProps} />)}
+        </motion.div>
       </AnimatePresence>
     </>
   );
