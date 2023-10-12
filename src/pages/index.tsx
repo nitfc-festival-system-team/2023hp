@@ -8,6 +8,7 @@ import { Notice } from "@/components/Notice";
 import { VerticalLine } from "@/components/VerticalLine";
 import { ScrollIndicator } from "@/components/ScrollIndicator";
 
+
 import React from "react";
 
 export default function Page() {
@@ -21,10 +22,15 @@ export default function Page() {
           alignItems: "center",
           flexDirection: "column",
         }}
+        
       >
+        
         <VerticalLine />
+        
         <Title />
+      
         <ScrollView />
+        <div className="background"> 
         <Notice />
         <FadeAnimationProvider>
           <div style={{ display: "flex", flexDirection: "row", gap: "20px" }}>
@@ -34,6 +40,7 @@ export default function Page() {
         </FadeAnimationProvider>
         MAP
         <Map />
+      </div>
       </div>
       <ScrollIndicator />
     </>
