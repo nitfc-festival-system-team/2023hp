@@ -22,7 +22,7 @@ opacity: 0;
 const ScrollDownContainer = styled.div`
   position: relative;
   top: 20px;
-  height: 70px;
+  height: 30vw;
 
   & span {
     position: relative;
