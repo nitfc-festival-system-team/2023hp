@@ -5,8 +5,8 @@ import { schedules } from "@/db/schedule";
 const now = new Date();
 // const now = new Date(2023, 10, 27, 9, 55);    //デバッグ例
 
-//10分を定義
-const tenMin = Math.abs(
+const timeToDisplay = Math.abs(
+  //10分を定義
   new Date(1900, 0, 1, 0, 0).getTime() - new Date(1900, 0, 1, 0, 10).getTime(),
 );
 
@@ -109,7 +109,7 @@ export const EventHeader = () => {
 											次のイベント、それ以外なら現在開催中のイベントを表示} */}
                     {nowHeld.length === 0 ||
                     Math.abs(now.getTime() - latestEvent.startDate.getTime()) <=
-                      tenMin
+                      timeToDisplay
                       ? latestEvent.title
                       : nowHeld[0].title}
                   </Title>
