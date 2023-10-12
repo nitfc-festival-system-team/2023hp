@@ -105,6 +105,8 @@ export const EventHeader = () => {
                       : "Next"}
                   </SubTitle>
                   <Title>
+                    {/* {現在開催中のイベントがないor次のイベントまで10分を切っていたら
+											次のイベント、それ以外なら現在開催中のイベントを表示} */}
                     {nowHeld.length === 0 ||
                     Math.abs(now.getTime() - latestEvent.startDate.getTime()) <=
                       tenMin
