@@ -5,8 +5,7 @@ import { FadeAnimationProvider } from "@/components/FadeAnimationProvider";
 import { PageTransitionButton } from "@/components/PageTransitionButton";
 import { Map } from "@/components/Map";
 import { Notice } from "@/components/Notice";
-import { VerticalLine } from "@/components/VerticalLine";
-import { ScrollIndicator } from "@/components/ScrollIndicator";
+import { Sidebar } from "@/components/VerticalLine";
 
 
 import React from "react";
@@ -24,9 +23,13 @@ export default function Page() {
         }}
         
       >
+<<<<<<< HEAD
         
         <VerticalLine />
         
+=======
+        <Sidebar />
+>>>>>>> main
         <Title />
       
         <ScrollView />
@@ -41,8 +44,11 @@ export default function Page() {
         MAP
         <Map />
       </div>
+<<<<<<< HEAD
       </div>
       <ScrollIndicator />
+=======
+>>>>>>> main
     </>
   );
 }

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import StandScrollableComponent from "./StandScrollableComponent";
+import { StandList } from "@/components/StandList";
 
 const Title = styled.h1`
   font-size: 2em;
@@ -17,13 +17,13 @@ export const Stand = () => {
     <div
       style={{
         position: "absolute",
-        top: "30%",
+        top: "50%",
         left: "50%",
         transform: "translate(-50%,-50%)",
       }}
     >
-      <Title>露店一覧</Title>
-      <StandScrollableComponent />
+      <Title style={{ fontSize: "6vw" }}>露店一覧</Title>
+      <StandList />
     </div>
   );
 };
