@@ -1,5 +1,6 @@
 import { EventHeader } from "@/components/EventOverlay";
 import { Title } from "@/components/Title";
+import { EventDate } from "@/components/EventDate";
 import { ScrollView } from "@/components/scrollStyle";
 import { FadeAnimationProvider } from "@/components/FadeAnimationProvider";
 import { PageTransitionButton } from "@/components/PageTransitionButton";
@@ -23,6 +24,7 @@ export default function Page() {
       >
         <Sidebar />
         <Title />
+        <EventDate />
         <ScrollView />
         <Notice />
         <FadeAnimationProvider>
