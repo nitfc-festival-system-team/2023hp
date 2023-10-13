@@ -13,13 +13,11 @@ const sorted = schedules.sort((a, b) => {
   return a.startDate.getTime() - b.startDate.getTime();
 });
 
-console.log(sorted);
-
-const groups = sorted.map((items, i) => {
+const groups = sorted.map((item, i) => {
   return {
     id: i,
-    title: items.place,
-    rightTitle: items.title,
+    title: item.place,
+    rightTitle: item.title,
   };
 });
 
@@ -36,8 +34,8 @@ const data: Data[] = sorted.map((item, i) => {
     id: i,
     group: i,
     title: item.title,
-    start_time: moment().add(2, "hour"),
-    end_time: moment().add(6, "hour"),
+    start_time: moment(item.startDate, "YYYY-MM-DD HH:mm:ss"),
+    end_time: moment(item.startDate, "YYYY-MM-DD HH:mm:ss"),
   };
 });
 
