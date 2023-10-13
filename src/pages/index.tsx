@@ -6,7 +6,7 @@ import { PageTransitionButton } from "@/components/PageTransitionButton";
 import { Map } from "@/components/Map";
 import { Notice } from "@/components/Notice";
 import { Sidebar } from "@/components/VerticalLine";
-
+import { BackGroundImg } from "@/components/BackGround";
 
 import React from "react";
 
@@ -21,34 +21,25 @@ export default function Page() {
           alignItems: "center",
           flexDirection: "column",
         }}
+        >
         
-      >
-<<<<<<< HEAD
-        
-        <VerticalLine />
-        
-=======
         <Sidebar />
->>>>>>> main
         <Title />
-      
         <ScrollView />
-        <div className="background"> 
+        <BackGroundImg />
         <Notice />
         <FadeAnimationProvider>
           <div style={{ display: "flex", flexDirection: "row", gap: "20px" }}>
             <PageTransitionButton buttonText={"企画"} nextPage={"schedule"} />
             <PageTransitionButton buttonText={"露店"} nextPage={"stand"} />
           </div>
+          
         </FadeAnimationProvider>
+        
         MAP
         <Map />
+      
       </div>
-<<<<<<< HEAD
-      </div>
-      <ScrollIndicator />
-=======
->>>>>>> main
     </>
-  );
+  )
 }
