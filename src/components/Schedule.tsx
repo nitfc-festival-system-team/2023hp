@@ -1,9 +1,12 @@
 import { schedules } from "@/db/schedule";
 import { title } from "process";
 
-import dayjs from "dayjs";
-import RcGantt, { enUS } from "rc-gantt";
 import React, { useState } from "react";
+
+import Timeline from "react-calendar-timeline";
+// make sure you include the timeline stylesheet or the timeline will not be styled
+import "react-calendar-timeline/lib/Timeline.css";
+import moment from "moment";
 
 const now = new Date();
 
@@ -13,37 +16,41 @@ const sorted = schedules.sort((a, b) => {
 
 console.log(sorted);
 
+const groups = sorted.map((items, i) => {
+  return {
+    id: i,
+    title: items.place,
+    rightTitle: items.title,
+  };
+});
+
 interface Data {
+  id: number;
+  group: number;
   title: string;
-  startDate: string;
-  endDate?: string;
+  start_time: moment.Moment; //start_timeとend_timeはプロパティ名固定
+  end_time: moment.Moment;
 }
 
-const data: Data[] = sorted.map((item) => {
+const data: Data[] = sorted.map((item, i) => {
   return {
+    id: i,
+    group: i,
     title: item.title,
-    startDate: item.startDate.toDateString(),
-    endDate: item.endDate?.toDateString(),
+    start_time: moment().add(2, "hour"),
+    end_time: moment().add(6, "hour"),
   };
 });
 
 export const Schedule = () => {
-  console.log(data);
   return (
-    <div style={{ width: "100%", height: 500 }}>
-      <RcGantt<Data>
-        data={data}
-        locale={enUS}
-        columns={[
-          {
-            name: "title",
-            label: "Custom Title",
-            width: 100,
-          },
-        ]}
-        onUpdate={async () => {
-          return true;
-        }}
+    <div>
+      Rendered by react!
+      <Timeline
+        groups={groups}
+        items={data}
+        defaultTimeStart={moment().add(-12, "hour")}
+        defaultTimeEnd={moment().add(12, "hour")}
       />
     </div>
   );
