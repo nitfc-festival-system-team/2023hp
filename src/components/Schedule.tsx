@@ -1,7 +1,6 @@
 import { schedules } from "@/db/schedule";
-import { title } from "process";
 
-import React, { useState } from "react";
+import React from "react";
 
 import Timeline from "react-calendar-timeline";
 // make sure you include the timeline stylesheet or the timeline will not be styled
