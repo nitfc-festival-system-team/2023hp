@@ -21,10 +21,15 @@ const Tryangle = styled.div`
   relative: 5vw;
 `;
 const BackgroundStyle = styled.div`
-  background: rgba(172, 230, 224, 0.7);
+  background: linear-gradient(
+    to left,
+    rgba(172, 230, 224, 0.7) 50%,
+    transparent 100%
+  );
   width: 30vw;
   display: flex;
   justify-content: center;
+  background-position: right;
 `;
 
 export const Date = () => {
