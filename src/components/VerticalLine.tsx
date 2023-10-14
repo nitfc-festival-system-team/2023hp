@@ -61,7 +61,7 @@ const VerticalLine: React.FC = () => {
     writingMode: "vertical-rl",
     textAlign: "center",
     fontSize: "35px",
-    fontFamily: "'Open Sans', sans-serif",
+    fontFamily: "KomorebiFont",
     color: "white",
     mixBlendMode: "difference", // スクロールバーと重なる部分の文字を白くする
   };
