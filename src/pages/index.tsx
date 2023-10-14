@@ -35,6 +35,7 @@ export default function Page() {
               alignItems: "center",
               justifyContent: "center",
               gap: "20px",
+              padding: "3vh",
             }}
           >
             <PageTransitionButton buttonText={"企画"} nextPage={"schedule"} />
