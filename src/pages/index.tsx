@@ -6,6 +6,7 @@ import { PageTransitionButton } from "@/components/PageTransitionButton";
 import { Map } from "@/components/Map";
 import { Notice } from "@/components/Notice";
 import { Sidebar } from "@/components/VerticalLine";
+import { BackGroundImg } from "@/components/BackGround";
 
 import React from "react";
 
@@ -24,6 +25,7 @@ export default function Page() {
         <Sidebar />
         <Title />
         <ScrollView />
+        <BackGroundImg />
         <Notice />
         <FadeAnimationProvider>
           <div style={{ display: "flex", flexDirection: "row", gap: "20px" }}>
