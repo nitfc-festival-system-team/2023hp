@@ -11,13 +11,13 @@ const sorted_schdule = schedules.sort((a, b) => {
   return a.startDate.getTime() - b.startDate.getTime();
 });
 
-interface Group {
+interface GroupType {
   id: number;
   title: string;
   rightTitle: string;
 }
 
-const groups: Group[] = sorted_schdule.map((items, i) => {
+const schedule_group: GroupType[] = sorted_schdule.map((items, i) => {
   return {
     id: i,
     title: items.place,
@@ -25,7 +25,7 @@ const groups: Group[] = sorted_schdule.map((items, i) => {
   };
 });
 
-interface TimelineData {
+interface TimelineDataType {
   id: number;
   group: number;
   title: string;
@@ -33,7 +33,8 @@ interface TimelineData {
   end_time: number;
 }
 
-const timeline_data: TimelineData[] = sorted_schdule.map((item, i) => {
+const timeline_data: TimelineDataType[] = sorted_schdule.map((item, i) => {
+  //時間修正
   const fixed_start_date = new Date(
     item.startDate.setMonth(item.startDate.getMonth() - 1),
   );
@@ -43,6 +44,7 @@ const timeline_data: TimelineData[] = sorted_schdule.map((item, i) => {
   const epoch_start_date = fixed_start_date.getTime();
   const epoch_end_date = fixed_end_date.getTime();
   const epoch_diff = epoch_end_date - epoch_start_date;
+
   return {
     id: i,
     group: i,
@@ -56,9 +58,8 @@ export const Schedule = () => {
   console.log(timeline_data);
   return (
     <div>
-      Rendered by react!
       <Timeline
-        groups={groups}
+        groups={schedule_group}
         items={timeline_data}
         defaultTimeStart={moment().add(-12, "hour")}
         defaultTimeEnd={moment().add(12, "hour")}
