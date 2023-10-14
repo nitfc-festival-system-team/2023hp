@@ -11,7 +11,7 @@ export const PageTransitionButton = ({
   const router = useRouter();
 
   const handleClick = () => {
-    router.push("/contents/" + nextPage);
+    router.push("/contents/" + nextPage, undefined, { scroll: false });
     return;
   };
 

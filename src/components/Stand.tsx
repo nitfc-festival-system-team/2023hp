@@ -1,29 +1,26 @@
 import styled from "styled-components";
-import StandScrollableComponent from "./StandScrollableComponent";
+import { StandList } from "@/components/StandList";
 
 const Title = styled.h1`
-  font-size: 2em;
-  padding: 0 em;
-  margin-bottom: 0.5em;
-  //coler属性は値が渡されれば値に応じて設定
-  color: ${(props) => (props.color ? props.color : "black")};
+  font-size: 6vw; /* 要素のフォントサイズを6vwに変更 */
+  padding: 0;
+  margin: 0.5em auto; /* 上下のマージンを追加し、左右のマージンを自動で中央に配置 */
   border-bottom: 3px solid #000;
+  color: ${(props) => (props.color ? props.color : "black")};
 `;
 
-// dl要素にスタイルを適用するコンポーネント
+const CenteredContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
 
 export const Stand = () => {
   return (
-    <div
-      style={{
-        position: "absolute",
-        top: "30%",
-        left: "50%",
-        transform: "translate(-50%,-50%)",
-      }}
-    >
+    <CenteredContainer>
       <Title>露店一覧</Title>
-      <StandScrollableComponent />
-    </div>
+      <StandList />
+    </CenteredContainer>
   );
 };

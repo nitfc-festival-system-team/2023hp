@@ -4,8 +4,8 @@ import { ScrollView } from "@/components/scrollStyle";
 import { PageTransitionButton } from "@/components/PageTransitionButton";
 import { Map } from "@/components/Map";
 import { Notice } from "@/components/Notice";
-import { VerticalLine } from "@/components/VerticalLine";
-import { ScrollIndicator } from "@/components/ScrollIndicator";
+import { Sidebar } from "@/components/VerticalLine";
+import { BackGroundImg } from "@/components/BackGround";
 
 import React from "react";
 import { FadeAnimationProvider } from "@/components/FadeAnimationProvider";
@@ -22,9 +22,10 @@ export default function Page() {
           flexDirection: "column",
         }}
       >
-        <VerticalLine />
+        <Sidebar />
         <Title />
         <ScrollView />
+        <BackGroundImg />
         <Notice />
         <FadeAnimationProvider>
           <div
@@ -51,7 +52,6 @@ export default function Page() {
           </div>
         </FadeAnimationProvider>
       </div>
-      <ScrollIndicator />
     </>
   );
 }
