@@ -7,13 +7,26 @@ export const StandList = () => {
   return (
     <>
       {stands.map((stand: StandType, index) => {
-        return <StandItem key={index} stand={stand} />;
+        const isFirstItem = index === 0;
+        return (
+          <StandItem
+            key={index}
+            stand={stand}
+            isFirstItem={isFirstItem} // 一番上の要素かどうかを伝えるプロパティを追加
+          />
+        );
       })}
     </>
   );
 };
 
-const StandItem = ({ stand }: { stand: StandType }) => {
+const StandItem = ({
+  stand,
+  isFirstItem,
+}: {
+  stand: StandType;
+  isFirstItem: boolean;
+}) => {
   const router = useRouter();
   const handleRedirect = () => {
     if (stand.url) {
@@ -27,6 +40,7 @@ const StandItem = ({ stand }: { stand: StandType }) => {
         width: "60vw",
         height: "16vw",
         borderBottom: "1.3px solid #000",
+        borderTop: isFirstItem ? "1.3px solid #000" : "none",
         display: "flex",
         justifyContent: "space-between", // 左右に均等に配置
         alignItems: "center", // 垂直方向に中央揃え
