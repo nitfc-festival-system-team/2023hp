@@ -28,14 +28,26 @@ const NoticeItem = ({ notice }: { notice: NoticeType }) => {
       style={{
         display: "flex",
         flexDirection: "row",
-        gap: "25px",
         fontSize: "2.5vw",
       }}
     >
       <div>{date}</div>
-      <div>{"  " + notice.title}</div>
-      <div onClick={handleNoticeClick} style={{ cursor: "pointer" }}>
-        {"[link]"}
+      <p>&nbsp;&nbsp;&nbsp;</p>
+      <div>{notice.title}</div>
+      <p>&nbsp;&nbsp;</p>
+      <div style={{ cursor: "pointer" }}>
+        {notice.url && (
+          <span
+            onClick={handleNoticeClick}
+            style={{
+              cursor: "pointer",
+              filter:
+                "invert(8%) sepia(100%) saturate(7044%) hue-rotate(227deg) brightness(100%) contrast(125%)",
+            }}
+          >
+            <img src="/image/gadget24.png" alt="link mark" width="3.5%" />
+          </span>
+        )}
       </div>
     </div>
   );
