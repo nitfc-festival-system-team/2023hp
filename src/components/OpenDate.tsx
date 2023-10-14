@@ -21,7 +21,7 @@ const BackgroundStyle = styled.div`
   justify-content: center;
 `;
 
-export const Date = () => {
+export const OpenDate = () => {
   return (
     <BackgroundStyle>
       <div>
