@@ -7,45 +7,59 @@ import Timeline from "react-calendar-timeline";
 import "react-calendar-timeline/lib/Timeline.css";
 import moment from "moment";
 
-const now = new Date();
-
-const sorted = schedules.sort((a, b) => {
+const sorted_schdule = schedules.sort((a, b) => {
   return a.startDate.getTime() - b.startDate.getTime();
 });
 
-const groups = sorted.map((item, i) => {
+interface Group {
+  id: number;
+  title: string;
+  rightTitle: string;
+}
+
+const groups: Group[] = sorted_schdule.map((items, i) => {
   return {
     id: i,
-    title: item.place,
-    rightTitle: item.title,
+    title: items.place,
+    rightTitle: items.title,
   };
 });
 
-interface Data {
+interface TimelineData {
   id: number;
   group: number;
   title: string;
-  start_time: moment.Moment; //start_timeとend_timeはプロパティ名固定
-  end_time: moment.Moment;
+  start_time: number; //start_timeとend_timeはプロパティ名固定
+  end_time: number;
 }
 
-const data: Data[] = sorted.map((item, i) => {
+const timeline_data: TimelineData[] = sorted_schdule.map((item, i) => {
+  const fixed_start_date = new Date(
+    item.startDate.setMonth(item.startDate.getMonth() - 1),
+  );
+  const fixed_end_date = new Date(
+    item.endDate.setMonth(item.endDate.getMonth() - 1),
+  );
+  const epoch_start_date = fixed_start_date.getTime();
+  const epoch_end_date = fixed_end_date.getTime();
+  const epoch_diff = epoch_end_date - epoch_start_date;
   return {
     id: i,
     group: i,
     title: item.title,
-    start_time: moment(item.startDate, "YYYY-MM-DD HH:mm:ss"),
-    end_time: moment(item.startDate, "YYYY-MM-DD HH:mm:ss"),
+    start_time: moment(epoch_start_date).valueOf(),
+    end_time: moment(epoch_start_date + epoch_diff).valueOf(),
   };
 });
 
 export const Schedule = () => {
+  console.log(timeline_data);
   return (
     <div>
       Rendered by react!
       <Timeline
         groups={groups}
-        items={data}
+        items={timeline_data}
         defaultTimeStart={moment().add(-12, "hour")}
         defaultTimeEnd={moment().add(12, "hour")}
       />
