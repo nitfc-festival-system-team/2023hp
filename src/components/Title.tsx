@@ -19,7 +19,7 @@ export const Title = () => {
     padding: "20px",
     marginTop: "20px",
     letterSpacing: "10px",
-    fontSize: "50px",
+    fontSize: "8.8vh",
     writingMode: writingModeValue,
     fontFamily: "Zen Maru Gothic",
   };
