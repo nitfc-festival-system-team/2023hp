@@ -1,9 +1,0 @@
-.backgroundimg {
-  height: 10px;
-}
-  .content {
-    text-align: light;
-    color: white;
-    position: relative; /* コンテンツの位置を設定 */
-    z-index: 1; /* コンテンツを前面に表示 */
-  }

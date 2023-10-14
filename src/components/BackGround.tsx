@@ -1,8 +1,7 @@
 import React from 'react';
-import '../styles/background.module.css';
 export const BackGroundImg = () => { 
   return (
-  <div className = "backgroundimg" style={{
+  <div style={{
     display:"flex",
     flexDirection:"column"
   }}>
