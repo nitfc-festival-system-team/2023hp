@@ -21,8 +21,7 @@ export default function Page() {
           alignItems: "center",
           flexDirection: "column",
         }}
-        >
-        
+      >
         <Sidebar />
         <Title />
         <ScrollView />
@@ -33,13 +32,10 @@ export default function Page() {
             <PageTransitionButton buttonText={"企画"} nextPage={"schedule"} />
             <PageTransitionButton buttonText={"露店"} nextPage={"stand"} />
           </div>
-          
         </FadeAnimationProvider>
-        
         MAP
         <Map />
-      
       </div>
     </>
-  )
+  );
 }
