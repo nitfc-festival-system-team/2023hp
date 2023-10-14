@@ -23,9 +23,10 @@ export default function Page() {
         }}
       >
         <Sidebar />
+        <BackGroundImg />
         <Title />
         <ScrollView />
-        <BackGroundImg />
+        
         <Notice />
         <FadeAnimationProvider>
           <div style={{ display: "flex", flexDirection: "row", gap: "20px" }}>
