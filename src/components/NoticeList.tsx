@@ -33,7 +33,7 @@ const NoticeItem = ({ notice }: { notice: NoticeType }) => {
     >
       <div>{date}</div>
       <p>&nbsp;&nbsp;&nbsp;</p>
-      <div>{notice.title}</div>
+      <div style={{ whiteSpace: "nowrap" }}>{notice.title}</div>
       <p>&nbsp;&nbsp;</p>
       <div style={{ cursor: "pointer" }}>
         {notice.url && (
