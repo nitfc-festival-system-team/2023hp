@@ -16,7 +16,7 @@ export const PageTransitionButton = ({
   };
 
   return (
-    <div>
+    <div onClick={handleClick}>
       <motion.div
         style={{
           width: "8vw",
@@ -29,7 +29,6 @@ export const PageTransitionButton = ({
           scale: 0.8,
           rotate: -90,
         }}
-        onClick={handleClick}
       >
         <p
           style={{
