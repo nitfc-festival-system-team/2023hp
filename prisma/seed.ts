@@ -2,26 +2,20 @@ import prisma from "../lib/prisma";
 
 async function main() {
   const response = await Promise.all([
-    prisma.users.upsert({
-      where: { title: "お知らせ1" },
-      update: {},
-      create: {
+    prisma.notices.create({
+      data: {
         title: "お知らせ1",
         url: "https://example.com",
       },
     }),
-    prisma.users.upsert({
-      where: { title: "お知らせ2" },
-      update: {},
-      create: {
+    prisma.notices.create({
+      data: {
         title: "お知らせ2",
         url: "https://example.com",
       },
     }),
-    prisma.users.upsert({
-      where: { title: "お知らせ3" },
-      update: {},
-      create: {
+    prisma.notices.create({
+      data: {
         title: "お知らせ3",
         url: "https://example.com",
       },
@@ -29,6 +23,7 @@ async function main() {
   ]);
   console.log(response);
 }
+
 main()
   .then(async () => {
     await prisma.$disconnect();
