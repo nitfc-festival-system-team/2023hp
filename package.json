@@ -12,7 +12,6 @@
 	"prisma": {
 		"seed": "ts-node prisma/seed.ts"
 	},
-	"type": "commonjs",
 	"dependencies": {
 		"@prisma/client": "^5.4.2",
 		"@typescript-eslint/eslint-plugin": "^6.7.4",
