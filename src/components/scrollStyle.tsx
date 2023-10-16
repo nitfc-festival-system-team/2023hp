@@ -8,12 +8,12 @@ top: 0;
 opacity: 0;
 }
 30% {
-  height: 30px;
+  height: 4vw;
   opacity: 1;
 }
 100% {
   height: 0;
-  top: 50px;
+  top: 6vw;
   opacity: 0;
 }
 `;
@@ -21,15 +21,15 @@ opacity: 0;
 // Styled-componentsでコンポーネントを定義
 const ScrollDownContainer = styled.div`
   position: relative;
-  top: 20px;
+  top: 50px;
   height: 30vw;
 
   & span {
     position: relative;
     left: 0px;
-    top: -15px;
+    top: -30px;
     color: #f00;
-    font-size: 0.7rem;
+    font-size: 1.2vw;
     letter-spacing: 0.05em;
   }
 
@@ -37,7 +37,7 @@ const ScrollDownContainer = styled.div`
     content: "";
     position: absolute;
     left: 50%;
-    top: 10%;
+    top: 20%;
     width: 1px;
     height: 30px;
     background: #f00;
