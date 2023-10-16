@@ -1,11 +1,13 @@
 import { EventHeader } from "@/components/EventOverlay";
 import { Title } from "@/components/Title";
+import { OpenDate } from "@/components/OpenDate";
 import { ScrollView } from "@/components/scrollStyle";
 import { FadeAnimationProvider } from "@/components/FadeAnimationProvider";
 import { PageTransitionButton } from "@/components/PageTransitionButton";
 import { Map } from "@/components/Map";
 import { Notice } from "@/components/Notice";
 import { Sidebar } from "@/components/VerticalLine";
+import { BackGroundImg } from "@/components/BackGround";
 
 import React from "react";
 
@@ -23,7 +25,9 @@ export default function Page() {
       >
         <Sidebar />
         <Title />
+        <OpenDate />
         <ScrollView />
+        <BackGroundImg />
         <Notice />
         <FadeAnimationProvider>
           <div style={{ display: "flex", flexDirection: "row", gap: "20px" }}>
