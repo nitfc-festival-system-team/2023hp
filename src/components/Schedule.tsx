@@ -29,7 +29,7 @@ interface TimelineDataType {
   id: number;
   group: number;
   title: string;
-  start_time: number; //start_timeとend_timeはプロパティ名固定
+  start_time: number;
   end_time: number;
 }
 
@@ -61,6 +61,9 @@ export const Schedule = () => {
       <Timeline
         groups={schedule_group}
         items={timeline_data}
+        sidebarWidth={130}
+        canResize={false} //サイズ固定
+        canMove={false} //位置固定
         defaultTimeStart={moment().add(-12, "hour")}
         defaultTimeEnd={moment().add(12, "hour")}
       />
