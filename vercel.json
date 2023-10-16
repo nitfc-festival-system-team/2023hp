@@ -1,0 +1,11 @@
+{
+  "builds": [{ "src": "generatePrisma.js", "use": "@vercel/node" }],
+  "routes": [
+    { "handle": "filesystem" },
+    {
+      "src": "/api/get_notices",
+      "use": "@vercel/node",
+      "methods": ["GET"]
+    }
+  ]
+}
