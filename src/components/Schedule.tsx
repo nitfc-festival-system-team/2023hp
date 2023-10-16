@@ -62,7 +62,8 @@ export const Schedule = () => {
         groups={schedule_group}
         items={timeline_data}
         sidebarWidth={130}
-        canResize={false} //固定
+        canResize={false} //サイズ固定
+        canMove={false} //位置固定
         defaultTimeStart={moment().add(-12, "hour")}
         defaultTimeEnd={moment().add(12, "hour")}
       />
