@@ -4,7 +4,6 @@
     { "handle": "filesystem" },
     {
       "src": "/api/get_notices",
-      "use": "@vercel/node",
       "methods": ["GET"]
     }
   ]
