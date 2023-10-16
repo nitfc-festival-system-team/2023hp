@@ -28,7 +28,7 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "prisma/seed.ts",
-    "api/get_notices.cjs"
+    "api/get_notices.js"
   ],
   "exclude": ["node_modules"]
 }
