@@ -56,6 +56,13 @@ const timeline_data: TimelineDataType[] = sorted_schdule.map((item, i) => {
 
 export const Schedule = () => {
   console.log(timeline_data);
+
+  //UnixTimeが1月ずれているため9月にする
+  const fes_start = new Date(2023, 9, 27, 0, 0);
+  const fes_end = new Date(2023, 9, 30, 0, 0);
+
+  const minTime = fes_start.getTime();
+  const maxTime = fes_end.getTime();
   return (
     <div>
       <Timeline
@@ -66,6 +73,27 @@ export const Schedule = () => {
         canMove={false} //位置固定
         defaultTimeStart={moment().add(-12, "hour")}
         defaultTimeEnd={moment().add(12, "hour")}
+        onTimeChange={function (
+          visibleTimeStart,
+          visibleTimeEnd,
+          updateScrollCanvas,
+        ) {
+          if (visibleTimeStart < minTime && visibleTimeEnd > maxTime) {
+            updateScrollCanvas(minTime, maxTime);
+          } else if (visibleTimeStart < minTime) {
+            updateScrollCanvas(
+              minTime,
+              minTime + (visibleTimeEnd - visibleTimeStart),
+            );
+          } else if (visibleTimeEnd > maxTime) {
+            updateScrollCanvas(
+              maxTime - (visibleTimeEnd - visibleTimeStart),
+              maxTime,
+            );
+          } else {
+            updateScrollCanvas(visibleTimeStart, visibleTimeEnd);
+          }
+        }}
       />
     </div>
   );
