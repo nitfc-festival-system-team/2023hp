@@ -58,8 +58,8 @@ export const Schedule = () => {
   console.log(timeline_data);
 
   //UnixTimeが1月ずれているため9月にする
-  const fesStart = new Date(2023, 9, 27, 0, 0);
-  const fesEnd = new Date(2023, 9, 30, 0, 0);
+  const fesStart = new Date(2023, 9, 27, 9, 0);
+  const fesEnd = new Date(2023, 9, 29, 21, 0);
 
   const minTime = fesStart.getTime();
   const maxTime = fesEnd.getTime();
