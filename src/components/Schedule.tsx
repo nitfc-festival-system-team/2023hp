@@ -73,6 +73,8 @@ export const Schedule = () => {
         canMove={false} //位置固定
         defaultTimeStart={moment().add(-12, "hour")}
         defaultTimeEnd={moment().add(12, "hour")}
+        minZoom={24 * 60 * 60 * 1000}
+        maxZoom={24 * 60 * 60 * 1000}
         onTimeChange={function (
           visibleTimeStart,
           visibleTimeEnd,
