@@ -1,6 +1,6 @@
-import { PrismaClient } from "@prisma/client";
+const { PrismaClient } = require("@prisma/client");
 
-export default async function getData(req, res) {
+module.exports = async function getData(req, res) {
   const prisma = new PrismaClient();
 
   try {
@@ -12,4 +12,4 @@ export default async function getData(req, res) {
   } finally {
     await prisma.$disconnect();
   }
-}
+};
