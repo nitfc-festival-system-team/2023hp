@@ -29,6 +29,7 @@ export default function Page() {
         <Notice />
         <FadeAnimationProvider>
           <div
+            className="buttonContainer"
             style={{
               display: "flex",
               flexDirection: "row",
@@ -42,13 +43,15 @@ export default function Page() {
             <PageTransitionButton buttonText={"露店"} nextPage={"stand"} />
           </div>
           <div
+            className="mapContainer"
             style={{
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
+              padding: "3vh",
             }}
           >
-            MAP
+            <h1>MAP</h1>
             <Map />
           </div>
         </FadeAnimationProvider>

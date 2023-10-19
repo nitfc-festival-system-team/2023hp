@@ -1,45 +1,46 @@
-import { motion } from "framer-motion";
+import { Variants, motion } from "framer-motion";
 import React, { ReactNode } from "react";
+import { useInView } from "react-intersection-observer";
 
-const Item = (
-  { component }: { component: ReactNode },
-  ref: React.RefObject<HTMLDivElement>,
-) => (
-  <div ref={ref} style={{ overflow: "scroll" }}>
+const animationVariants: Variants = {
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 1,
+      duration: 0.5,
+    },
+  },
+  hidden: {
+    opacity: 0,
+  },
+};
+
+const Wrapper = ({ component }: { component: ReactNode }) => {
+  const [ref, inView] = useInView({
+    threshold: 0.5,
+    triggerOnce: true,
+  });
+
+  return (
     <motion.div
-      variants={{
-        offscreen: {
-          // 画面外の場合のスタイル
-          y: 50,
-          opacity: 0,
-        },
-        onscreen: {
-          // 画面内の場合のスタイル
-          y: 0,
-          opacity: 1,
-          transition: {
-            delay: 1,
-            duration: 0.5,
-          },
-        },
-      }}
-      initial="offscreen" // 初期表示はoffscreen
-      whileInView="onscreen" // 画面内に入ったらonscreen
-      viewport={{ once: true, amount: 0 }}
+      ref={ref}
+      variants={animationVariants}
+      initial="hidden"
+      animate={inView ? "visible" : "hidden"}
     >
       {component}
     </motion.div>
-  </div>
-);
+  );
+};
 
 export const FadeAnimationProvider = ({
   children,
 }: {
   children: ReactNode;
-}) => {
-  const wrapped = React.Children.map(children, (child) => {
-    return <Item component={child} />;
-  });
-
-  return <>{wrapped}</>;
-};
+}) => (
+  <>
+    {React.Children.map(children, (child) => (
+      <Wrapper component={child}></Wrapper>
+    ))}
+  </>
+);
