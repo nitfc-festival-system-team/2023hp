@@ -28,8 +28,8 @@ export default function Page() {
         <OpenDate />
         <ScrollView />
         <BackGroundImg />
-        <Notice />
         <FadeAnimationProvider>
+          <Notice />
           <div
             className="buttonContainer"
             style={{
