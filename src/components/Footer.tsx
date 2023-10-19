@@ -22,7 +22,7 @@ export const Footer = () => {
           text={"お問い合わせ"}
           link={"https://www.fukui-nct.ac.jp/"}
         />
-        <div style={{ animation: "rainbow 3s infinite" }}>
+        <div style={{ animation: "rainbow 1s infinite" }}>
           <LinkedText
             text={"福井高専祭システム班メンバー募集中!!"}
             link={"https://github.com/nitfc-festival-system-team"}
