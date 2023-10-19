@@ -32,5 +32,4 @@ model schedules {
   place     String
   startDate DateTime @default(now())
   endDate DateTime @default(now())
-  group Int
 }
