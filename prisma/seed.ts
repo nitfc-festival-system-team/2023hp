@@ -20,6 +20,39 @@ async function main() {
         url: "https://example.com",
       },
     }),
+
+    prisma.schedules.create({
+      data: {
+        title: "イベント1",
+        place: "メインステージ",
+        startDate: new Date(2023, 10, 14, 15, 0),
+        endDate: new Date(2023, 10, 14, 16, 0),
+      },
+    }),
+    prisma.schedules.create({
+      data: {
+        title: "イベント2",
+        place: "メインステージ",
+        startDate: new Date(2023, 10, 27, 10, 0),
+        endDate: new Date(2023, 10, 27, 11, 0),
+      },
+    }),
+    prisma.schedules.create({
+      data: {
+        title: "イベント3",
+        place: "メインステージ",
+        startDate: new Date(2023, 10, 27, 11, 0),
+        endDate: new Date(2023, 10, 27, 12, 0),
+      },
+    }),
+    prisma.schedules.create({
+      data: {
+        title: "イベント",
+        place: "お外",
+        startDate: new Date(2023, 10, 27, 13, 0),
+        endDate: new Date(2023, 10, 27, 14, 0),
+      },
+    }),
   ]);
   console.log(response);
 }

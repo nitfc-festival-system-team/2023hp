@@ -26,6 +26,7 @@ CREATE TABLE "schedules" (
     "place" TEXT NOT NULL,
     "startDate" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "endDate" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "group" SERIAL NOT NULL,
 
     CONSTRAINT "schedules_pkey" PRIMARY KEY ("id")
 );
