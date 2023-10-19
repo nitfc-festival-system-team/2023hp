@@ -1,33 +1,46 @@
-import { motion } from "framer-motion";
-import { ReactNode } from "react";
+import { Variants, motion } from "framer-motion";
+import React, { ReactNode } from "react";
+import { useInView } from "react-intersection-observer";
+
+const animationVariants: Variants = {
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 1,
+      duration: 0.5,
+    },
+  },
+  hidden: {
+    opacity: 0,
+  },
+};
+
+const Wrapper = ({ component }: { component: ReactNode }) => {
+  const [ref, inView] = useInView({
+    threshold: 0.5,
+    triggerOnce: true,
+  });
+
+  return (
+    <motion.div
+      ref={ref}
+      variants={animationVariants}
+      initial="hidden"
+      animate={inView ? "visible" : "hidden"}
+    >
+      {component}
+    </motion.div>
+  );
+};
 
 export const FadeAnimationProvider = ({
   children,
 }: {
   children: ReactNode;
-}) => {
-  return (
-    <motion.div
-      variants={{
-        offscreen: {
-          // 画面外の場合のスタイル
-          y: 100,
-          opacity: 0,
-        },
-        onscreen: {
-          // 画面内の場合のスタイル
-          y: 0,
-          opacity: 1,
-          transition: {
-            duration: 0.5,
-          },
-        },
-      }}
-      initial="offscreen" // 初期表示はoffscreen
-      whileInView="onscreen" // 画面内に入ったらonscreen
-      viewport={{ once: false, amount: 0 }}
-    >
-      {children}
-    </motion.div>
-  );
-};
+}) => (
+  <>
+    {React.Children.map(children, (child) => (
+      <Wrapper component={child}></Wrapper>
+    ))}
+  </>
+);

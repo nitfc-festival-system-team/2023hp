@@ -57,11 +57,11 @@ const Header = styled.header`
   flex-direction: column;
 `;
 
-const Title = styled.h2`
+const SubTitle = styled.h3`
   margin: 0;
 `;
 
-const SubTitle = styled.h3`
+const Title = styled.h2`
   margin: 0;
 `;
 
@@ -97,13 +97,6 @@ export const EventHeader = () => {
             <Header>
               {!isHidden && (
                 <>
-                  <SubTitle>
-                    {nowHeld.length !== 0 &&
-                    nowHeld[0].startDate.getTime() >
-                      latestEvent.startDate.getTime()
-                      ? "注目!"
-                      : "Next"}
-                  </SubTitle>
                   <Title>
                     {/* {現在開催中のイベントがないor次のイベントまで10分を切っていたら
 											次のイベント、それ以外なら現在開催中のイベントを表示} */}
@@ -113,6 +106,13 @@ export const EventHeader = () => {
                       ? latestEvent.title
                       : nowHeld[0].title}
                   </Title>
+                  <SubTitle>
+                    {nowHeld.length !== 0 &&
+                    nowHeld[0].startDate.getTime() >
+                      latestEvent.startDate.getTime()
+                      ? "注目!"
+                      : "Next"}
+                  </SubTitle>
                 </>
               )}
             </Header>
