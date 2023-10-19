@@ -1,6 +1,5 @@
 import { EventHeader } from "@/components/EventOverlay";
 import { Title } from "@/components/Title";
-import { OpenDate } from "@/components/OpenDate";
 import { ScrollView } from "@/components/scrollStyle";
 import { PageTransitionButton } from "@/components/PageTransitionButton";
 import { Map } from "@/components/Map";
@@ -25,7 +24,6 @@ export default function Page() {
       >
         <Sidebar />
         <Title />
-        <OpenDate />
         <ScrollView />
         <BackGroundImg />
         <Notice />

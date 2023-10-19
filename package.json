@@ -7,17 +7,10 @@
 		"build": "next build && next export",
 		"start": "next start",
 		"lint": "next lint",
-		"fmt": "npx eslint --fix --ext .jsx,.js,.tsx,.ts .",
-		"vercel-build": "prisma generate && prisma migrate deploy && next build"
-	},
-	"prisma": {
-		"seed": "ts-node prisma/seed.ts"
+		"fmt": "npx eslint --fix --ext .jsx,.js,.tsx,.ts ."
 	},
 	"dependencies": {
-		"@prisma/client": "^5.4.2",
 		"@typescript-eslint/eslint-plugin": "^6.7.4",
-		"@vercel/postgres": "^0.5.0",
-		"axios": "^1.5.1",
 		"framer-motion": "^10.16.4",
 		"next": "13.5.4",
 		"react": "^18",
@@ -37,8 +30,6 @@
 		"eslint-plugin-prettier": "^5.0.0",
 		"eslint-plugin-unused-imports": "^3.0.0",
 		"prettier": "^3.0.3",
-		"prisma": "^5.4.2",
-		"ts-node": "^10.9.1",
-		"typescript": "^5.2.2"
+		"typescript": "^5"
 	}
 }

@@ -12,7 +12,7 @@ const Title = styled.h1`
 `;
 
 const Wrapper = styled.div`
-  width: 55vw; /* 画面サイズの横幅の70% */
+  width: 70vw; /* 画面サイズの横幅の70% */
   height: 30vw;
   margin: 0 0 2em;
   background: #f0f7ff;
