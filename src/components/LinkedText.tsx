@@ -4,7 +4,6 @@ export const LinkedText = (props: { text: string; link: string }) => {
       href={props.link}
       style={{
         textDecoration: "none",
-        color: "black",
         fontWeight: "bold",
       }}
     >

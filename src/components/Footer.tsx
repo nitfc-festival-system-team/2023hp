@@ -1,4 +1,7 @@
+import React from "react";
+
 import { LinkedText } from "./LinkedText";
+import "@/styles/gamingColor.css";
 
 export const Footer = () => {
   return (
@@ -19,6 +22,12 @@ export const Footer = () => {
           text={"お問い合わせ"}
           link={"https://www.fukui-nct.ac.jp/"}
         />
+        <div style={{ animation: "rainbow 3s infinite" }}>
+          <LinkedText
+            text={"福井高専祭システム班メンバー募集中!!"}
+            link={"https://github.com/nitfc-festival-system-team"}
+          />
+        </div>
         <LinkedText
           text={"GitHub"}
           link={"https://github.com/nitfc-festival-system-team/2023hp"}
