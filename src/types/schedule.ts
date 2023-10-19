@@ -4,4 +4,5 @@ export type ScheduleType = {
   startDate: Date;
   endDate: Date;
   description?: string;
+  group?: number;
 };
