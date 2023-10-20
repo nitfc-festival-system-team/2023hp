@@ -48,7 +48,7 @@ async function main() {
     prisma.schedules.create({
       data: {
         title: "イベント",
-        place: "お外",
+        place: "お外o",
         startDate: new Date(2023, 10, 27, 13, 0),
         endDate: new Date(2023, 10, 27, 14, 0),
       },
