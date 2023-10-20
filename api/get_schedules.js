@@ -1,10 +1,6 @@
-import { NextApiRequest, NextApiResponse } from "next";
-import { PrismaClient } from "@prisma/client";
+const { PrismaClient } = require("@prisma/client");
 
-export default async function getData(
-  req: NextApiRequest,
-  res: NextApiResponse,
-) {
+module.exports = async function getData(req, res) {
   const prisma = new PrismaClient();
 
   try {
@@ -16,4 +12,4 @@ export default async function getData(
   } finally {
     await prisma.$disconnect();
   }
-}
+};
