@@ -1,1 +1,1 @@
-const shcedule = [];
+const schedule = [];
