@@ -164,7 +164,7 @@ export const Schedule = () => {
           }
         }}
       >
-        <TimelineHeaders>
+        <TimelineHeaders style={{ width: "100vw" }}>
           <SidebarHeader>
             {({ getRootProps }) => {
               return <div {...getRootProps()}>Left</div>;
