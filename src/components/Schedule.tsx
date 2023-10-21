@@ -140,6 +140,7 @@ export const Schedule = () => {
         canMove={false} //位置固定
         defaultTimeStart={moment().add(-12, "hour")}
         defaultTimeEnd={moment().add(12, "hour")}
+        traditionalZoom={true}
         minZoom={24 * 60 * 60 * 1000}
         maxZoom={24 * 60 * 60 * 1000}
         onTimeChange={function (
@@ -164,13 +165,13 @@ export const Schedule = () => {
           }
         }}
       >
-        <TimelineHeaders>
+        <TimelineHeaders calendarHeaderStyle={{ width: "100vw" }}>
           <SidebarHeader>
             {({ getRootProps }) => {
               return <div {...getRootProps()}>Left</div>;
             }}
           </SidebarHeader>
-          <DateHeader style={{ width: "100vw", height: "100vh" }} />
+          <DateHeader unit="primaryHeader" />
           <DateHeader />
         </TimelineHeaders>
       </Timeline>
