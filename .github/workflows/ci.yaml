@@ -18,6 +18,16 @@ jobs:
         with:
           node-version: 14
 
+  test:
+    needs: setup
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install dependencies
+        run: cd .. && npm install
+
+      - name: Run tests
+        run: npm test
+
   preview:
     if: ${{ github.ref != 'refs/heads/main' }}
     needs: [setup, test]
