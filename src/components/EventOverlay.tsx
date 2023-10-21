@@ -1,4 +1,4 @@
-import { ScheduleList } from "@/hooks/ScheduleContextProvider";
+import { ScheduleList } from "@/hooks/scheduleContextProvider";
 import React, { useState } from "react";
 import styled from "styled-components";
 
