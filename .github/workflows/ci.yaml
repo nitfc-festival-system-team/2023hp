@@ -23,7 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Change directory to project root
-        working-directory: ..
+        run: cd $GITHUB_WORKSPACE
 
       - name: Install dependencies
         run: ls && npm install
