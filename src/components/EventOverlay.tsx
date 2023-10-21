@@ -1,4 +1,4 @@
-import { schedules } from "@/db/schedule";
+import { ScheduleList } from "@/hooks/ScheduleContextProvider";
 import React, { useState } from "react";
 import styled from "styled-components";
 
@@ -8,6 +8,24 @@ const timeToDisplay = Math.abs(
   //10分で定義
   new Date(1900, 0, 1, 0, 0).getTime() - new Date(1900, 0, 1, 0, 10).getTime(),
 );
+const schedules = ScheduleList();
+
+//開催時刻が現在時刻に近い順にソート
+const eventSorted = schedules.sort((a, b) => {
+  const diffA = Math.abs(a.startDate.getTime() - now.getTime());
+  const diffB = Math.abs(b.startDate.getTime() - now.getTime());
+  return diffA - diffB;
+});
+
+const latestEvent = eventSorted[0];
+
+//現在時刻が開催時刻と終了時刻の合間にあるイベントを取得
+const nowHeld = schedules.filter((event) => {
+  const startTime = event.startDate.getTime();
+  const endTime = event.endDate?.getTime();
+
+  return startTime <= now.getTime() && (!endTime || endTime >= now.getTime());
+});
 
 const HeaderWrapper = styled.div`
   position: fixed;
@@ -65,40 +83,6 @@ const ArrowIcon = styled.span`
 `;
 
 export const EventHeader = () => {
-  // const [schedules, setSchedule] = useState<ScheduleType[]>([]);
-
-  // useEffect(() => {
-  //   fetchData(EndpointsType.schedule).then((data) => {
-  //     const newSchedules: ScheduleType[] = data.map(
-  //       (context: ScheduleType) => ({
-  //         title: context.title,
-  //         startDate: new Date(context.startDate),
-  //         endDate: new Date(context.endDate),
-  //         place: context.place,
-  //       }),
-  //     );
-
-  //     setSchedule(newSchedules);
-  //   });
-  // }, []);
-
-  //開催時刻が現在時刻に近い順にソート
-  const eventSorted = schedules.sort((a, b) => {
-    const diffA = Math.abs(a.startDate.getTime() - now.getTime());
-    const diffB = Math.abs(b.startDate.getTime() - now.getTime());
-    return diffA - diffB;
-  });
-
-  const latestEvent = eventSorted[0];
-
-  //現在時刻が開催時刻と終了時刻の合間にあるイベントを取得
-  const nowHeld = schedules.filter((event) => {
-    const startTime = event.startDate.getTime();
-    const endTime = event.endDate?.getTime();
-
-    return startTime <= now.getTime() && (!endTime || endTime >= now.getTime());
-  });
-
   const [isHidden, setIsHidden] = useState(false);
 
   const toggleHeader = () => {
