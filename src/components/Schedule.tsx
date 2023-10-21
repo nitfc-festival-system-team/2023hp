@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Timeline, { TimelineHeaders } from "react-calendar-timeline";
+import Timeline from "react-calendar-timeline";
 // make sure you include the timeline stylesheet or the timeline will not be styled
 import "react-calendar-timeline/lib/Timeline.css";
 import moment from "moment";
@@ -160,7 +160,7 @@ export const Schedule = () => {
           }
         }}
       />
-      <TimelineHeaders style={{ width: "100vw" }} />
+      {/* <TimelineHeaders style={{ width: "100vw" }} /> */}
     </div>
   );
 };
