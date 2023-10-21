@@ -1,6 +1,6 @@
 const { PrismaClient } = require("@prisma/client");
 
-module.exports = async function getData(req, res) {
+module.exports = async function getData(_, res) {
   const prisma = new PrismaClient();
 
   try {
