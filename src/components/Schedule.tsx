@@ -1,5 +1,9 @@
 import { useEffect, useState } from "react";
-import Timeline from "react-calendar-timeline";
+import Timeline, {
+  TimelineHeaders,
+  SidebarHeader,
+  DateHeader,
+} from "react-calendar-timeline";
 // make sure you include the timeline stylesheet or the timeline will not be styled
 import "react-calendar-timeline/lib/Timeline.css";
 import moment from "moment";
@@ -159,7 +163,17 @@ export const Schedule = () => {
             updateScrollCanvas(visibleTimeStart, visibleTimeEnd);
           }
         }}
-      ></Timeline>
+      >
+        <TimelineHeaders>
+          <SidebarHeader>
+            {({ getRootProps }) => {
+              return <div {...getRootProps()}>Left</div>;
+            }}
+          </SidebarHeader>
+          <DateHeader unit="primaryHeader" />
+          <DateHeader />
+        </TimelineHeaders>
+      </Timeline>
     </div>
   );
 };
