@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
+import { schedules } from "@/db/schedule";
+import React, { useState } from "react";
 import styled from "styled-components";
-import { ScheduleType } from "@/types/schedule";
-import { EndpointsType, fetchData } from "@/features/db";
 
 const now = new Date();
 
@@ -66,22 +65,22 @@ const ArrowIcon = styled.span`
 `;
 
 export const EventHeader = () => {
-  const [schedules, setSchedule] = useState<ScheduleType[]>([]);
+  // const [schedules, setSchedule] = useState<ScheduleType[]>([]);
 
-  useEffect(() => {
-    fetchData(EndpointsType.schedule).then((data) => {
-      const newSchedules: ScheduleType[] = data.map(
-        (context: ScheduleType) => ({
-          title: context.title,
-          startDate: new Date(context.startDate),
-          endDate: new Date(context.endDate),
-          place: context.place,
-        }),
-      );
+  // useEffect(() => {
+  //   fetchData(EndpointsType.schedule).then((data) => {
+  //     const newSchedules: ScheduleType[] = data.map(
+  //       (context: ScheduleType) => ({
+  //         title: context.title,
+  //         startDate: new Date(context.startDate),
+  //         endDate: new Date(context.endDate),
+  //         place: context.place,
+  //       }),
+  //     );
 
-      setSchedule(newSchedules);
-    });
-  }, []);
+  //     setSchedule(newSchedules);
+  //   });
+  // }, []);
 
   //開催時刻が現在時刻に近い順にソート
   const eventSorted = schedules.sort((a, b) => {
