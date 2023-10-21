@@ -131,7 +131,7 @@ export const Schedule = () => {
   const minTime = fesStart.getTime();
   const maxTime = fesEnd.getTime();
   return (
-    <div>
+    <div style={{ width: "100vw" }}>
       <Timeline
         groups={scheduleGroup}
         items={timelineData}
