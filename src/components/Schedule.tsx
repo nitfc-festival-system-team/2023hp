@@ -164,13 +164,13 @@ export const Schedule = () => {
           }
         }}
       >
-        <TimelineHeaders style={{ width: "100vw" }}>
+        <TimelineHeaders>
           <SidebarHeader>
             {({ getRootProps }) => {
               return <div {...getRootProps()}>Left</div>;
             }}
           </SidebarHeader>
-          <DateHeader unit="primaryHeader" />
+          <DateHeader style={{ width: "100vw", height: "100vh" }} />
           <DateHeader />
         </TimelineHeaders>
       </Timeline>
