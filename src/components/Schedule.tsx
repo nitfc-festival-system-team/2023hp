@@ -143,6 +143,7 @@ export const Schedule = () => {
         traditionalZoom={true}
         minZoom={24 * 60 * 60 * 1000}
         maxZoom={24 * 60 * 60 * 1000}
+        minResizeWidth={100}
         onTimeChange={function (
           visibleTimeStart,
           visibleTimeEnd,
@@ -165,7 +166,7 @@ export const Schedule = () => {
           }
         }}
       >
-        <TimelineHeaders calendarHeaderStyle={{ width: "100vw" }}>
+        <TimelineHeaders>
           <SidebarHeader>
             {({ getRootProps }) => {
               return <div {...getRootProps()}>Left</div>;
