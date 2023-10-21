@@ -2,30 +2,10 @@ import { ScheduleList } from "@/hooks/ScheduleContextProvider";
 import React, { useState } from "react";
 import styled from "styled-components";
 
-const now = new Date();
-
 const timeToDisplay = Math.abs(
   //10分で定義
   new Date(1900, 0, 1, 0, 0).getTime() - new Date(1900, 0, 1, 0, 10).getTime(),
 );
-const schedules = ScheduleList();
-
-//開催時刻が現在時刻に近い順にソート
-const eventSorted = schedules.sort((a, b) => {
-  const diffA = Math.abs(a.startDate.getTime() - now.getTime());
-  const diffB = Math.abs(b.startDate.getTime() - now.getTime());
-  return diffA - diffB;
-});
-
-const latestEvent = eventSorted[0];
-
-//現在時刻が開催時刻と終了時刻の合間にあるイベントを取得
-const nowHeld = schedules.filter((event) => {
-  const startTime = event.startDate.getTime();
-  const endTime = event.endDate?.getTime();
-
-  return startTime <= now.getTime() && (!endTime || endTime >= now.getTime());
-});
 
 const HeaderWrapper = styled.div`
   position: fixed;
@@ -83,6 +63,34 @@ const ArrowIcon = styled.span`
 `;
 
 export const EventHeader = () => {
+  const now = new Date();
+
+  const schedules = ScheduleList();
+
+  //未開催の内、開催時刻が現在時刻に近い順にソート
+  const eventSorted = schedules
+    .filter((event) => {
+      const startTime = event.startDate.getTime();
+      const endTime = event.endDate?.getTime();
+
+      return startTime > now.getTime() || !endTime || endTime >= now.getTime();
+    })
+    .sort((a, b) => {
+      const diffA = Math.abs(a.startDate.getTime() - now.getTime());
+      const diffB = Math.abs(b.startDate?.getTime() - now.getTime());
+      return diffA - diffB;
+    });
+
+  const upcomingEvent = eventSorted[0];
+
+  //現在時刻が開催時刻と終了時刻の合間にあるイベントを取得
+  const nowHeld = schedules.filter((event) => {
+    const startTime = event.startDate.getTime();
+    const endTime = event.endDate?.getTime();
+
+    return startTime <= now.getTime() && (!endTime || endTime >= now.getTime());
+  });
+
   const [isHidden, setIsHidden] = useState(false);
 
   const toggleHeader = () => {
@@ -95,25 +103,28 @@ export const EventHeader = () => {
         <HeaderContainer>
           <HeaderContent>
             <Header>
-              {!isHidden && (
+              {!isHidden && upcomingEvent ? (
                 <>
                   <SubTitle>
                     {nowHeld.length !== 0 &&
                     nowHeld[0].startDate.getTime() >
-                      latestEvent.startDate.getTime()
+                      upcomingEvent.startDate.getTime()
                       ? "注目!"
                       : "Next"}
                   </SubTitle>
+                  {/* 現在開催中のイベントがないor次のイベントまで10分を切っていたら
+                  次のイベント、それ以外なら現在開催中のイベントを表示 */}
                   <Title>
-                    {/* {現在開催中のイベントがないor次のイベントまで10分を切っていたら
-											次のイベント、それ以外なら現在開催中のイベントを表示} */}
                     {nowHeld.length === 0 ||
-                    Math.abs(now.getTime() - latestEvent.startDate.getTime()) <=
-                      timeToDisplay
-                      ? latestEvent.title
+                    Math.abs(
+                      now.getTime() - upcomingEvent.startDate.getTime(),
+                    ) <= timeToDisplay
+                      ? upcomingEvent.title
                       : nowHeld[0].title}
                   </Title>
                 </>
+              ) : (
+                <></>
               )}
             </Header>
           </HeaderContent>
