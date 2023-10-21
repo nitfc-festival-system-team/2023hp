@@ -23,7 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Install dependencies
-        run: cd .. && npm install
+        run: ls && npm install
 
       - name: Run tests
         run: npm test
