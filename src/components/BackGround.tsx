@@ -10,6 +10,7 @@ export const BackGroundImg = () => {
     >
       <img
         src="/image/fireworks/firework.png"
+        alt="firework"
         style={{
           maxHeight: "50vh", // 高さ
           width: "auto", // 幅
@@ -24,6 +25,18 @@ export const BackGroundImg = () => {
         src="/image/fireworks/firework.png"
         style={{
           maxHeight: "30vh", // 高さ
+          width: "auto", // 幅
+          position: "absolute", // 位置の指定
+          left: "20vw", // 左方向への移動
+          top: "30vh", // 上方向への移動
+          zIndex: -2,
+        }}
+      />
+      <img
+        src="/image/fireworks/firework.png"
+        alt="firework"
+        style={{
+          maxHeight: "40vh", // 高さ
           width: "auto", // 幅
           position: "absolute", // 位置の指定
           left: "50vw", // 左方向への移動

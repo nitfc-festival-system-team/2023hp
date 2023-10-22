@@ -1,7 +1,7 @@
 import { EventHeader } from "@/components/EventOverlay";
 import { Title } from "@/components/Title";
+import { OpenDate } from "@/components/OpenDate";
 import { ScrollView } from "@/components/scrollStyle";
-import { FadeAnimationProvider } from "@/components/FadeAnimationProvider";
 import { PageTransitionButton } from "@/components/PageTransitionButton";
 import { Map } from "@/components/Map";
 import { Notice } from "@/components/Notice";
@@ -9,6 +9,7 @@ import { Sidebar } from "@/components/VerticalLine";
 import { BackGroundImg } from "@/components/BackGround";
 
 import React from "react";
+import { FadeAnimationProvider } from "@/components/FadeAnimationProvider";
 
 export default function Page() {
   return (
@@ -25,17 +26,39 @@ export default function Page() {
         <Sidebar />
         <BackGroundImg />
         <Title />
+        <OpenDate />
         <ScrollView />
         
         <Notice />
         <FadeAnimationProvider>
-          <div style={{ display: "flex", flexDirection: "row", gap: "20px" }}>
+          <Notice />
+          <div
+            className="buttonContainer"
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: "20px",
+              padding: "3vh",
+            }}
+          >
             <PageTransitionButton buttonText={"企画"} nextPage={"schedule"} />
             <PageTransitionButton buttonText={"露店"} nextPage={"stand"} />
           </div>
+          <div
+            className="mapContainer"
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              padding: "3vh",
+            }}
+          >
+            <h1>MAP</h1>
+            <Map />
+          </div>
         </FadeAnimationProvider>
-        MAP
-        <Map />
       </div>
     </>
   );

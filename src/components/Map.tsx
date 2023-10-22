@@ -24,7 +24,7 @@ export const Map = () => {
         alignItems: "center",
         flexDirection: "column",
         //レスポンシブ対応
-        width: "100%",
+        // width: "100%",
       }}
     >
       <img
@@ -32,7 +32,7 @@ export const Map = () => {
         alt="Map"
         useMap="#map"
         style={{
-          maxWidth: "80vw", // 画像の幅が親要素に合わせる
+          // maxWidth: "80vw", // 画像の幅が親要素に合わせる
           height: "auto", // アスペクト比を保つ
         }}
       />

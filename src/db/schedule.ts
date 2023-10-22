@@ -8,8 +8,8 @@ export const schedules: ScheduleType[] = [
     endDate: new Date(2023, 10, 14, 16, 0),
   },
   {
-    title: "イベント2",
-    place: "メインステージ",
+    title: "ぶどう狩り",
+    place: "ぶどう農園",
     startDate: new Date(2023, 10, 27, 10, 0),
     endDate: new Date(2023, 10, 27, 11, 0),
   },
