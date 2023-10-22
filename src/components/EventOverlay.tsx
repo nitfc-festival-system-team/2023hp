@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
-import { Clock } from "@/hooks/clock";
 import { schedules } from "@/db/schedule";
 
 const timeToDisplay = Math.abs(
@@ -65,7 +64,15 @@ const ArrowIcon = styled.span`
 `;
 
 export const EventHeader = () => {
-  const now = Clock(60);
+  const [now, setTime] = useState(new Date());
+  console.log(now);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTime(new Date());
+    }, 60000);
+    return () => clearInterval(interval);
+  });
 
   //未開催の内、開催時刻が現在時刻に近い順にソート
   const eventSorted = schedules
