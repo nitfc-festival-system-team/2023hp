@@ -9,6 +9,7 @@ export const BackGroundImg = () => {
     >
       <img
         src="/image/fireworks/firework.png"
+        alt="firework"
         style={{
           maxHeight: "30vh", // 高さaaaaa
           width: "auto", // 幅
@@ -20,6 +21,7 @@ export const BackGroundImg = () => {
       />
       <img
         src="/image/fireworks/firework.png"
+        alt="firework"
         style={{
           maxHeight: "40vh", // 高さ
           width: "auto", // 幅
