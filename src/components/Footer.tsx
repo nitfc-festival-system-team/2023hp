@@ -12,11 +12,22 @@ export const Footer = () => {
           flexDirection: "column",
           alignItems: "center",
           gap: "10px",
-          fontSize: "1.8vw",
+          fontSize: "1.4vw",
+          marginTop: "5vw",
         }}
       >
-        <br />
-        <br /> <br /> <br /> <br />
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "center",
+            gap: "5vw",
+            fontSize: "2vw",
+          }}
+        >
+          <LinkedText text={"企画"} link={"contents/schedule"} />
+          <LinkedText text={"露店"} link={"contents/stand"} />
+        </div>
         <LinkedText text={"福井高専"} link={"https://www.fukui-nct.ac.jp/"} />
         <LinkedText
           text={"お問い合わせ"}
