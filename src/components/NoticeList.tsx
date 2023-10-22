@@ -1,11 +1,14 @@
+"use client";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import ContentLoader from "react-content-loader";
 
 import { NoticeType } from "@/types/notice";
 import { fetchData, EndpointsType } from "@/features/db";
 
 export const NoticeList = () => {
   const [notices, setNotices] = useState<NoticeType[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     fetchData(EndpointsType.notice).then((data) => {
@@ -18,11 +21,33 @@ export const NoticeList = () => {
     });
   }, []);
 
+  useEffect(() => {
+    if (notices.length > 0) {
+      setIsLoading(false);
+    }
+  }, [notices]);
+
   return (
     <>
-      {notices.map((notice: NoticeType, index) => {
-        return <NoticeItem key={index} notice={notice} />;
-      })}
+      {isLoading ? (
+        <>
+          <ContentLoader
+            speed={1}
+            width={400}
+            height={260}
+            backgroundColor="#f3f3f3"
+            foregroundColor="#cccccc"
+          >
+            <rect x="0" y="2.5vw" width="20vw" height="3vw" />
+            <rect x="0" y="6.5vw" width="20vw" height="3vw" />
+            <rect x="0" y="10.5vw" width="20vw" height="3vw" />
+          </ContentLoader>
+        </>
+      ) : (
+        notices.map((notice: NoticeType, index) => {
+          return <NoticeItem key={index} notice={notice} />;
+        })
+      )}
     </>
   );
 };
