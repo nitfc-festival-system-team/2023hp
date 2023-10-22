@@ -4,7 +4,7 @@ import "react-calendar-timeline/lib/Timeline.css";
 import moment from "moment";
 
 import { ScheduleType } from "@/types/schedule";
-import { ScheduleList } from "@/hooks/scheduleContextProvider";
+import { schedules } from "@/db/schedule";
 
 interface GroupType {
   id: number;
@@ -22,8 +22,6 @@ interface TimelineDataType {
 }
 
 export const Schedule = () => {
-  const schedules = ScheduleList();
-
   const sortedPlaceSchedule = schedules.sort((a, b) => {
     // 先に 'place' プロパティを比較
     const placeA = a.place.toLowerCase();
