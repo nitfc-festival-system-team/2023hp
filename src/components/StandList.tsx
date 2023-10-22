@@ -75,23 +75,14 @@ const StandItem = ({
           </span>
         )}
       </div>
-      {stand.image && (
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center", // 垂直方向に中央揃え
-          }}
-        >
-          <img
-            src={stand.image}
-            alt="stand image"
-            style={{
-              width: "auto",
-              height: "10vw",
-            }}
-          />
-        </div>
-      )}
+      <img
+        src={"/image/stand/" + stand.number + ".png"}
+        alt="stand image"
+        style={{
+          width: "auto",
+          height: "10vw",
+        }}
+      />
     </div>
   );
 };

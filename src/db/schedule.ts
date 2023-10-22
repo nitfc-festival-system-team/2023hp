@@ -2,28 +2,18 @@ import { ScheduleType } from "@/types/schedule";
 
 export const schedules: ScheduleType[] = [
   {
-    title: "イベント1",
-    place: "メインステージ",
-    startDate: new Date(2023, 10, 14, 15, 0),
-    endDate: new Date(2023, 10, 14, 16, 0),
+    title: "オープニングセレモニー",
+    place: "第1体育館",
+    description: "共に輝く！始まる文化の祭典へ！",
+    startDate: new Date(2023, 10, 27, 12, 30),
+    endDate: new Date(2023, 10, 27, 13, 0),
   },
   {
-    title: "ぶどう狩り",
-    place: "ぶどう農園",
-    startDate: new Date(2023, 10, 27, 10, 0),
-    endDate: new Date(2023, 10, 27, 11, 0),
-  },
-  {
-    title: "イベント3",
-    place: "メインステージ",
-    startDate: new Date(2023, 10, 27, 11, 0),
-    endDate: new Date(2023, 10, 27, 12, 0),
-    description: "イベント3の説明",
-  },
-  {
-    title: "イベント",
-    place: "お外",
-    startDate: new Date(2023, 10, 27, 13, 0),
-    endDate: new Date(2023, 10, 27, 14, 0),
+    title: "気配切り",
+    place: "第1体育館",
+    description:
+      "感覚を研ぎ澄ませ！自分を信じて、いざ一振り！！決着の様子は体育館で",
+    startDate: new Date(2023, 10, 27, 13, 20),
+    endDate: new Date(2023, 10, 27, 14, 30),
   },
 ];
