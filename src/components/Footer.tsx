@@ -1,13 +1,17 @@
 import React from "react";
+import { useRouter } from "next/router";
 
 import { LinkedText } from "./LinkedText";
 import "@/styles/gamingColor.css";
 
 export const Footer = () => {
+  const router = useRouter();
   return (
     <footer>
       <div
         style={{
+          backgroundColor: "#20e0e0",
+          width: "100vw",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
@@ -28,7 +32,16 @@ export const Footer = () => {
           <LinkedText text={"企画"} link={"contents/schedule"} />
           <LinkedText text={"露店"} link={"contents/stand"} />
         </div>
-        <LinkedText text={"福井高専"} link={"https://www.fukui-nct.ac.jp/"} />
+        <img
+          src={"image/nitfc.png"}
+          alt={"nitfc_logo"}
+          width={"20%"}
+          style={{ cursor: "pointer" }}
+          onClick={() => {
+            router.push("https://www.fukui-nct.ac.jp/");
+          }}
+        />
+        {/* <LinkedText text={"福井高専"} link={"https://www.fukui-nct.ac.jp/"} /> */}
         <LinkedText
           text={"お問い合わせ"}
           link={"https://www.fukui-nct.ac.jp/"}
