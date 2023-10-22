@@ -1,23 +1,9 @@
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
 
 import { NoticeType } from "@/types/notice";
-import { fetchData, EndpointsType } from "@/features/db";
+import { notices } from "@/db/notice";
 
 export const NoticeList = () => {
-  const [notices, setNotices] = useState<NoticeType[]>([]);
-
-  useEffect(() => {
-    fetchData(EndpointsType.notice).then((data) => {
-      const newNotices = data.map((doc: NoticeType) => ({
-        title: doc.title,
-        date: new Date(doc.date),
-        url: doc.url,
-      }));
-      setNotices(newNotices);
-    });
-  }, []);
-
   return (
     <>
       {notices.map((notice: NoticeType, index) => {
