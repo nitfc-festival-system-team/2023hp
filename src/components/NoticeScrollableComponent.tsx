@@ -10,7 +10,7 @@ class NoticeScrollableComponent extends Component {
           height: "100%" /* コンテナの高さを設定 */,
           marginLeft: "2vw",
           overflow:
-            "scroll" /* スクロールバーを表示するためのオーバーフロー設定 */,
+            "auto" /* スクロールバーを表示するためのオーバーフロー設定 */,
           color: "black" /* 文字色を設定 */,
         }}
       >
