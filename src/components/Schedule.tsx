@@ -1,4 +1,3 @@
-// import { useEffect, useState } from "react";
 import Timeline, {
   TimelineHeaders,
   SidebarHeader,
@@ -111,13 +110,13 @@ const timelineData: TimelineDataType[] = sortedPlaceSchedule.map((item, i) => {
 
 export const Schedule = () => {
   // 事前レンダリング時の日時とブラウザでレンダリング日時を一致させる。
-  const [MobileOrPc, setIsMobile] = useState<boolean>(true);
+  const [_isMobile, setIsMobile] = useState<boolean>(true);
 
   useEffect(() => {
     setIsMobile(isMobile);
   }, []);
 
-  const fesScope = MobileOrPc
+  const fesScope = _isMobile
     ? new Date(2023, 9, 27, 12).getTime()
     : new Date(2023, 9, 27, 21).getTime();
 
@@ -131,14 +130,14 @@ export const Schedule = () => {
       <Timeline
         groups={scheduleGroup}
         items={timelineData}
-        lineHeight={MobileOrPc ? 40 : 30}
-        sidebarWidth={MobileOrPc ? 100 : 130}
+        lineHeight={_isMobile ? 40 : 30}
+        sidebarWidth={_isMobile ? 100 : 130}
         canResize={false} //サイズ固定
         canMove={false} //位置固定
-        defaultTimeStart={moment(fesScope).add(MobileOrPc ? -3 : -12, "hour")}
-        defaultTimeEnd={moment(fesScope).add(MobileOrPc ? 3 : 12, "hour")}
-        minZoom={!MobileOrPc ? 6 * 60 * 60 * 1000 : 3 * 60 * 60 * 1000}
-        maxZoom={!MobileOrPc ? 24 * 60 * 60 * 1000 : 12 * 60 * 60 * 1000}
+        defaultTimeStart={moment(fesScope).add(_isMobile ? -3 : -12, "hour")}
+        defaultTimeEnd={moment(fesScope).add(_isMobile ? 3 : 12, "hour")}
+        minZoom={!_isMobile ? 6 * 60 * 60 * 1000 : 3 * 60 * 60 * 1000}
+        maxZoom={!_isMobile ? 24 * 60 * 60 * 1000 : 12 * 60 * 60 * 1000}
         minResizeWidth={100}
         onTimeChange={function (
           visibleTimeStart,
