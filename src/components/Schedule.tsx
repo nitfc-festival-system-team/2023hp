@@ -7,6 +7,7 @@ import Timeline, {
 // make sure you include the timeline stylesheet or the timeline will not be styled
 import "react-calendar-timeline/lib/Timeline.css";
 import moment from "moment";
+import { isMobile } from "react-device-detect";
 
 import { ScheduleType } from "@/types/schedule";
 import { schedules } from "@/db/schedule";
@@ -112,22 +113,24 @@ export const Schedule = () => {
   //UnixTimeが1月ずれているため9月にする
   const fesStart = new Date(2023, 9, 27, 9, 0);
   const fesEnd = new Date(2023, 9, 29, 21, 0);
-
+  const fesScope = isMobile
+    ? new Date(2023, 9, 27, 12).getTime()
+    : new Date(2023, 9, 27, 21).getTime();
+  console.log(isMobile);
   const minTime = fesStart.getTime();
   const maxTime = fesEnd.getTime();
   return (
-    <div style={{ width: "100vw" }}>
+    <>
       <Timeline
         groups={scheduleGroup}
         items={timelineData}
-        sidebarWidth={130}
+        sidebarWidth={isMobile ? 100 : 130}
         canResize={false} //サイズ固定
         canMove={false} //位置固定
-        defaultTimeStart={moment().add(-12, "hour")}
-        defaultTimeEnd={moment().add(12, "hour")}
-        traditionalZoom={true}
-        minZoom={24 * 60 * 60 * 1000}
-        maxZoom={24 * 60 * 60 * 1000}
+        defaultTimeStart={moment(fesScope).add(isMobile ? -6 : -12, "hour")}
+        defaultTimeEnd={moment(fesScope).add(isMobile ? 6 : 12, "hour")}
+        minZoom={!isMobile ? 24 * 60 * 60 * 1000 : 3 * 60 * 60 * 1000}
+        maxZoom={!isMobile ? 24 * 60 * 60 * 1000 : 12 * 60 * 60 * 1000}
         minResizeWidth={100}
         onTimeChange={function (
           visibleTimeStart,
@@ -154,13 +157,24 @@ export const Schedule = () => {
         <TimelineHeaders>
           <SidebarHeader>
             {({ getRootProps }) => {
-              return <div {...getRootProps()}>Left</div>;
+              return (
+                <div
+                  {...getRootProps()}
+                  style={{
+                    color: "white",
+                    width: isMobile ? "100px" : "130px",
+                  }}
+                >
+                  場所
+                </div>
+              );
             }}
           </SidebarHeader>
           <DateHeader unit="primaryHeader" />
           <DateHeader />
         </TimelineHeaders>
       </Timeline>
-    </div>
+      <p>{isMobile ? "true" : "false"}</p>
+    </>
   );
 };
