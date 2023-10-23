@@ -25,7 +25,12 @@ interface TimelineDataType {
   title: string;
   start_time: number;
   end_time: number;
-  itemProps?: { [key: string]: string };
+  itemProps: {
+    "date-tip": string;
+    style: {
+      fontSize: string;
+    };
+  };
 }
 
 const sortedPlaceSchedule = schedules.sort((a, b) => {
@@ -100,15 +105,14 @@ const timelineData: TimelineDataType[] = sortedPlaceSchedule.map((item, i) => {
     title: item.title,
     start_time: moment(epochStartDate).valueOf(),
     end_time: moment(epochStartDate + epochDiff).valueOf(),
-    itemProps: { "date-tip": item.title },
+    itemProps: { "date-tip": item.title, style: { fontSize: "16px" } },
   };
 });
 
 export const Schedule = () => {
   // 事前レンダリング時の日時とブラウザでレンダリング日時を一致させる。
-  const [MobileOrPc, setIsMobile] = useState<boolean>(false);
+  const [MobileOrPc, setIsMobile] = useState<boolean>(true);
 
-  // useEffectを使いハイドレーション後にレンダリングがトリガーされるようにする。
   useEffect(() => {
     setIsMobile(isMobile);
   }, []);
@@ -127,12 +131,13 @@ export const Schedule = () => {
       <Timeline
         groups={scheduleGroup}
         items={timelineData}
+        lineHeight={MobileOrPc ? 40 : 30}
         sidebarWidth={MobileOrPc ? 100 : 130}
         canResize={false} //サイズ固定
         canMove={false} //位置固定
-        defaultTimeStart={moment(fesScope).add(MobileOrPc ? -6 : -12, "hour")}
-        defaultTimeEnd={moment(fesScope).add(MobileOrPc ? 6 : 12, "hour")}
-        minZoom={!MobileOrPc ? 24 * 60 * 60 * 1000 : 3 * 60 * 60 * 1000}
+        defaultTimeStart={moment(fesScope).add(MobileOrPc ? -3 : -12, "hour")}
+        defaultTimeEnd={moment(fesScope).add(MobileOrPc ? 3 : 12, "hour")}
+        minZoom={!MobileOrPc ? 6 * 60 * 60 * 1000 : 3 * 60 * 60 * 1000}
         maxZoom={!MobileOrPc ? 24 * 60 * 60 * 1000 : 12 * 60 * 60 * 1000}
         minResizeWidth={100}
         onTimeChange={function (
@@ -167,7 +172,6 @@ export const Schedule = () => {
           <DateHeader />
         </TimelineHeaders>
       </Timeline>
-      <p suppressHydrationWarning={true}>{MobileOrPc ? "true" : "false"}</p>
     </>
   );
 };
