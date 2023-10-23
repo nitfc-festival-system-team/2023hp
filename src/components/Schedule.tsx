@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 import Timeline, {
   TimelineHeaders,
   SidebarHeader,
@@ -9,7 +9,7 @@ import "react-calendar-timeline/lib/Timeline.css";
 import moment from "moment";
 
 import { ScheduleType } from "@/types/schedule";
-import { fetchData, EndpointsType } from "@/features/db";
+import { schedules } from "@/db/schedule";
 
 interface GroupType {
   id: number;
@@ -27,21 +27,6 @@ interface TimelineDataType {
 }
 
 export const Schedule = () => {
-  const [schedules, setSchedule] = useState<ScheduleType[]>([]);
-
-  useEffect(() => {
-    fetchData(EndpointsType.schedule).then((data) => {
-      console.log(data);
-      const newSchedules: ScheduleType[] = data.map((doc: ScheduleType) => ({
-        title: doc.title,
-        startDate: new Date(doc.startDate),
-        endDate: new Date(doc.endDate),
-        place: doc.place,
-      }));
-      setSchedule(newSchedules);
-    });
-  }, []);
-
   const sortedPlaceSchedule = schedules.sort((a, b) => {
     // 先に 'place' プロパティを比較
     const placeA = a.place.toLowerCase();

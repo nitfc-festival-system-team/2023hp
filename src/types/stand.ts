@@ -1,7 +1,7 @@
 export type StandType = {
+  number: number;
   name: string;
-  place: string;
+  place?: string;
   organizer: string;
-  image?: string;
   url?: string;
 };
