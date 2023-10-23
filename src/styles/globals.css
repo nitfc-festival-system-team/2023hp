@@ -6,7 +6,7 @@
     "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
 
   --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 255,255, 255;
+  --background-start-rgb: 255, 255, 255;
   --background-end-rgb: 10, 255, 255;
 
   --primary-glow: conic-gradient(
@@ -65,4 +65,27 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+/* スクロールバーのスタイル */
+@media only screen and (min-width: 1024px) {
+  html body {
+    /* FireFox */
+    scrollbar-width: none;
+  }
+
+  /* Chromium */
+  html body::-webkit-scrollbar {
+    display: none;
+  }
+
+  ::-webkit-scrollbar {
+    border-radius: 5px;
+    width: 2px;
+    background-color: #f73f3f44;
+  }
+  ::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background-color: #d66363;
+  }
 }
