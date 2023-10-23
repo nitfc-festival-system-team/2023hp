@@ -1,0 +1,10 @@
+@keyframes rainbow {
+  12% { color: #ff5353; }
+  24% { color: #ffcf53; }
+  36% { color: #e8ff53; }
+  48% { color: #53ff5d; }
+  60% { color: #53ffbc; }
+  72% { color: #5393ff; }
+  84% { color: #ca53ff; }
+  100% { color: #ff53bd; }
+}
