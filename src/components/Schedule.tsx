@@ -104,7 +104,7 @@ const timelineData: TimelineDataType[] = sortedPlaceSchedule.map((item, i) => {
     title: item.title,
     start_time: moment(epochStartDate).valueOf(),
     end_time: moment(epochStartDate + epochDiff).valueOf(),
-    itemProps: { "date-tip": item.title, style: { fontSize: "16px" } },
+    itemProps: { "date-tip": item.title, style: { fontSize: "11px" } },
   };
 });
 
@@ -126,7 +126,8 @@ export const Schedule = () => {
   const minTime = fesStart.getTime();
   const maxTime = fesEnd.getTime();
   return (
-    <>
+    <div>
+      <div style={{ height: "30vh" }}></div>
       <Timeline
         groups={scheduleGroup}
         items={timelineData}
@@ -134,9 +135,9 @@ export const Schedule = () => {
         sidebarWidth={_isMobile ? 100 : 130}
         canResize={false} //サイズ固定
         canMove={false} //位置固定
-        defaultTimeStart={moment(fesScope).add(_isMobile ? -3 : -12, "hour")}
-        defaultTimeEnd={moment(fesScope).add(_isMobile ? 3 : 12, "hour")}
-        minZoom={!_isMobile ? 6 * 60 * 60 * 1000 : 3 * 60 * 60 * 1000}
+        defaultTimeStart={moment(fesScope).add(_isMobile ? -0.5 : -3, "hour")}
+        defaultTimeEnd={moment(fesScope).add(_isMobile ? 0.5 : 3, "hour")}
+        minZoom={!_isMobile ? 6 * 60 * 60 * 1000 : 2 * 60 * 60 * 1000}
         maxZoom={!_isMobile ? 24 * 60 * 60 * 1000 : 12 * 60 * 60 * 1000}
         minResizeWidth={100}
         onTimeChange={function (
@@ -171,6 +172,6 @@ export const Schedule = () => {
           <DateHeader />
         </TimelineHeaders>
       </Timeline>
-    </>
+    </div>
   );
 };
