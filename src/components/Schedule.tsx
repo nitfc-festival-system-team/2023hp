@@ -132,8 +132,8 @@ export const Schedule = () => {
   }
 
   const fesScope = isMobile
-    ? new Date(2023, 9, 27, 12).getTime()
-    : new Date(2023, 9, 27, 21).getTime();
+    ? new Date(2023, 9, 27, 12, 50).getTime()
+    : new Date(2023, 9, 27, 13).getTime();
 
   //UnixTimeが1月ずれているため9月にする
   const fesStart = new Date(2023, 9, 27, 9, 0);
@@ -142,17 +142,17 @@ export const Schedule = () => {
   const maxTime = fesEnd.getTime();
   return (
     <div>
-      <div style={{ height: "30vh" }}></div>
+      <div style={{ height: "10vh" }}></div>
       <Timeline
         groups={scheduleGroup}
         items={timelineData}
-        lineHeight={isMobile ? 40 : 30}
+        lineHeight={isMobile ? 100 : 80}
         sidebarWidth={isMobile ? 100 : 130}
         canResize={false} //サイズ固定
         canMove={false} //位置固定
-        defaultTimeStart={moment(fesScope).add(isMobile ? -1 : -3, "hour")}
-        defaultTimeEnd={moment(fesScope).add(isMobile ? 1 : 3, "hour")}
-        minZoom={!isMobile ? 3 * 60 * 60 * 1000 : 0.5 * 60 * 60 * 1000}
+        defaultTimeStart={moment(fesScope).add(isMobile ? -0.5 : -2, "hour")}
+        defaultTimeEnd={moment(fesScope).add(isMobile ? 0.5 : 2, "hour")}
+        minZoom={!isMobile ? 2 * 60 * 60 * 1000 : 0.5 * 60 * 60 * 1000}
         maxZoom={!isMobile ? 24 * 60 * 60 * 1000 : 12 * 60 * 60 * 1000}
         minResizeWidth={100}
         onTimeChange={function (
@@ -180,7 +180,7 @@ export const Schedule = () => {
         <TimelineHeaders>
           <SidebarHeader>
             {({ getRootProps }) => {
-              return <div {...getRootProps()}>Left</div>;
+              return <div {...getRootProps()}></div>;
             }}
           </SidebarHeader>
           <DateHeader unit="primaryHeader" />
