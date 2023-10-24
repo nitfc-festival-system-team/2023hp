@@ -77,6 +77,8 @@ jobs:
         run: vercel deploy --prod --prebuilt --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: Output Log
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
         run: echo "DISCORD_WEBHOOK_URL: $DISCORD_WEBHOOK_URL"
 
       # - name: Notify Discord
