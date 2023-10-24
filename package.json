@@ -8,10 +8,7 @@
 		"start": "next start",
 		"lint": "next lint",
 		"fmt": "npx eslint --fix --ext .jsx,.js,.tsx,.ts .",
-		"vercel-build": "prisma generate && prisma migrate deploy && next build"
-	},
-	"prisma": {
-		"seed": "ts-node prisma/seed.ts"
+		"vercel-build": "next build"
 	},
 	"dependencies": {
 		"@prisma/client": "^5.4.2",
