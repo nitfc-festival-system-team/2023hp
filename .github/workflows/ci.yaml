@@ -57,7 +57,7 @@ jobs:
         run: |
           echo "DISCORD_WEBHOOK_URL: $DISCORD_WEBHOOK_URL"  # デバッグログ
           curl -X POST -H "Content-Type: application/json" -d '{
-            "content": "プロジェクトがデプロイされました:partying_face: デプロイURLは '$VERCEL_URL' です！！！"
+            "content": "プロジェクトがデプロイされました:partying_face: URLは '${{ steps.deploy.outputs.url }}' です！！！"
           }' $DISCORD_WEBHOOK_URL
 
   prod:
