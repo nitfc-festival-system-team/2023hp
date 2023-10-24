@@ -13,7 +13,7 @@ const PcFooter = () => {
     <footer>
       <div
         style={{
-          backgroundColor: "#20e0e0",
+          backgroundColor: "rgba(172, 230, 224, 0.7)",
           width: "100vw",
           display: "flex",
           flexDirection: "column",
@@ -68,7 +68,7 @@ const MobileFooter = () => {
       <div
         style={{
           paddingTop: "4vw",
-          backgroundColor: "#20e0e0",
+          backgroundColor: "rgba(172, 230, 224, 0.7)",
           width: "100vw",
           display: "flex",
           flexDirection: "column",
