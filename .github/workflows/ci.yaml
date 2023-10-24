@@ -77,9 +77,9 @@ jobs:
         run: vercel deploy --prod --prebuilt --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: Notify Discord
-      env:
-        DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
-      run: |
-        curl -X POST -H "Content-Type: application/json" -d '{
-          "content": "プロジェクトがデプロイされました。デプロイURLは '$VERCEL_URL' です。"
-        }' $DISCORD_WEBHOOK_URL
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+        run: |
+          curl -X POST -H "Content-Type: application/json" -d '{
+            "content": "プロジェクトがデプロイされました。デプロイURLは '$VERCEL_URL' です。"
+          }' $DISCORD_WEBHOOK_URL
