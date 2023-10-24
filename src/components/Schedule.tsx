@@ -32,6 +32,12 @@ interface TimelineDataType {
   };
 }
 
+interface ItemInfo {
+  id: number;
+  title: string;
+  // 他のプロパティを追加
+}
+
 const sortedPlaceSchedule = schedules.sort((a, b) => {
   // 先に 'place' プロパティを比較
   const placeA = a.place.toLowerCase();
@@ -99,7 +105,7 @@ const timelineData: TimelineDataType[] = sortedPlaceSchedule.map((item, i) => {
   const epochDiff = epochDndDate - epochStartDate;
   const groupId = item.group != null ? item.group : 1;
   return {
-    id: i,
+    id: i + 1,
     group: groupId,
     title: item.title,
     start_time: moment(epochStartDate).valueOf(),
@@ -112,6 +118,10 @@ export const Schedule = () => {
   // 事前レンダリング時の日時とブラウザでレンダリング日時を一致させる。
   // ステートの初期値を null に設定
   const [isMobile, setIsMobile] = useState<boolean | null>(null);
+  const [selectedItems, setSelectedItems] = useState<number[]>([]); // 選択されたアイテムのIDを格納するステート
+  const [selectedItemInfo, setSelectedItemInfo] = useState<ItemInfo | null>(
+    null,
+  ); // 選択されたアイテムの情報を保
 
   useEffect(() => {
     // クライアント側でユーザーエージェント情報を取得
@@ -140,6 +150,8 @@ export const Schedule = () => {
   const fesEnd = new Date(2023, 9, 29, 21, 0);
   const minTime = fesStart.getTime();
   const maxTime = fesEnd.getTime();
+  console.log(sortedPlaceSchedule);
+
   return (
     <div>
       <div style={{ height: "10vh" }}></div>
@@ -155,6 +167,20 @@ export const Schedule = () => {
         minZoom={!isMobile ? 2 * 60 * 60 * 1000 : 0.5 * 60 * 60 * 1000}
         maxZoom={!isMobile ? 24 * 60 * 60 * 1000 : 12 * 60 * 60 * 1000}
         minResizeWidth={100}
+        selected={selectedItems}
+        onItemSelect={(itemId: number, e, time) => {
+          setSelectedItems([itemId]);
+          // アイテムが選択されたときにそのアイテムの情報を取得し、ステートに設定
+          const selectedItem = timelineData.find((item) => item.id === itemId);
+
+          if (selectedItem) {
+            setSelectedItemInfo(selectedItem);
+          }
+        }}
+        onItemDeselect={() => {
+          setSelectedItems([]);
+          setSelectedItemInfo(null); // 選択解除時に情報をリセット
+        }}
         onTimeChange={function (
           visibleTimeStart,
           visibleTimeEnd,
@@ -187,6 +213,25 @@ export const Schedule = () => {
           <DateHeader />
         </TimelineHeaders>
       </Timeline>
+      {/* 選択されたアイテムの情報を表示 */}
+      {selectedItemInfo && (
+        <div>
+          <h2>選択されたイベントの情報</h2>
+          <p>
+            時間:
+            {moment(
+              sortedPlaceSchedule[selectedItemInfo.id - 1].startDate,
+            ).format("MM月DD日HH時mm分")}{" "}
+            ～{" "}
+            {moment(
+              sortedPlaceSchedule[selectedItemInfo.id - 1].endDate,
+            ).format("HH時mm分")}
+          </p>
+          <p>タイトル: {sortedPlaceSchedule[selectedItemInfo.id - 1].title}</p>
+          <p>説明:{sortedPlaceSchedule[selectedItemInfo.id - 1].description}</p>
+          {/* 他の情報を表示 */}
+        </div>
+      )}
     </div>
   );
 };
