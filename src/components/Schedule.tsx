@@ -150,7 +150,6 @@ export const Schedule = () => {
   const fesEnd = new Date(2023, 9, 29, 21, 0);
   const minTime = fesStart.getTime();
   const maxTime = fesEnd.getTime();
-  console.log(sortedPlaceSchedule);
 
   return (
     <div>
@@ -216,9 +215,7 @@ export const Schedule = () => {
       {/* 選択されたアイテムの情報を表示 */}
       {selectedItemInfo && (
         <div style={{ marginLeft: "1rem" }}>
-          <h2>
-            タイトル: {sortedPlaceSchedule[selectedItemInfo.id - 1].title}
-          </h2>
+          <h2>{sortedPlaceSchedule[selectedItemInfo.id - 1].title}</h2>
           <p>
             時間:
             {moment(
