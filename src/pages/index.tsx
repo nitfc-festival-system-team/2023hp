@@ -1,3 +1,5 @@
+import React from "react";
+
 import { EventHeader } from "@/components/EventOverlay";
 import { Title } from "@/components/Title";
 import { OpenDate } from "@/components/OpenDate";
@@ -7,9 +9,8 @@ import { Map } from "@/components/Map";
 import { Notice } from "@/components/Notice";
 import { Sidebar } from "@/components/VerticalLine";
 import { BackGroundImg } from "@/components/BackGround";
-
-import React from "react";
 import { FadeAnimationProvider } from "@/components/FadeAnimationProvider";
+import { Footer } from "@/components/Footer";
 
 export default function Page() {
   return (
@@ -57,6 +58,7 @@ export default function Page() {
             <Map />
           </div>
         </FadeAnimationProvider>
+        <Footer />
       </div>
     </>
   );
