@@ -15,37 +15,35 @@ export const Map = () => {
   };
 
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        flexDirection: "column",
-        overflow: "auto",
-        // maxWidth: "90vw",
-        // maxHeight: "100vh",
-      }}
-    >
-      <img src="image/venue_map.jpg" alt="Map" useMap="#map" />
-      <map name="map">
-        <area
-          id="stand1"
-          shape="rect"
-          coords="622,889,679,946"
-          href="#"
-          alt="stand1"
-          onClick={handleAreaClick}
+    <>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          flexDirection: "column",
+          overflow: "auto",
+        }}
+      >
+        <img
+          src="image/venue_map.jpg"
+          alt="Map"
+          useMap="#map"
+          // style={{ width: "100%", height: "100%" }}
         />
-        {Object.keys(standCoords).map((key) => (
-          <area
-            shape="rect"
-            id={key}
-            key={key}
-            coords={standCoords[key].coords}
-            onClick={handleAreaClick}
-          />
-        ))}
-      </map>
+        <map name="map">
+          {Object.keys(standCoords).map((key) => (
+            <area
+              shape="rect"
+              id={key}
+              key={key}
+              coords={standCoords[key].coords}
+              onClick={handleAreaClick}
+            />
+          ))}
+        </map>
+      </div>
+
       {clickedArea && (
         <div>
           選択したエリア: {clickedArea}
@@ -53,6 +51,6 @@ export const Map = () => {
           クリックされた座標: {clickedCoords}
         </div>
       )}
-    </div>
+    </>
   );
 };
