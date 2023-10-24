@@ -81,5 +81,5 @@ jobs:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
         run: |
           curl -X POST -H "Content-Type: application/json" -d '{
-            "content": "プロジェクトがデプロイされました!!デプロイURLは '$VERCEL_URL' です。"
+            "content": "プロジェクトがデプロイされました:partying_face: デプロイURLは '$VERCEL_URL' です！！！"
           }' $DISCORD_WEBHOOK_URL
