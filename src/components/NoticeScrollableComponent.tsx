@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+
 import { NoticeList } from "@/components/NoticeList";
 
 class NoticeScrollableComponent extends Component {

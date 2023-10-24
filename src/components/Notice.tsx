@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 import NoticeScrollableComponent from "./NoticeScrollableComponent";
 
 const Title = styled.h1`

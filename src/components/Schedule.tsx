@@ -1,10 +1,11 @@
 "use client";
 import Timeline from "react-calendar-timeline";
+
 import "react-calendar-timeline/lib/Timeline.css";
 import moment from "moment";
 
-import { ScheduleType } from "@/types/schedule";
 import { schedules } from "@/db/schedule";
+import { ScheduleType } from "@/types/schedule";
 
 interface GroupType {
   id: number;
