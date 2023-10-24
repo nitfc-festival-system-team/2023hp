@@ -8,7 +8,7 @@
 		"start": "next start",
 		"lint": "next lint",
 		"fmt": "npx eslint --fix --ext .jsx,.js,.tsx,.ts .",
-		"vercel-build": "npm run build"
+		"vercel-build": "next build"
 	},
 	"dependencies": {
 		"@prisma/client": "^5.4.2",

@@ -51,6 +51,15 @@ jobs:
         if: ${{ github.ref == 'refs/heads/main' }}
         run: vercel alias ${{ steps.deploy.outputs.url }} 2023hp.vercel.app --scope=fitcf-festival-system-team --token=${{ secrets.VERCEL_TOKEN }}
 
+      - name: Notify Discord
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+        run: |
+          echo "DISCORD_WEBHOOK_URL: $DISCORD_WEBHOOK_URL"  # デバッグログ
+          curl -X POST -H "Content-Type: application/json" -d '{
+            "content": "プロジェクトがデプロイされました:partying_face: デプロイURLは '$VERCEL_URL' です！！！"
+          }' $DISCORD_WEBHOOK_URL
+
   prod:
     if: ${{ github.ref == 'refs/heads/release' }}
     needs: setup
