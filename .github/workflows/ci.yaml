@@ -76,10 +76,10 @@ jobs:
       - name: Deploy Project Artifacts to Vercel
         run: vercel deploy --prod --prebuilt --token=${{ secrets.VERCEL_TOKEN }}
 
+      - name: Output Log
+        run: echo "DISCORD_WEBHOOK_URL: $DISCORD_WEBHOOK_URL"  # デバッグログ
+
       - name: Notify Discord
         env:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
-        run: |
-          curl -X POST -H "Content-Type: application/json" -d '{
-            "content": "プロジェクトがデプロイされました:partying_face: デプロイURLは '$VERCEL_URL' です！！！"
-          }' $DISCORD_WEBHOOK_URL
+        run: curl -X POST -H "Content-Type: application/json" -d '{"content": "プロジェクトがデプロイされました:partying_face: デプロイURLは '$VERCEL_URL' です！！！"}' $DISCORD_WEBHOOK_URL
