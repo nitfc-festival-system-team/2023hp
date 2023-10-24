@@ -68,7 +68,7 @@ a {
 }
 
 /* スクロールバーのスタイル */
-@media only screen and (min-width: 1024px) {
+@media only screen and (min-width: 1024px) and (pointer: fine) {
   html body {
     /* FireFox */
     scrollbar-width: none;
