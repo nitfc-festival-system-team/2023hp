@@ -150,6 +150,7 @@ export const Schedule = () => {
   const fesEnd = new Date(2023, 9, 29, 21, 0);
   const minTime = fesStart.getTime();
   const maxTime = fesEnd.getTime();
+  //push用
 
   return (
     <div>
