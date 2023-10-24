@@ -1,17 +1,16 @@
+import React from "react";
+import { useEffect, useState } from "react";
+import "react-calendar-timeline/lib/Timeline.css";
 import Timeline, {
   TimelineHeaders,
   SidebarHeader,
   DateHeader,
 } from "react-calendar-timeline";
-// make sure you include the timeline stylesheet or the timeline will not be styled
-import "react-calendar-timeline/lib/Timeline.css";
+
 import moment from "moment";
 
 import { schedules } from "@/db/schedule";
-
-import { useEffect, useState } from "react";
 import { ScheduleType } from "@/types/schedule";
-
 
 interface GroupType {
   id: number;
