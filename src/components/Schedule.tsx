@@ -153,7 +153,7 @@ export const Schedule = () => {
 
   return (
     <div>
-      <div style={{ height: "10vh" }}></div>
+      <div style={{ height: "5vh" }}></div>
       <Timeline
         groups={scheduleGroup}
         items={timelineData}
@@ -226,6 +226,7 @@ export const Schedule = () => {
               sortedPlaceSchedule[selectedItemInfo.id - 1].endDate,
             ).format("HH時mm分")}
           </p>
+          <p>場所:{sortedPlaceSchedule[selectedItemInfo.id - 1].place}</p>
           <p>説明:{sortedPlaceSchedule[selectedItemInfo.id - 1].description}</p>
           {/* 他の情報を表示 */}
         </div>
