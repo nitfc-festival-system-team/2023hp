@@ -5,6 +5,10 @@
 
 
 :root {
+  /*全体で使う色を定義*/
+  --primary-color: #16abff;
+  --secondary-color: #0885ff;
+
   --max-width: 1100px;
   --border-radius: 12px;
 
