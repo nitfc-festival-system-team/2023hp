@@ -79,4 +79,8 @@ jobs:
       - name: Notify Discord
         env:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
-        run: curl -X POST -H "Content-Type: application/json" -d '{"content": "プロジェクトがデプロイされました:partying_face: デプロイURLは '$VERCEL_URL' です！！！"}' $DISCORD_WEBHOOK_URL
+        run: |
+          echo "DISCORD_WEBHOOK_URL: $DISCORD_WEBHOOK_URL"  # デバッグログ
+          curl -X POST -H "Content-Type: application/json" -d '{
+            "content": "プロジェクトがデプロイされました:partying_face: デプロイURLは '$VERCEL_URL' です！！！"
+          }' $DISCORD_WEBHOOK_URL
