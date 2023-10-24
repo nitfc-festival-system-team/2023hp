@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+
 import styled from "styled-components";
 
 import NoticeScrollableComponent from "./NoticeScrollableComponent";
@@ -12,8 +14,16 @@ const Title = styled.h1`
   font-size: 1.5em;
 `;
 
-const Wrapper = styled.div`
-  width: 55vw; /* 画面サイズの横幅の70% */
+const PcWrapper = styled.div`
+  width: 55vw;
+  height: 20vw;
+  margin: 0 0 2em;
+  background: #f0f7ff;
+  border: dashed 2px #000000; /*点線*/
+`;
+
+const MobileWrapper = styled.div`
+  width: 80vw;
   height: 30vw;
   margin: 0 0 2em;
   background: #f0f7ff;
@@ -21,12 +31,35 @@ const Wrapper = styled.div`
 `;
 
 export const Notice = () => {
+  const [isMobile, setIsMobile] = useState<boolean | null>(null);
+
+  useEffect(() => {
+    const userAgent = window.navigator.userAgent;
+
+    const mobile =
+      userAgent.includes("iPhone") ||
+      userAgent.includes("Android") ||
+      userAgent.includes("iPad");
+
+    setIsMobile(mobile);
+  }, []);
   return (
-    <div>
-      <Title>お知らせ</Title>
-      <Wrapper>
-        <NoticeScrollableComponent />
-      </Wrapper>
-    </div>
+    <>
+      {isMobile ? (
+        <div>
+          <Title>お知らせ</Title>
+          <MobileWrapper>
+            <NoticeScrollableComponent />
+          </MobileWrapper>
+        </div>
+      ) : (
+        <div>
+          <Title>お知らせ</Title>
+          <PcWrapper>
+            <NoticeScrollableComponent />
+          </PcWrapper>
+        </div>
+      )}
+    </>
   );
 };
