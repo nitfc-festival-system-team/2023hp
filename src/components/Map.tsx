@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+import { standCoords } from "@/db/stand-coords";
+
 export const Map = () => {
   const [clickedArea, setClickedArea] = useState<string | null>(null);
   const [clickedCoords, setClickedCoords] = useState<string | null>(null);
@@ -9,11 +11,7 @@ export const Map = () => {
     const areaCoords = e.currentTarget.getAttribute("coords");
     setClickedArea(areaId);
     setClickedCoords(areaCoords);
-    if (areaId === "area1") {
-      console.log("area1");
-    } else if (areaId === "area2") {
-      console.log("お前はarea2を押したんだぞ");
-    }
+    console.log(areaId.toString());
   };
 
   return (
@@ -23,32 +21,30 @@ export const Map = () => {
         justifyContent: "center",
         alignItems: "center",
         flexDirection: "column",
-        //レスポンシブ対応
-        // width: "100%",
+        overflow: "auto",
+        // maxWidth: "90vw",
+        // maxHeight: "100vh",
       }}
     >
-      <img
-        src="/image/campus_map.gif"
-        alt="Map"
-        useMap="#map"
-        style={{
-          // maxWidth: "80vw", // 画像の幅が親要素に合わせる
-          height: "auto", // アスペクト比を保つ
-        }}
-      />
+      <img src="image/venue_map.jpg" alt="Map" useMap="#map" />
       <map name="map">
         <area
-          id="area1"
+          id="stand1"
           shape="rect"
-          coords="10,20,100,80"
+          coords="622,889,679,946"
+          href="#"
+          alt="stand1"
           onClick={handleAreaClick}
         />
-        <area
-          id="area2"
-          shape="rect"
-          coords="110,20,200,80"
-          onClick={handleAreaClick}
-        />
+        {Object.keys(standCoords).map((key) => (
+          <area
+            shape="rect"
+            id={key}
+            key={key}
+            coords={standCoords[key].coords}
+            onClick={handleAreaClick}
+          />
+        ))}
       </map>
       {clickedArea && (
         <div>
