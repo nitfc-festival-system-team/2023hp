@@ -6,7 +6,6 @@ import Timeline, {
 // make sure you include the timeline stylesheet or the timeline will not be styled
 import "react-calendar-timeline/lib/Timeline.css";
 import moment from "moment";
-import { isMobile } from "react-device-detect";
 
 import { ScheduleType } from "@/types/schedule";
 import { schedules } from "@/db/schedule";
@@ -110,13 +109,28 @@ const timelineData: TimelineDataType[] = sortedPlaceSchedule.map((item, i) => {
 
 export const Schedule = () => {
   // 事前レンダリング時の日時とブラウザでレンダリング日時を一致させる。
-  const [_isMobile, setIsMobile] = useState<boolean>(true);
+  // ステートの初期値を null に設定
+  const [isMobile, setIsMobile] = useState<boolean | null>(null);
 
   useEffect(() => {
-    setIsMobile(isMobile);
+    // クライアント側でユーザーエージェント情報を取得
+    const userAgent = window.navigator.userAgent;
+
+    const mobile =
+      userAgent.includes("iPhone") ||
+      userAgent.includes("Android") ||
+      userAgent.includes("iPad");
+
+    // isMobile ステートを更新
+    setIsMobile(mobile);
   }, []);
 
-  const fesScope = _isMobile
+  // ステートが null の場合にデフォルト値を表示
+  if (isMobile === null) {
+    return <div style={{ height: "50vh" }}>Loading...</div>;
+  }
+
+  const fesScope = isMobile
     ? new Date(2023, 9, 27, 12).getTime()
     : new Date(2023, 9, 27, 21).getTime();
 
@@ -131,14 +145,14 @@ export const Schedule = () => {
       <Timeline
         groups={scheduleGroup}
         items={timelineData}
-        lineHeight={_isMobile ? 40 : 30}
-        sidebarWidth={_isMobile ? 100 : 130}
+        lineHeight={isMobile ? 40 : 30}
+        sidebarWidth={isMobile ? 100 : 130}
         canResize={false} //サイズ固定
         canMove={false} //位置固定
-        defaultTimeStart={moment(fesScope).add(_isMobile ? -0.5 : -3, "hour")}
-        defaultTimeEnd={moment(fesScope).add(_isMobile ? 0.5 : 3, "hour")}
-        minZoom={!_isMobile ? 6 * 60 * 60 * 1000 : 2 * 60 * 60 * 1000}
-        maxZoom={!_isMobile ? 24 * 60 * 60 * 1000 : 12 * 60 * 60 * 1000}
+        defaultTimeStart={moment(fesScope).add(isMobile ? -1 : -3, "hour")}
+        defaultTimeEnd={moment(fesScope).add(isMobile ? 1 : 3, "hour")}
+        minZoom={!isMobile ? 3 * 60 * 60 * 1000 : 0.5 * 60 * 60 * 1000}
+        maxZoom={!isMobile ? 24 * 60 * 60 * 1000 : 12 * 60 * 60 * 1000}
         minResizeWidth={100}
         onTimeChange={function (
           visibleTimeStart,
