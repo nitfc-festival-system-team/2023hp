@@ -56,7 +56,7 @@ jobs:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
         run: |
           curl -X POST -H "Content-Type: application/json" -d '{
-            "content": "プロジェクトがデプロイされました:partying_face: URLは '${{ steps.deploy.outputs.url }}' です！！！"
+            "content": "プロジェクトがデプロイされました!!:partying_face: \n '${{ steps.deploy.outputs.url }}' "
           }' $DISCORD_WEBHOOK_URL
 
   prod:
