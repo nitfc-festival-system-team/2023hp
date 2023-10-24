@@ -55,6 +55,9 @@ const PcFooter = () => {
           text={"GitHub"}
           link={"https://github.com/nitfc-festival-system-team/2023hp"}
         />
+        {/* <span style={{ fontSize: "2px" }}>
+          このサイトはフィクションであり、実際のイベントや組織とは一切関係ありません。全ての情報や内容は架空のものであり、真実性を持ちません。ご了承ください。
+        </span> */}
       </div>
     </footer>
   );
