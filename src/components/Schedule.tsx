@@ -158,7 +158,7 @@ export const Schedule = () => {
       <Timeline
         groups={scheduleGroup}
         items={timelineData}
-        lineHeight={isMobile ? 100 : 80}
+        lineHeight={isMobile ? 60 : 80}
         sidebarWidth={isMobile ? 100 : 130}
         canResize={false} //サイズ固定
         canMove={false} //位置固定
@@ -215,7 +215,7 @@ export const Schedule = () => {
       </Timeline>
       {/* 選択されたアイテムの情報を表示 */}
       {selectedItemInfo && (
-        <div>
+        <div style={{ marginLeft: "1rem" }}>
           <h2>選択されたイベントの情報</h2>
           <p>
             時間:
