@@ -118,10 +118,10 @@ export const Schedule = () => {
   // 事前レンダリング時の日時とブラウザでレンダリング日時を一致させる。
   // ステートの初期値を null に設定
   const [isMobile, setIsMobile] = useState<boolean | null>(null);
-  const [selectedItems, setSelectedItems] = useState<number[]>([]); // 選択されたアイテムのIDを格納するステート
+  const [selectedItemIds, setSelectedItems] = useState<number[]>([]); // 選択されたアイテムのIDを格納するステート
   const [selectedItemInfo, setSelectedItemInfo] = useState<ItemInfo | null>(
     null,
-  ); // 選択されたアイテムの情報を保
+  ); // 選択されたアイテムの情報を保持
 
   useEffect(() => {
     // クライアント側でユーザーエージェント情報を取得
@@ -166,7 +166,7 @@ export const Schedule = () => {
         minZoom={!isMobile ? 2 * 60 * 60 * 1000 : 0.5 * 60 * 60 * 1000}
         maxZoom={!isMobile ? 24 * 60 * 60 * 1000 : 12 * 60 * 60 * 1000}
         minResizeWidth={100}
-        selected={selectedItems}
+        selected={selectedItemIds}
         onItemSelect={(itemId: number, e, time) => {
           setSelectedItems([itemId]);
           // アイテムが選択されたときにそのアイテムの情報を取得し、ステートに設定
