@@ -216,7 +216,9 @@ export const Schedule = () => {
       {/* 選択されたアイテムの情報を表示 */}
       {selectedItemInfo && (
         <div style={{ marginLeft: "1rem" }}>
-          <h2>選択されたイベントの情報</h2>
+          <h2>
+            タイトル: {sortedPlaceSchedule[selectedItemInfo.id - 1].title}
+          </h2>
           <p>
             時間:
             {moment(
@@ -227,7 +229,6 @@ export const Schedule = () => {
               sortedPlaceSchedule[selectedItemInfo.id - 1].endDate,
             ).format("HH時mm分")}
           </p>
-          <p>タイトル: {sortedPlaceSchedule[selectedItemInfo.id - 1].title}</p>
           <p>説明:{sortedPlaceSchedule[selectedItemInfo.id - 1].description}</p>
           {/* 他の情報を表示 */}
         </div>
