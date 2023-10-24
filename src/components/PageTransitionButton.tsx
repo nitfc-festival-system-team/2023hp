@@ -1,6 +1,7 @@
-import { useRouter } from "next/router";
-import { motion } from "framer-motion";
 import { useState } from "react";
+
+import { motion } from "framer-motion";
+import { useRouter } from "next/router";
 
 export const PageTransitionButton = ({
   buttonText,

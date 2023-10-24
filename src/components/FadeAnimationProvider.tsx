@@ -1,6 +1,7 @@
-import { Variants, motion } from "framer-motion";
 import React, { ReactNode } from "react";
 import { useInView } from "react-intersection-observer";
+
+import { Variants, motion } from "framer-motion";
 
 const animationVariants: Variants = {
   visible: {

@@ -1,7 +1,7 @@
-import { StandType } from "@/types/stand";
-import { stands } from "@/db/stand";
-
 import { useRouter } from "next/router";
+
+import { stands } from "@/db/stand";
+import { StandType } from "@/types/stand";
 
 export const StandList = () => {
   return (

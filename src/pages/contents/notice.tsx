@@ -1,8 +1,8 @@
 "use client";
 import { ReactElement } from "react";
 
-import { NextPageWithLayout } from "@/pages/_app";
 import { Notice } from "@/components/Notice";
+import { NextPageWithLayout } from "@/pages/_app";
 
 export const Page: NextPageWithLayout = () => {
   return <Notice />;
