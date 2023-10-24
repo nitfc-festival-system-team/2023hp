@@ -10,6 +10,9 @@
 		"fmt": "npx eslint --fix --ext .jsx,.js,.tsx,.ts .",
 		"vercel-build": "next build"
 	},
+	"prisma": {
+		"seed": "ts-node prisma/seed.ts"
+	},
 	"dependencies": {
 		"@prisma/client": "^5.4.2",
 		"@typescript-eslint/eslint-plugin": "^6.7.4",
