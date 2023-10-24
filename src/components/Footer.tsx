@@ -13,7 +13,7 @@ const PcFooter = () => {
     <footer>
       <div
         style={{
-          backgroundColor: "rgba(172, 230, 224, 0.7)",
+          backgroundColor: "var(--accent-color)",
           width: "100vw",
           display: "flex",
           flexDirection: "column",
