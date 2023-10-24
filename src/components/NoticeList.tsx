@@ -1,19 +1,53 @@
+import { useEffect, useState } from "react";
+
 import { useRouter } from "next/router";
 
 import { notices } from "@/db/notice";
 import { NoticeType } from "@/types/notice";
 
 export const NoticeList = () => {
+  const [isMobile, setIsMobile] = useState<boolean | null>(null);
+
+  useEffect(() => {
+    const userAgent = window.navigator.userAgent;
+
+    const mobile =
+      userAgent.includes("iPhone") ||
+      userAgent.includes("Android") ||
+      userAgent.includes("iPad");
+
+    setIsMobile(mobile);
+  }, []);
+  return <>{isMobile ? <MobileNoticeList /> : <PcNoticeList />}</>;
+};
+
+const PcNoticeList = () => {
   return (
     <>
       {notices.map((notice: NoticeType, index) => {
-        return <NoticeItem key={index} notice={notice} />;
+        return <NoticeItem fontSize={2} key={index} notice={notice} />;
       })}
     </>
   );
 };
 
-const NoticeItem = ({ notice }: { notice: NoticeType }) => {
+const MobileNoticeList = () => {
+  return (
+    <>
+      {notices.map((notice: NoticeType, index) => {
+        return <NoticeItem fontSize={6} key={index} notice={notice} />;
+      })}
+    </>
+  );
+};
+
+const NoticeItem = ({
+  notice,
+  fontSize,
+}: {
+  notice: NoticeType;
+  fontSize: number;
+}) => {
   const router = useRouter();
   const date = notice.date.getMonth() + "/" + notice.date.getDay();
 
@@ -28,7 +62,7 @@ const NoticeItem = ({ notice }: { notice: NoticeType }) => {
       style={{
         display: "flex",
         flexDirection: "row",
-        fontSize: "2.5vw",
+        fontSize: `${fontSize}vw`,
       }}
     >
       <div>{date}</div>
@@ -45,7 +79,11 @@ const NoticeItem = ({ notice }: { notice: NoticeType }) => {
                 "invert(8%) sepia(100%) saturate(7044%) hue-rotate(227deg) brightness(100%) contrast(125%)",
             }}
           >
-            <img src="/image/gadget24.png" alt="link mark" width="3.5%" />
+            <img
+              src="/image/gadget24.png"
+              alt="link mark"
+              width={`${fontSize * 2.5}%`}
+            />
           </span>
         )}
       </div>
