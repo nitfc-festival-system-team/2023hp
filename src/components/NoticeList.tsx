@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 
-import { NoticeType } from "@/types/notice";
 import { notices } from "@/db/notice";
+import { NoticeType } from "@/types/notice";
 
 export const NoticeList = () => {
   return (

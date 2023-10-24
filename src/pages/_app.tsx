@@ -1,11 +1,12 @@
 import "@/styles/globals.css";
-import type { AppProps } from "next/app";
-import type { NextPage } from "next";
-import type { NextRouter } from "next/router";
 import type { ReactElement, ReactNode } from "react";
-import Head from "next/head";
+
 import { AnimatePresence } from "framer-motion";
 import { motion } from "framer-motion";
+import type { NextPage } from "next";
+import type { AppProps } from "next/app";
+import Head from "next/head";
+import type { NextRouter } from "next/router";
 
 // 1. Import the extendTheme function
 

@@ -1,16 +1,16 @@
 import React from "react";
 
-import { EventHeader } from "@/components/EventOverlay";
-import { Title } from "@/components/Title";
-import { OpenDate } from "@/components/OpenDate";
-import { ScrollView } from "@/components/scrollStyle";
-import { PageTransitionButton } from "@/components/PageTransitionButton";
-import { Map } from "@/components/Map";
-import { Notice } from "@/components/Notice";
-import { Sidebar } from "@/components/VerticalLine";
 import { BackGroundImg } from "@/components/BackGround";
+import { EventHeader } from "@/components/EventOverlay";
 import { FadeAnimationProvider } from "@/components/FadeAnimationProvider";
 import { Footer } from "@/components/Footer";
+import { Map } from "@/components/Map";
+import { Notice } from "@/components/Notice";
+import { OpenDate } from "@/components/OpenDate";
+import { PageTransitionButton } from "@/components/PageTransitionButton";
+import { ScrollView } from "@/components/scrollStyle";
+import { Title } from "@/components/Title";
+import { Sidebar } from "@/components/VerticalLine";
 
 export default function Page() {
   return (
