@@ -54,7 +54,6 @@ export default function Page() {
               padding: "3vh",
             }}
           >
-
             <Map />
           </div>
         </FadeAnimationProvider>
