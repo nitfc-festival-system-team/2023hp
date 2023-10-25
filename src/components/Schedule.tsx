@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "react-calendar-timeline/lib/Timeline.css";
 import Timeline, {
   TimelineHeaders,
@@ -30,6 +30,12 @@ interface TimelineDataType {
       fontSize: string;
     };
   };
+}
+
+interface ItemInfo {
+  id: number;
+  title: string;
+  // 他のプロパティを追加
 }
 
 const sortedPlaceSchedule = schedules.sort((a, b) => {
@@ -99,7 +105,7 @@ const timelineData: TimelineDataType[] = sortedPlaceSchedule.map((item, i) => {
   const epochDiff = epochDndDate - epochStartDate;
   const groupId = item.group != null ? item.group : 1;
   return {
-    id: i,
+    id: i + 1,
     group: groupId,
     title: item.title,
     start_time: moment(epochStartDate).valueOf(),
@@ -111,6 +117,11 @@ const timelineData: TimelineDataType[] = sortedPlaceSchedule.map((item, i) => {
 export const Schedule = () => {
   // 事前レンダリング時の日時とブラウザでレンダリング日時を一致させる。
   const [isMobile, _] = useCheckIsMobile();
+
+  const [selectedItemIds, setSelectedItems] = useState<number[]>([]); // 選択されたアイテムのIDを格納するステート
+  const [selectedItemInfo, setSelectedItemInfo] = useState<ItemInfo | null>(
+    null,
+  ); // 選択されたアイテムの情報を保持
 
   // ステートが null の場合にデフォルト値を表示
   if (isMobile === null) {
@@ -126,13 +137,14 @@ export const Schedule = () => {
   const fesEnd = new Date(2023, 9, 29, 21, 0);
   const minTime = fesStart.getTime();
   const maxTime = fesEnd.getTime();
+
   return (
     <div>
-      <div style={{ height: "10vh" }}></div>
+      <div style={{ height: "5vh" }}></div>
       <Timeline
         groups={scheduleGroup}
         items={timelineData}
-        lineHeight={isMobile ? 100 : 80}
+        lineHeight={isMobile ? 60 : 80}
         sidebarWidth={isMobile ? 100 : 130}
         canResize={false} //サイズ固定
         canMove={false} //位置固定
@@ -141,6 +153,20 @@ export const Schedule = () => {
         minZoom={!isMobile ? 2 * 60 * 60 * 1000 : 0.5 * 60 * 60 * 1000}
         maxZoom={!isMobile ? 24 * 60 * 60 * 1000 : 12 * 60 * 60 * 1000}
         minResizeWidth={100}
+        selected={selectedItemIds}
+        onItemSelect={(itemId: number, e, time) => {
+          setSelectedItems([itemId]);
+          // アイテムが選択されたときにそのアイテムの情報を取得し、ステートに設定
+          const selectedItem = timelineData.find((item) => item.id === itemId);
+
+          if (selectedItem) {
+            setSelectedItemInfo(selectedItem);
+          }
+        }}
+        onItemDeselect={() => {
+          setSelectedItems([]);
+          setSelectedItemInfo(null); // 選択解除時に情報をリセット
+        }}
         onTimeChange={function (
           visibleTimeStart,
           visibleTimeEnd,
@@ -173,6 +199,31 @@ export const Schedule = () => {
           <DateHeader />
         </TimelineHeaders>
       </Timeline>
+      {/* 選択されたアイテムの情報を表示 */}
+      {selectedItemInfo ? (
+        // selectedItemInfoが真の場合の表示内容
+        <div style={{ marginLeft: "1rem" }}>
+          <h2>{sortedPlaceSchedule[selectedItemInfo.id - 1].title}</h2>
+          <p>
+            時間:
+            {moment(
+              sortedPlaceSchedule[selectedItemInfo.id - 1].startDate,
+            ).format("MM月DD日HH時mm分")}{" "}
+            ～{" "}
+            {moment(
+              sortedPlaceSchedule[selectedItemInfo.id - 1].endDate,
+            ).format("HH時mm分")}
+          </p>
+          <p>場所:{sortedPlaceSchedule[selectedItemInfo.id - 1].place}</p>
+          <p>説明:{sortedPlaceSchedule[selectedItemInfo.id - 1].description}</p>
+          {/* 他の情報を表示 */}
+        </div>
+      ) : (
+        // selectedItemInfoが偽の場合の表示内容
+        <div style={{ marginLeft: "1rem" }}>
+          <h1>イベント名をタップで詳細表示</h1>
+        </div>
+      )}
     </div>
   );
 };
