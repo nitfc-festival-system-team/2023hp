@@ -47,6 +47,7 @@ const StandItem = ({
       }}
     >
       <div
+        id={stand.number.toString()}
         style={{
           display: "flex",
           flexDirection: "column", // 縦に要素を配置
