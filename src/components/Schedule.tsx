@@ -9,7 +9,7 @@ import Timeline, {
 import moment from "moment";
 
 import { schedules } from "@/db/schedule";
-import { useCheckIsMobile } from "@/features/checkIsMobile";
+import { useCheckIsMobile } from "@/hooks/checkIsMobile";
 import { ScheduleType } from "@/types/schedule";
 
 interface GroupType {

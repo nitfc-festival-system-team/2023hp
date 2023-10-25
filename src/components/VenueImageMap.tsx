@@ -1,4 +1,4 @@
-import { useCheckIsMobile } from "@/features/checkIsMobile";
+import { useCheckIsMobile } from "@/hooks/checkIsMobile";
 
 export const VenueMap = () => {
   const [isMobile, device] = useCheckIsMobile();

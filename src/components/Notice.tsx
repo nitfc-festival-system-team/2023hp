@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { useCheckIsMobile } from "@/features/checkIsMobile";
+import { useCheckIsMobile } from "@/hooks/checkIsMobile";
 
 import NoticeScrollableComponent from "./NoticeScrollableComponent";
 
