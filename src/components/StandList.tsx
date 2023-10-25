@@ -49,10 +49,18 @@ const StandItem = ({
       <div
         style={{
           display: "flex",
-          flexDirection: "column", // 縦に要素を配置
+          flexDirection: "column",
         }}
       >
-        <span style={{ fontSize: "2.5vw" }}>{stand.organizer}</span>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+          }}
+        >
+          <span style={{ fontSize: "2.5vw" }}>{stand.number}:&nbsp;</span>
+          <span style={{ fontSize: "2.5vw" }}>{stand.organizer}</span>
+        </div>
         <span style={{ fontSize: "3.3vw" }}>{stand.name}</span>
         <span style={{ fontSize: "1.7vw" }}>{stand.place}</span>
         {stand.url && (

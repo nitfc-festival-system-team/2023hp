@@ -21,7 +21,7 @@ export const schedules: ScheduleType[] = [
     place: "第1体育館",
     description: "",
     startDate: new Date(2023, 10, 27, 15, 0),
-    endDate: new Date(2023, 10, 27, 17, 0),
+    endDate: new Date(2023, 10, 27, 18, 30),
   },
   {
     title: "高専の乱",
