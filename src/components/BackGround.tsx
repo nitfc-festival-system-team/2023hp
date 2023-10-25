@@ -2,10 +2,10 @@ import React from "react";
 export const BackGroundImg = () => {
   return (
     <div
-    style={{
-      display: "flex",
-      flexDirection: "column",
-    }}
+      style={{
+        display: "flex",
+        flexDirection: "column",
+      }}
     >
       <img
         src="/image/fireworks/firework.png"
