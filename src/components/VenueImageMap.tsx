@@ -1,4 +1,8 @@
+import { useCheckIsMobile } from "@/features/checkIsMobile";
+
 export const VenueMap = () => {
+  const [isMobile, device] = useCheckIsMobile();
+
   return (
     <>
       <img
@@ -6,7 +10,8 @@ export const VenueMap = () => {
         useMap="#ImageMap"
         alt="venue-map"
         style={{
-          translate: "8vw 20vh",
+          marginLeft: device != "iPad" ? "10vw" : "0",
+          translate: isMobile ? "48vw 5vh" : "8vw 20vh",
         }}
       />
       <map name="ImageMap">

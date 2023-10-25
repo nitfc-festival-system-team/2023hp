@@ -1,5 +1,4 @@
 import React from "react";
-import { useEffect, useState } from "react";
 import "react-calendar-timeline/lib/Timeline.css";
 import Timeline, {
   TimelineHeaders,
@@ -10,6 +9,7 @@ import Timeline, {
 import moment from "moment";
 
 import { schedules } from "@/db/schedule";
+import { useCheckIsMobile } from "@/features/checkIsMobile";
 import { ScheduleType } from "@/types/schedule";
 
 interface GroupType {
@@ -110,21 +110,7 @@ const timelineData: TimelineDataType[] = sortedPlaceSchedule.map((item, i) => {
 
 export const Schedule = () => {
   // 事前レンダリング時の日時とブラウザでレンダリング日時を一致させる。
-  // ステートの初期値を null に設定
-  const [isMobile, setIsMobile] = useState<boolean | null>(null);
-
-  useEffect(() => {
-    // クライアント側でユーザーエージェント情報を取得
-    const userAgent = window.navigator.userAgent;
-
-    const mobile =
-      userAgent.includes("iPhone") ||
-      userAgent.includes("Android") ||
-      userAgent.includes("iPad");
-
-    // isMobile ステートを更新
-    setIsMobile(mobile);
-  }, []);
+  const [isMobile, _] = useCheckIsMobile();
 
   // ステートが null の場合にデフォルト値を表示
   if (isMobile === null) {
