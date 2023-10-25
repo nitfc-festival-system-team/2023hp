@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 import { motion } from "framer-motion";
 import { useRouter } from "next/router";
@@ -7,10 +7,11 @@ import { stands } from "@/db/stand";
 import { StandType } from "@/types/stand";
 
 export const StandList = () => {
-  const [hash, setHash] = useState<string>("");
-  useEffect(() => {
-    setHash(window.location.hash);
-  }, []);
+  const router = useRouter();
+
+  const { query } = router;
+  const selectedStand = Number(query.stand) || 1;
+  console.log(selectedStand);
 
   return (
     <>
@@ -21,7 +22,7 @@ export const StandList = () => {
             key={index}
             stand={stand}
             isFirstItem={isFirstItem} // 一番上の要素かどうかを伝えるプロパティを追加
-            isSelected={hash === `#${(index + 1).toString()}`}
+            isSelected={stand.number === selectedStand}
           />
         );
       })}
@@ -39,6 +40,7 @@ const StandItem = ({
   isSelected: boolean;
 }) => {
   const router = useRouter();
+
   const handleRedirect = () => {
     if (stand.url) {
       router.push(stand.url);
