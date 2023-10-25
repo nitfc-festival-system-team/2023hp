@@ -219,6 +219,7 @@ export const Schedule = () => {
               color: "white",
             }}
           />
+          <DateHeader />
         </TimelineHeaders>
       </Timeline>
       {/* 選択されたアイテムの情報を表示 */}
