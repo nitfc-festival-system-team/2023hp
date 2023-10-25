@@ -30,7 +30,7 @@ const PcScrollDownContainer = () => {
       position: relative;
       left: 0px;
       top: -30px;
-      color: #f00;
+      color: var(--secondary-color);
       font-size: 1.2vw;
       letter-spacing: 0.05em;
     }
@@ -42,7 +42,7 @@ const PcScrollDownContainer = () => {
       top: 20%;
       width: 1px;
       height: 30px;
-      background: #f00;
+      background: var(--secondary-color);
       animation: ${pathMoveAnimation} 1.4s ease-in-out infinite;
       opacity: 0;
     }
