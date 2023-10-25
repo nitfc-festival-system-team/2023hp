@@ -61,7 +61,7 @@ jobs:
           COMMIT_TITLE: ${{ steps.deploy.outputs.COMMIT_TITLE }}
         run: |
           curl -X POST -H "Content-Type: application/json" -d '{
-            "content": "プロジェクトがデプロイされました!!:partying_face: \n '${{ steps.deploy.outputs.url }}' \n コミット作成者: '${{ env.GITHUB_ACTOR }}' \n コミットタイトル: '${{ env.COMMIT_TITLE }}'"}' $DISCORD_WEBHOOK_URL
+            "content": "プロジェクトがデプロイされました!:partying_face: \n '${{ steps.deploy.outputs.url }}' \n コミット作成者: '${{ env.GITHUB_ACTOR }}' \n コミットタイトル: '${{ env.COMMIT_TITLE }}'"}' $DISCORD_WEBHOOK_URL
 
   prod:
     if: ${{ github.ref == 'refs/heads/release' }}
