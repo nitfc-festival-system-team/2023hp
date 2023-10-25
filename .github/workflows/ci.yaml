@@ -52,12 +52,14 @@ jobs:
         run: vercel alias ${{ steps.deploy.outputs.url }} 2023hp.vercel.app --scope=fitcf-festival-system-team --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: Notify Discord
-        env:
-          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
-        run: |
-          curl -X POST -H "Content-Type: application/json" -d '{
-            "content": "プロジェクトがデプロイされました!!:partying_face: \n '${{ steps.deploy.outputs.url }}' "
-          }' $DISCORD_WEBHOOK_URL
+      env:
+        DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+        GITHUB_ACTOR: ${{ github.actor }}
+        BRANCH_REF: ${{ github.ref }}
+      run: |
+        curl -X POST -H "Content-Type: application/json" -d '{
+          "content": "プロジェクトがデプロイされました!!:partying_face: \n '${{ steps.deploy.outputs.url }}' \n コミット作成者: '${{ env.GITHUB_ACTOR }}' \n ブランチ名: '${{ env.GITHUB_REF }}'"
+        }' $DISCORD_WEBHOOK_URL
 
   prod:
     if: ${{ github.ref == 'refs/heads/release' }}
