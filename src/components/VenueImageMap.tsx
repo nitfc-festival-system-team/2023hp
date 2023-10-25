@@ -6,7 +6,7 @@ export const VenueMap = () => {
   return (
     <>
       <img
-        src="image/venue_map_small.jpg"
+        src="image/venue_map.jpg"
         useMap="#ImageMap"
         alt="venue-map"
         style={{
