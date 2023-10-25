@@ -4,7 +4,10 @@ env:
   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
   VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
 
-on: push
+on:
+  pull_request:
+    types:
+      - push
 
 jobs:
   setup:
@@ -55,11 +58,10 @@ jobs:
         env:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
           GITHUB_ACTOR: ${{ github.actor }}
-          GITHUB_REF: ${{ github.ref }}
           COMMIT_TITLE: ${{ steps.deploy.outputs.COMMIT_TITLE }}
         run: |
           curl -X POST -H "Content-Type: application/json" -d '{
-            "content": "プロジェクトがデプロイされました!!:partying_face: \n '${{ steps.deploy.outputs.url }}' \n コミット作成者: '${{ env.GITHUB_ACTOR }}' \n ブランチ名: '${{ env.GITHUB_REF }}' \n コミットタイトル: '${{ env.COMMIT_TITLE }}'"}' $DISCORD_WEBHOOK_URL
+            "content": "プロジェクトがデプロイされました!!:partying_face: \n '${{ steps.deploy.outputs.url }}' \n コミット作成者: '${{ env.GITHUB_ACTOR }}' \n コミットタイトル: '${{ env.COMMIT_TITLE }}'"}' $DISCORD_WEBHOOK_URL
 
   prod:
     if: ${{ github.ref == 'refs/heads/release' }}
@@ -90,8 +92,6 @@ jobs:
         env:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
           GITHUB_ACTOR: ${{ github.actor }}
-          BRANCH_REF: ${{ github.ref }}
         run: |
           curl -X POST -H "Content-Type: application/json" -d '{
-            "content": "プロジェクトがデプロイされました!!:partying_face: \n '${{ steps.deploy.outputs.url }}' \n コミット作成者: '${{ env.GITHUB_ACTOR }}' \n ブランチ名: '${{ env.GITHUB_REF }}'"
-          }' $DISCORD_WEBHOOK_URL
+            "content": "プロジェクトがデプロイされました!!:partying_face: \n '${{ steps.deploy.outputs.url }}' \n コミット作成者: '${{ env.GITHUB_ACTOR }}'"}' $DISCORD_WEBHOOK_URL
