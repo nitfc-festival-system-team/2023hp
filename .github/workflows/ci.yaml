@@ -6,8 +6,7 @@ env:
 
 on:
   pull_request:
-    types:
-      - push
+  types: [push]
 
 jobs:
   setup:
