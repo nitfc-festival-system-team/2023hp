@@ -205,11 +205,20 @@ export const Schedule = () => {
         <TimelineHeaders>
           <SidebarHeader>
             {({ getRootProps }) => {
-              return <div {...getRootProps()}></div>;
+              const customStyle = {
+                backgroundColor: "var(--secondary-color)",
+                color: "white",
+              };
+              return <div {...getRootProps({ style: customStyle })}></div>;
             }}
           </SidebarHeader>
-          <DateHeader unit="primaryHeader" />
-          <DateHeader />
+          <DateHeader
+            unit="primaryHeader"
+            style={{
+              backgroundColor: "var(--secondary-color)",
+              color: "white",
+            }}
+          />
         </TimelineHeaders>
       </Timeline>
       {/* 選択されたアイテムの情報を表示 */}
