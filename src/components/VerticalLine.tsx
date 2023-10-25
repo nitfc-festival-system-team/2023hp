@@ -137,7 +137,7 @@ const PcVerticalLine: React.FC = () => {
     top: "10vw",
     writingMode: "vertical-rl",
     textAlign: "center",
-    fontSize: "3vw",
+    fontSize: "2rem",
     fontFamily: "KomorebiFont",
     color: "white",
     mixBlendMode: "difference", // スクロールバーと重なる部分の文字を白くする
