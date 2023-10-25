@@ -26,7 +26,7 @@ export function useCheckIsMobile(): [boolean | null, string] {
     } else {
       setDevice("PC");
     }
-  }, [device]);
+  }, []);
 
   return [isMobile, device];
 }

@@ -9,7 +9,11 @@ export const Map = () => {
   return (
     <>
       <h1 style={{ marginTop: "1rem" }}>{"会場図案内"}</h1>
-      <p>{"露店番号を クリック/タップ すると、各露店の詳細に飛びます"}</p>
+      <p style={{ textAlign: "center" }}>
+        露店番号を クリック/タップ すると、
+        <br />
+        各露店の詳細に飛びます
+      </p>
       <br />
       <div
         style={{
