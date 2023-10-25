@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 
-import { motion } from "framer-motion";
 import { useRouter } from "next/router";
 
 import { stands } from "@/db/stand";
@@ -8,10 +7,19 @@ import { StandType } from "@/types/stand";
 
 export const StandList = () => {
   const router = useRouter();
-
   const { query } = router;
   const selectedStand = Number(query.stand) || 1;
-  console.log(selectedStand);
+
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  }, [selectedStand]);
 
   return (
     <>
@@ -21,8 +29,9 @@ export const StandList = () => {
           <StandItem
             key={index}
             stand={stand}
-            isFirstItem={isFirstItem} // 一番上の要素かどうかを伝えるプロパティを追加
+            isFirstItem={isFirstItem}
             isSelected={stand.number === selectedStand}
+            scrollRef={scrollRef}
           />
         );
       })}
@@ -34,10 +43,12 @@ const StandItem = ({
   stand,
   isFirstItem,
   isSelected,
+  scrollRef,
 }: {
   stand: StandType;
   isFirstItem: boolean;
   isSelected: boolean;
+  scrollRef: React.RefObject<HTMLDivElement>;
 }) => {
   const router = useRouter();
 
@@ -48,23 +59,18 @@ const StandItem = ({
   };
 
   return (
-    <motion.div
+    <div
       id={stand.number.toString()}
+      ref={isSelected ? scrollRef : null}
       style={{
         width: "60vw",
         height: "16vw",
         borderBottom: "1.3px solid #000",
         borderTop: isFirstItem ? "1.3px solid #000" : "none",
         display: "flex",
-        justifyContent: "space-between", // 左右に均等に配置
-        alignItems: "center", // 垂直方向に中央揃え
+        justifyContent: "space-between",
+        alignItems: "center",
       }}
-      animate={isSelected ? { opacity: [0, 1] } : {}}
-      transition={
-        isSelected
-          ? { duration: 0.1, delay: 0.2, repeat: 2, restDelta: 0.1 }
-          : {}
-      }
     >
       <div
         style={{
@@ -111,6 +117,6 @@ const StandItem = ({
           height: "10vw",
         }}
       />
-    </motion.div>
+    </div>
   );
 };
