@@ -2,7 +2,6 @@ import { useCheckIsMobile } from "@/features/checkIsMobile";
 
 export const VenueMap = () => {
   const [isMobile, device] = useCheckIsMobile();
-  console.log(device);
 
   return (
     <>

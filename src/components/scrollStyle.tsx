@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
-
 import styled, { keyframes } from "styled-components";
+
+import { useCheckIsMobile } from "@/features/checkIsMobile";
+
 // Keyframesを定義
 const pathMoveAnimation = keyframes`
 0% {
@@ -88,18 +89,7 @@ const MobileScrollDownContainer = () => {
 };
 
 export const ScrollView = () => {
-  const [isMobile, setIsMobile] = useState<boolean | null>(null);
-
-  useEffect(() => {
-    const userAgent = window.navigator.userAgent;
-
-    const mobile =
-      userAgent.includes("iPhone") ||
-      userAgent.includes("Android") ||
-      userAgent.includes("iPad");
-
-    setIsMobile(mobile);
-  }, []);
+  const [isMobile, _] = useCheckIsMobile();
   return (
     <>{isMobile ? MobileScrollDownContainer() : PcScrollDownContainer()}</>
   );

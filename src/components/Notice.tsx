@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
-
 import styled from "styled-components";
+
+import { useCheckIsMobile } from "@/features/checkIsMobile";
 
 import NoticeScrollableComponent from "./NoticeScrollableComponent";
 
@@ -31,18 +31,8 @@ const MobileWrapper = styled.div`
 `;
 
 export const Notice = () => {
-  const [isMobile, setIsMobile] = useState<boolean | null>(null);
+  const [isMobile, _] = useCheckIsMobile();
 
-  useEffect(() => {
-    const userAgent = window.navigator.userAgent;
-
-    const mobile =
-      userAgent.includes("iPhone") ||
-      userAgent.includes("Android") ||
-      userAgent.includes("iPad");
-
-    setIsMobile(mobile);
-  }, []);
   return (
     <>
       {isMobile ? (
