@@ -17,16 +17,16 @@ export function useCheckIsMobile(): [boolean | null, string] {
     // isMobile ステートを更新
     setIsMobile(mobile);
 
-    if (device.includes("Android")) {
+    if (userAgent.includes("Android")) {
       setDevice("Android");
-    } else if (device.includes("iPhone")) {
+    } else if (userAgent.includes("iPhone")) {
       setDevice("iPhone");
-    } else if (device.includes("iPad")) {
+    } else if (userAgent.includes("iPad")) {
       setDevice("iPad");
     } else {
       setDevice("PC");
     }
-  }, [device]);
+  }, []);
 
   return [isMobile, device];
 }
