@@ -1,9 +1,17 @@
+import React, { useEffect, useState } from "react";
+
+import { motion } from "framer-motion";
 import { useRouter } from "next/router";
 
 import { stands } from "@/db/stand";
 import { StandType } from "@/types/stand";
 
 export const StandList = () => {
+  const [hash, setHash] = useState<string>("");
+  useEffect(() => {
+    setHash(window.location.hash);
+  }, []);
+
   return (
     <>
       {stands.map((stand: StandType, index) => {
@@ -13,6 +21,7 @@ export const StandList = () => {
             key={index}
             stand={stand}
             isFirstItem={isFirstItem} // 一番上の要素かどうかを伝えるプロパティを追加
+            isSelected={hash === `#${(index + 1).toString()}`}
           />
         );
       })}
@@ -23,9 +32,11 @@ export const StandList = () => {
 const StandItem = ({
   stand,
   isFirstItem,
+  isSelected,
 }: {
   stand: StandType;
   isFirstItem: boolean;
+  isSelected: boolean;
 }) => {
   const router = useRouter();
   const handleRedirect = () => {
@@ -35,7 +46,8 @@ const StandItem = ({
   };
 
   return (
-    <div
+    <motion.div
+      id={stand.number.toString()}
       style={{
         width: "60vw",
         height: "16vw",
@@ -45,6 +57,12 @@ const StandItem = ({
         justifyContent: "space-between", // 左右に均等に配置
         alignItems: "center", // 垂直方向に中央揃え
       }}
+      animate={isSelected ? { opacity: [0, 1] } : {}}
+      transition={
+        isSelected
+          ? { duration: 0.1, delay: 0.2, repeat: 2, restDelta: 0.1 }
+          : {}
+      }
     >
       <div
         style={{
@@ -91,6 +109,6 @@ const StandItem = ({
           height: "10vw",
         }}
       />
-    </div>
+    </motion.div>
   );
 };
