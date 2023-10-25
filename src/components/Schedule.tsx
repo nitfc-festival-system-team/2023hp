@@ -153,7 +153,7 @@ export const Schedule = () => {
 
   return (
     <div>
-      <div style={{ height: "10vh" }}></div>
+      <div style={{ height: "5vh" }}></div>
       <Timeline
         groups={scheduleGroup}
         items={timelineData}
@@ -213,7 +213,8 @@ export const Schedule = () => {
         </TimelineHeaders>
       </Timeline>
       {/* 選択されたアイテムの情報を表示 */}
-      {selectedItemInfo && (
+      {selectedItemInfo ? (
+        // selectedItemInfoが真の場合の表示内容
         <div style={{ marginLeft: "1rem" }}>
           <h2>{sortedPlaceSchedule[selectedItemInfo.id - 1].title}</h2>
           <p>
@@ -226,8 +227,14 @@ export const Schedule = () => {
               sortedPlaceSchedule[selectedItemInfo.id - 1].endDate,
             ).format("HH時mm分")}
           </p>
+          <p>場所:{sortedPlaceSchedule[selectedItemInfo.id - 1].place}</p>
           <p>説明:{sortedPlaceSchedule[selectedItemInfo.id - 1].description}</p>
           {/* 他の情報を表示 */}
+        </div>
+      ) : (
+        // selectedItemInfoが偽の場合の表示内容
+        <div style={{ marginLeft: "1rem" }}>
+          <h1>イベント名をタップで詳細表示</h1>
         </div>
       )}
     </div>
