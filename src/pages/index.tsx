@@ -24,40 +24,54 @@ export default function Page() {
           flexDirection: "column",
         }}
       >
-        <Sidebar />
         <Title />
         <OpenDate />
         <ScrollView />
         <BackGroundImg />
-        <FadeAnimationProvider>
-          <Notice />
+        <div style={{ display: "flex", flexDirection: "row", flexGrow: "1" }}>
+          <Sidebar />
           <div
-            className="buttonContainer"
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              alignItems: "center",
-              justifyContent: "center",
-              gap: "20px",
-              padding: "3vh",
-            }}
-          >
-            <PageTransitionButton buttonText={"企画"} nextPage={"schedule"} />
-            <PageTransitionButton buttonText={"露店"} nextPage={"stand"} />
-          </div>
-          <div
-            className="mapContainer"
             style={{
               display: "flex",
               flexDirection: "column",
+              flexGrow: "1",
               alignItems: "center",
-              padding: "3vh",
             }}
           >
-            <h1>MAP</h1>
-            <Map />
+            <FadeAnimationProvider>
+              <Notice />
+              <div
+                className="buttonContainer"
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  gap: "20px",
+                  padding: "3vh",
+                }}
+              >
+                <PageTransitionButton
+                  buttonText={"企画"}
+                  nextPage={"schedule"}
+                />
+                <PageTransitionButton buttonText={"露店"} nextPage={"stand"} />
+              </div>
+              <div
+                className="mapContainer"
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  padding: "3vh",
+                }}
+              >
+                <h1>MAP</h1>
+                <Map />
+              </div>
+            </FadeAnimationProvider>
           </div>
-        </FadeAnimationProvider>
+        </div>
         <Footer />
       </div>
     </>
