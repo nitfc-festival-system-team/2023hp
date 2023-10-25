@@ -5,7 +5,7 @@ import { useCheckIsMobile } from "@/features/checkIsMobile";
 import { VenueMap } from "./VenueImageMap";
 
 export const Map = () => {
-  const [isMobile, _] = useCheckIsMobile();
+  const [isMobile, device] = useCheckIsMobile();
   return (
     <>
       <h1 style={{ marginTop: "1rem" }}>{"会場図案内"}</h1>
@@ -15,6 +15,7 @@ export const Map = () => {
         各露店の詳細に飛びます
       </p>
       <br />
+      <p>{device}</p>
       <div
         style={{
           display: "flex",
