@@ -6,7 +6,7 @@ export const VenueMap = () => {
   return (
     <>
       <img
-        src="image/venue_map.jpg"
+        src="image/venue_map.png"
         useMap="#ImageMap"
         alt="venue-map"
         style={{
@@ -93,7 +93,7 @@ export const VenueMap = () => {
         />
         <area
           shape="rect"
-          coords="409,629,445,653"
+          coords="92,961,126,995"
           href="/contents/stand#13"
           alt=""
         />
