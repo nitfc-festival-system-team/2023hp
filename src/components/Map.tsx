@@ -1,8 +1,11 @@
 import React from "react";
 
+import { useCheckIsMobile } from "@/features/checkIsMobile";
+
 import { VenueMap } from "./VenueImageMap";
 
 export const Map = () => {
+  const [isMobile, _] = useCheckIsMobile();
   return (
     <>
       <h1 style={{ marginTop: "1rem" }}>{"会場図案内"}</h1>
@@ -16,7 +19,7 @@ export const Map = () => {
           flexDirection: "column",
           overflow: "overlay",
           width: "80vw",
-          height: "80vh",
+          height: isMobile ? "50vh" : "80vh",
         }}
       >
         <VenueMap />
