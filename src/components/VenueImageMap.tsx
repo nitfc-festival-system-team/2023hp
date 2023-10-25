@@ -13,8 +13,8 @@ export const VenueMap = () => {
         style={{
           translate: isMobile
             ? device === "iPad"
-              ? "40vw 15vh"
-              : "58vh 30vh"
+              ? "30% 20%"
+              : "32% 25%"
             : "8vw 30vh",
           scale: isMobile ? "0.9" : "1",
         }}
