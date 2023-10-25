@@ -14,7 +14,7 @@ const DateStyle = styled.div`
 `;
 
 const BackgroundStyle = styled.div`
-  background: rgba(172, 230, 224, 0.7);
+  background: var(--accent-color);
   width: 30vw;
   height: auto;
   display: flex;

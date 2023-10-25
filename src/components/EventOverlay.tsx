@@ -41,6 +41,7 @@ const Header = styled.header`
 
 const SubTitle = styled.h3`
   margin: 0;
+  color: var(--secondary-color);
 `;
 
 const Title = styled.h2`

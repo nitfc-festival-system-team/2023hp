@@ -37,15 +37,17 @@ const PcPageTransitionButton = ({
           padding: "0.5vw 5vw",
           fontWeight: "bold",
           borderRadius: "1.2vw",
-          color: "#27acd9",
-          border: "0.5vw solid #27acd9",
+          color: "var(--secondary-color)",
+          border: "0.5vw solid var(--secondary-color)",
           fontSize: "2.5vw",
         }}
         initial={{
-          boxShadow: "0.7vw 0.7vw #27acd9",
+          boxShadow: "0.7vw 0.7vw var(--secondary-color)",
         }}
         animate={{
-          boxShadow: isClicked ? "0vw 0vw #27acd9" : "0.7vw 0.7vw #27acd9",
+          boxShadow: isClicked
+            ? "0vw 0vw var(--secondary-color)"
+            : "0.7vw 0.7vw var(--secondary-color)",
         }}
       >
         {buttonText}
