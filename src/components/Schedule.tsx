@@ -215,7 +215,6 @@ export const Schedule = () => {
       {/* 選択されたアイテムの情報を表示 */}
       {selectedItemInfo ? (
         // selectedItemInfoが真の場合の表示内容
-        //push用
         <div style={{ marginLeft: "1rem" }}>
           <h2>{sortedPlaceSchedule[selectedItemInfo.id - 1].title}</h2>
           <p>
