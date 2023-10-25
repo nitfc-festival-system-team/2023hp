@@ -56,10 +56,10 @@ jobs:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
           GITHUB_ACTOR: ${{ github.actor }}
           GITHUB_REF: ${{ github.ref }}
+          COMMIT_TITLE: ${{ steps.deploy.outputs.COMMIT_TITLE }}
         run: |
-          COMMIT_TITLE=$(jq --raw-output '.commits[0].message' $GITHUB_EVENT_PATH)
           curl -X POST -H "Content-Type: application/json" -d '{
-            "content": "プロジェクトがデプロイされました!!:partying_face: \n '${{ steps.deploy.outputs.url }}' \n コミット作成者: '${{ env.GITHUB_ACTOR }}' \n ブランチ名: '${{ env.GITHUB_REF }}'}' $DISCORD_WEBHOOK_URL
+            "content": "プロジェクトがデプロイされました!!:partying_face: \n '${{ steps.deploy.outputs.url }}' \n コミット作成者: '${{ env.GITHUB_ACTOR }}' \n ブランチ名: '${{ env.GITHUB_REF }}' \n コミットタイトル: '${{ env.COMMIT_TITLE }}'"}' $DISCORD_WEBHOOK_URL
 
   prod:
     if: ${{ github.ref == 'refs/heads/release' }}
