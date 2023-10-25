@@ -19,7 +19,7 @@ jobs:
           node-version: 14
 
   preview:
-    if: ${{ github.ref != 'refs/heads/release' }}
+    if: ${{ github.ref != 'refs/heads/main' }}
     needs: setup
     runs-on: ubuntu-latest
     environment:
@@ -55,13 +55,13 @@ jobs:
         env:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
           GITHUB_ACTOR: ${{ github.actor }}
-          COMMIT_TITLE: ${{ steps.deploy.outputs.COMMIT_TITLE }}
+          GITHUB_REF: ${{ github.ref }}
         run: |
           curl -X POST -H "Content-Type: application/json" -d '{
-            "content": "プロジェクトがデプロイされました!:partying_face: \n '${{ steps.deploy.outputs.url }}' \n コミット作成者: '${{ env.GITHUB_ACTOR }}' \n コミットタイトル: '${{ env.COMMIT_TITLE }}'"}' $DISCORD_WEBHOOK_URL
+            "content": "プロジェクトがデプロイされました!:partying_face: \n '${{ steps.deploy.outputs.url }}' \n コミット作成者: '${{ env.GITHUB_ACTOR }}' \n ブランチ名: '${{ env.GITHUB_REF }}'"}' $DISCORD_WEBHOOK_URL
 
   prod:
-    if: ${{ github.ref == 'refs/heads/release' }}
+    if: ${{ github.ref == 'refs/heads/main' }}
     needs: setup
     runs-on: ubuntu-latest
     steps:
