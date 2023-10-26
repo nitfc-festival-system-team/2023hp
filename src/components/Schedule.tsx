@@ -199,6 +199,8 @@ export const Schedule = () => {
           visibleTimeStart * scrollSensitivityR,
           visibleTimeEnd * scrollSensitivityR,
         );
+        prevVisibleTimeStart = visibleTimeStart * scrollSensitivityR;
+        prevVisibleTimeEnd = visibleTimeEnd * scrollSensitivityR;
       }
     } else if (scrollDirection === -1) {
       // 過去方向へのスクロール
@@ -210,6 +212,8 @@ export const Schedule = () => {
           visibleTimeStart * scrollSensitivityL,
           visibleTimeEnd * scrollSensitivityL,
         );
+        prevVisibleTimeStart = visibleTimeStart * scrollSensitivityL;
+        prevVisibleTimeEnd = visibleTimeEnd * scrollSensitivityL;
       }
     }
   };
