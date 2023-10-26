@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import "react-calendar-timeline/lib/Timeline.css";
 import Timeline, {
   TimelineHeaders,
@@ -123,8 +123,6 @@ export const Schedule = () => {
     null,
   ); // 選択されたアイテムの情報を保持
 
-  const timelineRef = useRef<Timeline>(null);
-
   // ステートが null の場合にデフォルト値を表示
   if (isMobile === null) {
     return <div style={{ height: "50vh" }}>Loading...</div>;
@@ -140,24 +138,10 @@ export const Schedule = () => {
   const minTime = fesStart.getTime();
   const maxTime = fesEnd.getTime();
 
-  const handleScrollToDay = (date: Date) => {
-    if (!timelineRef.current) return;
-    const startOfDay = moment(date).startOf("day").valueOf();
-    timelineRef.current.scrollToTime(startOfDay);
-  };
-
-  const date1 = new Date(2023, 9, 27); // 2023年10月27日
-  const date2 = new Date(2023, 9, 28); // 2023年10月28日
-  const date3 = new Date(2023, 9, 29); // 2023年10月29日
-
   return (
     <div>
-      <button onClick={() => handleScrollToDay(date1)}>Day 1</button>
-      <button onClick={() => handleScrollToDay(date2)}>Day 2</button>
-      <button onClick={() => handleScrollToDay(date3)}>Day 3</button>
       <div style={{ height: "5vh" }}></div>
       <Timeline
-        ref={timelineRef}
         groups={scheduleGroup}
         items={timelineData}
         lineHeight={isMobile ? 60 : 80}
