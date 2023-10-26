@@ -230,7 +230,6 @@ export const Schedule = () => {
         state={2}
         buttonText={"3日目"}
       />
-
       {/* 選択されたアイテムの情報を表示 */}
       {selectedItemInfo ? (
         // selectedItemInfoが真の場合の表示内容
