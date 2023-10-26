@@ -4,6 +4,8 @@ import Timeline, {
   TimelineHeaders,
   SidebarHeader,
   DateHeader,
+  TimelineMarkers,
+  CustomMarker,
 } from "react-calendar-timeline";
 
 import moment from "moment";
@@ -145,7 +147,7 @@ export const Schedule = () => {
   }
 
   //UnixTimeが1月ずれているため9月にする
-  const fesStart = new Date(2023, 9, 27, 9, 0);
+  const fesStart = new Date(2023, 9, 26, 9, 0);
   const fesEnd = new Date(2023, 9, 29, 21, 0);
   const minTime = fesStart.getTime();
   const maxTime = fesEnd.getTime();
@@ -199,6 +201,35 @@ export const Schedule = () => {
         }
       }}
     >
+      <TimelineMarkers>
+        <CustomMarker date={moment().valueOf()}>
+          {({ styles }) => {
+            const customStyles = {
+              ...styles,
+              backgroundColor: "red",
+              width: "4px",
+            };
+            return (
+              <div style={{ display: "flex", flexDirection: "row" }}>
+                <div style={customStyles} />
+
+                <p
+                  style={{
+                    ...styles,
+                    width: "0",
+                    left: `${
+                      (styles.left as number) ? (styles.left as number) + 5 : 70
+                    }px`,
+                    top: "-5px",
+                  }}
+                >
+                  now
+                </p>
+              </div>
+            );
+          }}
+        </CustomMarker>
+      </TimelineMarkers>
       <TimelineHeaders>
         <SidebarHeader>
           {({ getRootProps }) => {
@@ -222,7 +253,9 @@ export const Schedule = () => {
   );
   return (
     <div>
-      <div style={{ height: "5vh" }}></div>
+      <div style={{ height: "5vh" }}>
+        <span style={{ color: "red" }}>赤線</span>は現在時刻です
+      </div>
       {timeline} {/* Timelineを描画 */}
       <ScheduleMoveButton
         setState={setEventMove}
