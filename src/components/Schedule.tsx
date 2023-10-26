@@ -173,6 +173,7 @@ export const Schedule = () => {
   const fesEnd = new Date(2023, 9, 29, 21, 0);
   const minTime = fesStart.getTime();
   const maxTime = fesEnd.getTime();
+
   const timeline = (
     <Timeline
       key={eventMove} // eventMoveが変更されたときに再レンダリングするためにキーを指定
@@ -257,7 +258,6 @@ export const Schedule = () => {
           {({ getRootProps }) => {
             const customStyle = {
               backgroundColor: "var(--secondary-color)",
-              color: "white",
             };
             return <div {...getRootProps({ style: customStyle })}></div>;
           }}
@@ -266,11 +266,11 @@ export const Schedule = () => {
           unit="primaryHeader"
           style={{
             backgroundColor: "var(--secondary-color)",
-            color: "white",
           }}
           labelFormat={"YYYY/MM/DD dddd"}
         />
-        <DateHeader labelFormat={"HH:00"} />
+
+        <DateHeader unit="hour" labelFormat={"HH:00"} />
       </TimelineHeaders>
     </Timeline>
   );
