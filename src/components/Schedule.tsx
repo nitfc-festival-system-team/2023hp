@@ -257,21 +257,31 @@ export const Schedule = () => {
         <span style={{ color: "red" }}>赤線</span>は現在時刻です
       </div>
       {timeline} {/* Timelineを描画 */}
-      <ScheduleMoveButton
-        setState={setEventMove}
-        state={0}
-        buttonText={"1日目"}
-      />
-      <ScheduleMoveButton
-        setState={setEventMove}
-        state={1}
-        buttonText={"2日目"}
-      />
-      <ScheduleMoveButton
-        setState={setEventMove}
-        state={2}
-        buttonText={"3日目"}
-      />
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          paddingBottom: "10px",
+          paddingTop: "10px",
+          gap: isMobile ? "3vw" : "0.7vw",
+        }}
+      >
+        <ScheduleMoveButton
+          setState={setEventMove}
+          state={0}
+          buttonText={"1日目"}
+        />
+        <ScheduleMoveButton
+          setState={setEventMove}
+          state={1}
+          buttonText={"2日目"}
+        />
+        <ScheduleMoveButton
+          setState={setEventMove}
+          state={2}
+          buttonText={"3日目"}
+        />
+      </div>
       {/* 選択されたアイテムの情報を表示 */}
       {selectedItemInfo ? (
         // selectedItemInfoが真の場合の表示内容
@@ -294,7 +304,11 @@ export const Schedule = () => {
       ) : (
         // selectedItemInfoが偽の場合の表示内容
         <div style={{ marginLeft: "1rem" }}>
-          <h1>イベント名をタップで詳細表示</h1>
+          <h1>
+            イベント名をタップで
+            <br />
+            詳細表示
+          </h1>
         </div>
       )}
     </div>
