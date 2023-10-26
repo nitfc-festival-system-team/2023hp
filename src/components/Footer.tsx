@@ -13,7 +13,7 @@ const PcFooter = () => {
     <footer>
       <div
         style={{
-          backgroundColor: "#20e0e0",
+          backgroundColor: "var(--accent-color)",
           width: "100vw",
           display: "flex",
           flexDirection: "column",
@@ -37,7 +37,7 @@ const PcFooter = () => {
           <LinkedText text={"露店"} link={"contents/stand"} />
         </div>
         <img
-          src={"image/nitfc.png"}
+          src={"/image/nitfc.png"}
           alt={"nitfc_logo"}
           width={"20%"}
           style={{ cursor: "pointer" }}
@@ -71,7 +71,7 @@ const MobileFooter = () => {
       <div
         style={{
           paddingTop: "4vw",
-          backgroundColor: "#20e0e0",
+          backgroundColor: "rgba(172, 230, 224, 0.7)",
           width: "100vw",
           display: "flex",
           flexDirection: "column",
@@ -111,7 +111,7 @@ const MobileFooter = () => {
           }}
         >
           <img
-            src={"image/nitfc.png"}
+            src={"/image/nitfc.png"}
             alt={"nitfc_logo"}
             width={"35%"}
             style={{ cursor: "pointer" }}

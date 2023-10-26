@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
-
 import styled from "styled-components";
+
+import { useCheckIsMobile } from "@/hooks/checkIsMobile";
 
 import NoticeScrollableComponent from "./NoticeScrollableComponent";
 
@@ -8,8 +8,6 @@ const Title = styled.h1`
   font-size: 1em;
   padding: 0 em;
   margin: 0.5em 0.5em;
-  //color属性は値が渡されれば値に応じて設定
-  color: ${(props) => (props.color ? props.color : "black")};
   border-bottom: 2px solid #000;
   font-size: 1.5em;
 `;
@@ -31,18 +29,8 @@ const MobileWrapper = styled.div`
 `;
 
 export const Notice = () => {
-  const [isMobile, setIsMobile] = useState<boolean | null>(null);
+  const [isMobile, _] = useCheckIsMobile();
 
-  useEffect(() => {
-    const userAgent = window.navigator.userAgent;
-
-    const mobile =
-      userAgent.includes("iPhone") ||
-      userAgent.includes("Android") ||
-      userAgent.includes("iPad");
-
-    setIsMobile(mobile);
-  }, []);
   return (
     <>
       {isMobile ? (
