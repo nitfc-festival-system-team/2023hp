@@ -163,6 +163,51 @@ export const Schedule = () => {
       : new Date(2023, 9, 29, 10, 0).getTime();
   }
 
+  const scrollSensitivity = 0.01;
+
+  let prevVisibleTimeStart: number = 0;
+  let prevVisibleTimeEnd: number = 0;
+
+  const handleTimeChange = (
+    visibleTimeStart: number,
+    visibleTimeEnd: number,
+    updateScrollCanvas: (start: number, end: number) => void,
+  ) => {
+    let scrollDirection = 0;
+
+    if (prevVisibleTimeStart !== 0 && prevVisibleTimeEnd !== 0) {
+      if (visibleTimeStart > prevVisibleTimeStart) {
+        // 未来方向へスクロール
+        scrollDirection = 1;
+      } else if (visibleTimeStart < prevVisibleTimeStart) {
+        // 過去方向へスクロール
+        scrollDirection = -1;
+      }
+    }
+
+    prevVisibleTimeStart = visibleTimeStart;
+    prevVisibleTimeEnd = visibleTimeEnd;
+
+    // スクロールの方向に応じて可視範囲の時間を更新
+    if (scrollDirection === 1) {
+      // 未来方向へのスクロール
+      if (visibleTimeEnd > maxTime) {
+        const diff = visibleTimeEnd - maxTime;
+        updateScrollCanvas(visibleTimeStart - diff, maxTime);
+      } else {
+        updateScrollCanvas(visibleTimeStart, visibleTimeEnd);
+      }
+    } else if (scrollDirection === -1) {
+      // 過去方向へのスクロール
+      if (visibleTimeStart < minTime) {
+        const diff = minTime - visibleTimeStart;
+        updateScrollCanvas(minTime, visibleTimeEnd + diff);
+      } else {
+        updateScrollCanvas(visibleTimeStart, visibleTimeEnd);
+      }
+    }
+  };
+
   //UnixTimeが1月ずれているため9月にする
   const fesStart = new Date(2023, 9, 26, 9, 0);
   const fesEnd = new Date(2023, 9, 29, 21, 0);
@@ -196,27 +241,7 @@ export const Schedule = () => {
         setSelectedItems([]);
         setSelectedItemInfo(null); // 選択解除時に情報をリセット
       }}
-      onTimeChange={function (
-        visibleTimeStart,
-        visibleTimeEnd,
-        updateScrollCanvas,
-      ) {
-        if (visibleTimeStart < minTime && visibleTimeEnd > maxTime) {
-          updateScrollCanvas(minTime, maxTime);
-        } else if (visibleTimeStart < minTime) {
-          updateScrollCanvas(
-            minTime,
-            minTime + (visibleTimeEnd - visibleTimeStart),
-          );
-        } else if (visibleTimeEnd > maxTime) {
-          updateScrollCanvas(
-            maxTime - (visibleTimeEnd - visibleTimeStart),
-            maxTime,
-          );
-        } else {
-          updateScrollCanvas(visibleTimeStart, visibleTimeEnd);
-        }
-      }}
+      onTimeChange={handleTimeChange}
     >
       <TimelineMarkers>
         <CustomMarker date={moment().valueOf()}>
