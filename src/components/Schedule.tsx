@@ -39,19 +39,36 @@ interface ItemInfo {
   // 他のプロパティを追加
 }
 
+interface PlaceCounts {
+  [key: string]: number;
+}
+
+const placeCounts: PlaceCounts = {};
+
+schedules.forEach((schedule) => {
+  const place = schedule.place.toLowerCase();
+  if (placeCounts[place]) {
+    placeCounts[place]++;
+  } else {
+    placeCounts[place] = 1;
+  }
+});
+
 const sortedPlaceSchedule = schedules.sort((a, b) => {
-  // 先に 'place' プロパティを比較
   const placeA = a.place.toLowerCase();
   const placeB = b.place.toLowerCase();
+  const placeCountA = placeCounts[placeA];
+  const placeCountB = placeCounts[placeB];
 
-  if (placeA < placeB) {
+  // 'place' プロパティが同じ場合、出現回数が多いものを前に配置
+  if (placeCountA > placeCountB) {
     return -1; // aをbの前に配置
   }
-  if (placeA > placeB) {
+  if (placeCountA < placeCountB) {
     return 1; // bをaの前に配置
   }
 
-  // 'place' プロパティが同じ場合、'startDate' プロパティを比較
+  // 'place' プロパティが同じかつ出現回数も同じ場合、'startDate' プロパティを比較
   const startDateA = a.startDate.getTime();
   const startDateB = b.startDate.getTime();
 
@@ -61,6 +78,11 @@ const sortedPlaceSchedule = schedules.sort((a, b) => {
   if (startDateA > startDateB) {
     return 1; // bをaの前に配置
   }
+
+  return 0; // 順序を変更しない
+
+  // 以下のソートロジックは前回と同じです
+  // ...
 
   return 0; // 順序を変更しない
 });
@@ -131,10 +153,12 @@ export const Schedule = () => {
   }
   let fesScope;
   if (eventMove == 0) {
+    fesScope = moment().valueOf();
+  } else if (eventMove == 1) {
     fesScope = isMobile
       ? new Date(2023, 9, 27, 12, 50).getTime()
       : new Date(2023, 9, 27, 13, 0).getTime();
-  } else if (eventMove == 1) {
+  } else if (eventMove == 2) {
     fesScope = isMobile
       ? new Date(2023, 9, 28, 10, 50).getTime()
       : new Date(2023, 9, 28, 11, 0).getTime();
@@ -145,7 +169,7 @@ export const Schedule = () => {
   }
 
   //UnixTimeが1月ずれているため9月にする
-  const fesStart = new Date(2023, 9, 27, 9, 0);
+  const fesStart = new Date(2023, 9, 26, 9, 0);
   const fesEnd = new Date(2023, 9, 29, 21, 0);
   const minTime = fesStart.getTime();
   const maxTime = fesEnd.getTime();
@@ -225,17 +249,17 @@ export const Schedule = () => {
       >
         <ScheduleMoveButton
           setState={setEventMove}
-          state={0}
+          state={1}
           buttonText={"1日目"}
         />
         <ScheduleMoveButton
           setState={setEventMove}
-          state={1}
+          state={2}
           buttonText={"2日目"}
         />
         <ScheduleMoveButton
           setState={setEventMove}
-          state={2}
+          state={3}
           buttonText={"3日目"}
         />
       </div>
