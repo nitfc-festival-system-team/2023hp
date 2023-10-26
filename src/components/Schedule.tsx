@@ -153,10 +153,12 @@ export const Schedule = () => {
   }
   let fesScope;
   if (eventMove == 0) {
+    fesScope = moment().valueOf();
+  } else if (eventMove == 1) {
     fesScope = isMobile
       ? new Date(2023, 9, 27, 12, 50).getTime()
       : new Date(2023, 9, 27, 13, 0).getTime();
-  } else if (eventMove == 1) {
+  } else if (eventMove == 2) {
     fesScope = isMobile
       ? new Date(2023, 9, 28, 10, 50).getTime()
       : new Date(2023, 9, 28, 11, 0).getTime();
@@ -167,7 +169,7 @@ export const Schedule = () => {
   }
 
   //UnixTimeが1月ずれているため9月にする
-  const fesStart = new Date(2023, 9, 27, 9, 0);
+  const fesStart = new Date(2023, 9, 26, 9, 0);
   const fesEnd = new Date(2023, 9, 29, 21, 0);
   const minTime = fesStart.getTime();
   const maxTime = fesEnd.getTime();
@@ -247,17 +249,17 @@ export const Schedule = () => {
       >
         <ScheduleMoveButton
           setState={setEventMove}
-          state={0}
+          state={1}
           buttonText={"1日目"}
         />
         <ScheduleMoveButton
           setState={setEventMove}
-          state={1}
+          state={2}
           buttonText={"2日目"}
         />
         <ScheduleMoveButton
           setState={setEventMove}
-          state={2}
+          state={3}
           buttonText={"3日目"}
         />
       </div>
