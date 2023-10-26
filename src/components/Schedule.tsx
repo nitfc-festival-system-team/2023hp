@@ -124,7 +124,6 @@ export const Schedule = () => {
     null,
   );
   const [eventMove, setEventMove] = useState<number>(0);
-  // 選択されたアイテムの情報を保持
 
   // ステートが null の場合にデフォルト値を表示
   if (isMobile === null) {
