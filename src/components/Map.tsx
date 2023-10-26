@@ -14,13 +14,15 @@ export const Map = () => {
     router.push(`/contents/stand?stand=${standNumber}`);
   };
 
+  const guideText = isMobile ? "タップ" : "クリック";
+
   return (
     <>
       <h1 style={{ marginTop: "1rem" }}>{"会場図案内"}</h1>
       <p style={{ textAlign: "center" }}>
-        露店番号を クリック/タップ すると、
+        {"露店番号を" + guideText + "すると、"}
         <br />
-        各露店の詳細に飛びます
+        露店情報を閲覧できます
       </p>
       <br />
       <div
