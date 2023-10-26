@@ -177,10 +177,10 @@ export const Schedule = () => {
     if (prevVisibleTimeStart !== 0 && prevVisibleTimeEnd !== 0) {
       if (visibleTimeStart > prevVisibleTimeStart) {
         // 未来方向へスクロール
-        scrollDirection = 1;
+        scrollDirection = -1;
       } else if (visibleTimeStart < prevVisibleTimeStart) {
         // 過去方向へスクロール
-        scrollDirection = -1;
+        scrollDirection = 1;
       }
     }
 
