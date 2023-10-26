@@ -102,7 +102,7 @@ export const schedules: ScheduleType[] = [
   },
   {
     title: "花火大会",
-    place: "福井高専",
+    place: "グラウンド",
     description: "今夜限りの光あるお花畑♡",
     startDate: new Date(2023, 10, 29, 19, 0),
     endDate: new Date(2023, 10, 29, 21, 0),
