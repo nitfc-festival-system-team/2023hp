@@ -172,8 +172,7 @@ export const Schedule = () => {
     updateScrollCanvas: (start: number, end: number) => void,
   ) => {
     let scrollDirection = 0;
-    const scrollSensitivityR = isMobile ? 1.0000001 : 1;
-    const scrollSensitivityL = isMobile ? 2 - 1.0000001 : 1;
+    const scrollSensitivity = isMobile ? 200000 : 1000;
 
     if (prevVisibleTimeStart !== 0 && prevVisibleTimeEnd !== 0) {
       if (visibleTimeStart > prevVisibleTimeStart) {
@@ -191,24 +190,24 @@ export const Schedule = () => {
     // スクロールの方向に応じて可視範囲の時間を更新
     if (scrollDirection === 1) {
       // 未来方向へのスクロール
-      if (visibleTimeEnd * scrollSensitivityR > maxTime) {
+      if (visibleTimeEnd + scrollSensitivity > maxTime) {
         const diff = visibleTimeEnd - maxTime;
         updateScrollCanvas(visibleTimeStart - diff, maxTime);
       } else {
         updateScrollCanvas(
-          visibleTimeStart * scrollSensitivityR,
-          visibleTimeEnd * scrollSensitivityR,
+          visibleTimeStart + scrollSensitivity,
+          visibleTimeEnd + scrollSensitivity,
         );
       }
     } else if (scrollDirection === -1) {
       // 過去方向へのスクロール
-      if (visibleTimeStart * scrollSensitivityL < minTime) {
-        const diff = minTime - visibleTimeStart * scrollSensitivityL;
+      if (visibleTimeStart - scrollSensitivity < minTime) {
+        const diff = minTime - visibleTimeStart - scrollSensitivity;
         updateScrollCanvas(minTime, visibleTimeEnd + diff);
       } else {
         updateScrollCanvas(
-          visibleTimeStart * scrollSensitivityL,
-          visibleTimeEnd * scrollSensitivityL,
+          visibleTimeStart - scrollSensitivity,
+          visibleTimeEnd - scrollSensitivity,
         );
       }
     }
