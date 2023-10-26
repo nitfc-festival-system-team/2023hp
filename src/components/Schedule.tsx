@@ -163,8 +163,6 @@ export const Schedule = () => {
       : new Date(2023, 9, 29, 10, 0).getTime();
   }
 
-  const scrollSensitivity = 0.01;
-
   let prevVisibleTimeStart: number = 0;
   let prevVisibleTimeEnd: number = 0;
 
@@ -174,6 +172,8 @@ export const Schedule = () => {
     updateScrollCanvas: (start: number, end: number) => void,
   ) => {
     let scrollDirection = 0;
+    const scrollSensitivityR = isMobile ? 1.0000001 : 1;
+    const scrollSensitivityL = isMobile ? 2 - 1.0000001 : 1;
 
     if (prevVisibleTimeStart !== 0 && prevVisibleTimeEnd !== 0) {
       if (visibleTimeStart > prevVisibleTimeStart) {
@@ -191,19 +191,25 @@ export const Schedule = () => {
     // スクロールの方向に応じて可視範囲の時間を更新
     if (scrollDirection === 1) {
       // 未来方向へのスクロール
-      if (visibleTimeEnd > maxTime) {
+      if (visibleTimeEnd * scrollSensitivityR > maxTime) {
         const diff = visibleTimeEnd - maxTime;
         updateScrollCanvas(visibleTimeStart - diff, maxTime);
       } else {
-        updateScrollCanvas(visibleTimeStart, visibleTimeEnd);
+        updateScrollCanvas(
+          visibleTimeStart * scrollSensitivityR,
+          visibleTimeEnd * scrollSensitivityR,
+        );
       }
     } else if (scrollDirection === -1) {
       // 過去方向へのスクロール
-      if (visibleTimeStart < minTime) {
-        const diff = minTime - visibleTimeStart;
+      if (visibleTimeStart * scrollSensitivityL < minTime) {
+        const diff = minTime - visibleTimeStart * scrollSensitivityL;
         updateScrollCanvas(minTime, visibleTimeEnd + diff);
       } else {
-        updateScrollCanvas(visibleTimeStart, visibleTimeEnd);
+        updateScrollCanvas(
+          visibleTimeStart * scrollSensitivityL,
+          visibleTimeEnd * scrollSensitivityL,
+        );
       }
     }
   };
