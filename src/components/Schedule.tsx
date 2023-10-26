@@ -4,6 +4,8 @@ import Timeline, {
   TimelineHeaders,
   SidebarHeader,
   DateHeader,
+  TimelineMarkers,
+  CustomMarker,
 } from "react-calendar-timeline";
 
 import moment from "moment";
@@ -36,7 +38,6 @@ interface TimelineDataType {
 interface ItemInfo {
   id: number;
   title: string;
-  // 他のプロパティを追加
 }
 
 interface PlaceCounts {
@@ -115,7 +116,6 @@ const timelineData: TimelineDataType[] = sortedPlaceSchedule.map((item, i) => {
   }
 
   item.group = id;
-
   //時間修正
   const fixedStartDate = new Date(
     item.startDate.setMonth(item.startDate.getMonth() - 1),
@@ -223,20 +223,61 @@ export const Schedule = () => {
         }
       }}
     >
+      <TimelineMarkers>
+        <CustomMarker date={moment().valueOf()}>
+          {({ styles }) => {
+            const customStyles = {
+              ...styles,
+              backgroundColor: "red",
+              width: "4px",
+            };
+            return (
+              <div style={{ display: "flex", flexDirection: "row" }}>
+                <div style={customStyles} />
+
+                <p
+                  style={{
+                    ...styles,
+                    width: "0",
+                    left: `${
+                      (styles.left as number) ? (styles.left as number) + 5 : 70
+                    }px`,
+                    top: "-5px",
+                  }}
+                >
+                  now
+                </p>
+              </div>
+            );
+          }}
+        </CustomMarker>
+      </TimelineMarkers>
       <TimelineHeaders>
         <SidebarHeader>
           {({ getRootProps }) => {
-            return <div {...getRootProps()} />;
+            const customStyle = {
+              backgroundColor: "var(--secondary-color)",
+              color: "white",
+            };
+            return <div {...getRootProps({ style: customStyle })}></div>;
           }}
         </SidebarHeader>
-        <DateHeader unit="primaryHeader" labelFormat={"YYYY/MM/DD dddd"} />
-        <DateHeader labelFormat={"HH:mm"} />
+        <DateHeader
+          unit="primaryHeader"
+          style={{
+            backgroundColor: "var(--secondary-color)",
+            color: "white",
+          }}
+        />
+        <DateHeader labelFormat={"HH:MM"} />
       </TimelineHeaders>
     </Timeline>
   );
   return (
     <div>
-      <div style={{ height: "5vh" }}></div>
+      <div style={{ height: "5vh" }}>
+        <span style={{ color: "red" }}>赤線</span>は現在時刻です
+      </div>
       {timeline} {/* Timelineを描画 */}
       <div
         style={{
