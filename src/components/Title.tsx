@@ -20,6 +20,7 @@ export const Title = () => {
     marginTop: "20px",
     letterSpacing: "10px",
     fontSize: "8.8vh",
+    textAlign: "center" as const,
     writingMode: writingModeValue,
     fontFamily: "Zen Maru Gothic",
   };
@@ -53,6 +54,7 @@ export const Title = () => {
             style={{
               ...spanStyle,
               animationDelay: `${index * (intervaltime / 1000)}s`,
+              alignItems: "center",
               opacity: 0,
             }}
           >
