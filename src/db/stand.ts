@@ -3,8 +3,8 @@ import { StandType } from "@/types/stand";
 export const stands: StandType[] = [
   {
     number: 1,
-    organizer: "3C",
-    name: "3CのCによるまごころこもった焼き鳥",
+    organizer: "5B",
+    name: "けずりいちご",
   },
   {
     number: 2,
@@ -48,8 +48,8 @@ export const stands: StandType[] = [
   },
   {
     number: 10,
-    organizer: "5B",
-    name: "けずりいちご",
+    organizer: "3C",
+    name: "3CのCによるまごころこもった焼き鳥",
   },
   {
     number: 11,
