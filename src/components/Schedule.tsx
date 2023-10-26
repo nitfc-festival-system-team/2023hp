@@ -168,6 +168,7 @@ export const Schedule = () => {
   const fesEnd = new Date(2023, 9, 29, 21, 0);
   const minTime = fesStart.getTime();
   const maxTime = fesEnd.getTime();
+
   const timeline = (
     <Timeline
       key={eventMove} // eventMoveが変更されたときに再レンダリングするためにキーを指定
@@ -183,7 +184,7 @@ export const Schedule = () => {
       maxZoom={!isMobile ? 24 * 60 * 60 * 1000 : 12 * 60 * 60 * 1000}
       minResizeWidth={100}
       selected={selectedItemIds}
-      onItemSelect={(itemId: number, _, __) => {
+      onItemSelect={(itemId: number) => {
         setSelectedItems([itemId]);
         // アイテムが選択されたときにそのアイテムの情報を取得し、ステートに設定
         const selectedItem = timelineData.find((item) => item.id === itemId);
@@ -252,7 +253,6 @@ export const Schedule = () => {
           {({ getRootProps }) => {
             const customStyle = {
               backgroundColor: "var(--secondary-color)",
-              color: "white",
             };
             return <div {...getRootProps({ style: customStyle })}></div>;
           }}
@@ -261,10 +261,11 @@ export const Schedule = () => {
           unit="primaryHeader"
           style={{
             backgroundColor: "var(--secondary-color)",
-            color: "white",
           }}
+          labelFormat={"YYYY/MM/DD dddd"}
         />
-        <DateHeader />
+
+        <DateHeader unit="hour" labelFormat={"HH:00"} />
       </TimelineHeaders>
     </Timeline>
   );
