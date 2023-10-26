@@ -58,9 +58,10 @@ export const stands: StandType[] = [
   },
   {
     number: 12,
-    organizer: "無線研",
-    name: "君の出番！",
+    organizer: "山脇研究会",
+    name: "山脇焼きそば",
   },
+
   {
     number: 13,
     organizer: "高専祭さいころ倶楽部",
@@ -88,8 +89,8 @@ export const stands: StandType[] = [
   },
   {
     number: 18,
-    organizer: "山脇研究会",
-    name: "山脇焼きそば",
+    organizer: "無線研",
+    name: "君の出番！",
   },
   {
     number: 19,
