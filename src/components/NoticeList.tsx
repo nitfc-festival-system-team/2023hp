@@ -22,6 +22,9 @@ export const NoticeList = () => {
 };
 
 const PcNoticeList = () => {
+  if (notices.length === 0) {
+    return <>現在お知らせはありません</>;
+  }
   return (
     <>
       {notices.map((notice: NoticeType, index) => {
@@ -32,6 +35,9 @@ const PcNoticeList = () => {
 };
 
 const MobileNoticeList = () => {
+  if (notices.length === 0) {
+    return <>現在お知らせはありません</>;
+  }
   return (
     <>
       {notices.map((notice: NoticeType, index) => {
