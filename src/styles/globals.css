@@ -93,16 +93,16 @@ a {
     border-radius: 5px;
     width: 5px;
     height: 5px;
-    background-color: #f73f3f44;
+    background: var(--accent-color);
   }
   ::-webkit-scrollbar-thumb {
     border-radius: 5px;
-    background-color: #d66363;
+    background: var(--primary-color);
   }
 
   ::-webkit-scrollbar-track {
     border-radius: 5px;
-    background-color: #f73f3f44;
+    background: var(--accent-color);
   }
 
   ::-webkit-scrollbar-corner {
