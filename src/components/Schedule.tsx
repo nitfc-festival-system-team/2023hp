@@ -205,8 +205,8 @@ export const Schedule = () => {
             return <div {...getRootProps()}></div>;
           }}
         </SidebarHeader>
-        <DateHeader unit="primaryHeader" />
-        <DateHeader />
+        <DateHeader unit="primaryHeader" labelFormat={"YYYY/MM/DD dddd"} />
+        <DateHeader labelFormat={"HH:mm"} />
       </TimelineHeaders>
     </Timeline>
   );
