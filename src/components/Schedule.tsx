@@ -165,23 +165,23 @@ export const Schedule = () => {
 
   let prevVisibleTimeStart: number = 0;
   let prevVisibleTimeEnd: number = 0;
+  let scrollDirection = 0;
 
   const handleTimeChange = (
     visibleTimeStart: number,
     visibleTimeEnd: number,
     updateScrollCanvas: (start: number, end: number) => void,
   ) => {
-    let scrollDirection = 0;
     const scrollSensitivityR = isMobile ? 1.0000001 : 1;
     const scrollSensitivityL = isMobile ? 2 - 1.0000001 : 1;
 
     if (prevVisibleTimeStart !== 0 && prevVisibleTimeEnd !== 0) {
       if (visibleTimeStart > prevVisibleTimeStart) {
         // 未来方向へスクロール
-        scrollDirection = -1;
+        scrollDirection = 1;
       } else if (visibleTimeStart < prevVisibleTimeStart) {
         // 過去方向へスクロール
-        scrollDirection = 1;
+        scrollDirection = -1;
       }
     }
 
