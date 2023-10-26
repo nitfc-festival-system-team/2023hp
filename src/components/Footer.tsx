@@ -37,7 +37,7 @@ const PcFooter = () => {
           <LinkedText text={"露店"} link={"contents/stand"} />
         </div>
         <img
-          src={"image/nitfc.png"}
+          src={"/image/nitfc.png"}
           alt={"nitfc_logo"}
           width={"20%"}
           style={{ cursor: "pointer" }}
@@ -111,7 +111,7 @@ const MobileFooter = () => {
           }}
         >
           <img
-            src={"image/nitfc.png"}
+            src={"/image/nitfc.png"}
             alt={"nitfc_logo"}
             width={"35%"}
             style={{ cursor: "pointer" }}
