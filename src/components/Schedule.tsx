@@ -8,6 +8,7 @@ import Timeline, {
 
 import moment from "moment";
 
+import { ScheduleMoveButton } from "@/components/ScheduleMoveButton";
 import { schedules } from "@/db/schedule";
 import { useCheckIsMobile } from "@/hooks/checkIsMobile";
 import { ScheduleType } from "@/types/schedule";
@@ -164,7 +165,7 @@ export const Schedule = () => {
       maxZoom={!isMobile ? 24 * 60 * 60 * 1000 : 12 * 60 * 60 * 1000}
       minResizeWidth={100}
       selected={selectedItemIds}
-      onItemSelect={(itemId: number, e, time) => {
+      onItemSelect={(itemId: number, _, __) => {
         setSelectedItems([itemId]);
         // アイテムが選択されたときにそのアイテムの情報を取得し、ステートに設定
         const selectedItem = timelineData.find((item) => item.id === itemId);
@@ -214,9 +215,21 @@ export const Schedule = () => {
     <div>
       <div style={{ height: "5vh" }}></div>
       {timeline} {/* Timelineを描画 */}
-      <button onClick={() => setEventMove(0)}>1日目</button>
-      <button onClick={() => setEventMove(1)}>2日目</button>
-      <button onClick={() => setEventMove(2)}>3日目</button>
+      <ScheduleMoveButton
+        setState={setEventMove}
+        state={0}
+        buttonText={"1日目"}
+      />
+      <ScheduleMoveButton
+        setState={setEventMove}
+        state={1}
+        buttonText={"2日目"}
+      />
+      <ScheduleMoveButton
+        setState={setEventMove}
+        state={2}
+        buttonText={"3日目"}
+      />
       {/* 選択されたアイテムの情報を表示 */}
       {selectedItemInfo ? (
         // selectedItemInfoが真の場合の表示内容
