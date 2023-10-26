@@ -8,6 +8,7 @@ import Timeline, {
 
 import moment from "moment";
 
+import { ScheduleMoveButton } from "@/components/ScheduleMoveButton";
 import { schedules } from "@/db/schedule";
 import { useCheckIsMobile } from "@/hooks/checkIsMobile";
 import { ScheduleType } from "@/types/schedule";
@@ -121,94 +122,113 @@ export const Schedule = () => {
   const [selectedItemIds, setSelectedItems] = useState<number[]>([]); // 選択されたアイテムのIDを格納するステート
   const [selectedItemInfo, setSelectedItemInfo] = useState<ItemInfo | null>(
     null,
-  ); // 選択されたアイテムの情報を保持
+  );
+  const [eventMove, setEventMove] = useState<number>(0);
 
   // ステートが null の場合にデフォルト値を表示
   if (isMobile === null) {
     return <div style={{ height: "50vh" }}>Loading...</div>;
   }
-
-  const fesScope = isMobile
-    ? new Date(2023, 9, 27, 12, 50).getTime()
-    : new Date(2023, 9, 27, 13).getTime();
+  let fesScope;
+  if (eventMove == 0) {
+    fesScope = isMobile
+      ? new Date(2023, 9, 27, 12, 50).getTime()
+      : new Date(2023, 9, 27, 13, 0).getTime();
+  } else if (eventMove == 1) {
+    fesScope = isMobile
+      ? new Date(2023, 9, 28, 10, 50).getTime()
+      : new Date(2023, 9, 28, 11, 0).getTime();
+  } else {
+    fesScope = isMobile
+      ? new Date(2023, 9, 29, 10, 20).getTime()
+      : new Date(2023, 9, 29, 10, 0).getTime();
+  }
 
   //UnixTimeが1月ずれているため9月にする
   const fesStart = new Date(2023, 9, 27, 9, 0);
   const fesEnd = new Date(2023, 9, 29, 21, 0);
   const minTime = fesStart.getTime();
   const maxTime = fesEnd.getTime();
+  const timeline = (
+    <Timeline
+      key={eventMove} // eventMoveが変更されたときに再レンダリングするためにキーを指定
+      groups={scheduleGroup}
+      items={timelineData}
+      lineHeight={isMobile ? 60 : 80}
+      sidebarWidth={isMobile ? 100 : 130}
+      canResize={false}
+      canMove={false}
+      defaultTimeStart={moment(fesScope).add(isMobile ? -0.5 : -2, "hour")}
+      defaultTimeEnd={moment(fesScope).add(isMobile ? 0.5 : 2, "hour")}
+      minZoom={!isMobile ? 2 * 60 * 60 * 1000 : 0.5 * 60 * 60 * 1000}
+      maxZoom={!isMobile ? 24 * 60 * 60 * 1000 : 12 * 60 * 60 * 1000}
+      minResizeWidth={100}
+      selected={selectedItemIds}
+      onItemSelect={(itemId: number, _, __) => {
+        setSelectedItems([itemId]);
+        // アイテムが選択されたときにそのアイテムの情報を取得し、ステートに設定
+        const selectedItem = timelineData.find((item) => item.id === itemId);
 
+        if (selectedItem) {
+          setSelectedItemInfo(selectedItem);
+        }
+      }}
+      onItemDeselect={() => {
+        setSelectedItems([]);
+        setSelectedItemInfo(null); // 選択解除時に情報をリセット
+      }}
+      onTimeChange={function (
+        visibleTimeStart,
+        visibleTimeEnd,
+        updateScrollCanvas,
+      ) {
+        if (visibleTimeStart < minTime && visibleTimeEnd > maxTime) {
+          updateScrollCanvas(minTime, maxTime);
+        } else if (visibleTimeStart < minTime) {
+          updateScrollCanvas(
+            minTime,
+            minTime + (visibleTimeEnd - visibleTimeStart),
+          );
+        } else if (visibleTimeEnd > maxTime) {
+          updateScrollCanvas(
+            maxTime - (visibleTimeEnd - visibleTimeStart),
+            maxTime,
+          );
+        } else {
+          updateScrollCanvas(visibleTimeStart, visibleTimeEnd);
+        }
+      }}
+    >
+      <TimelineHeaders>
+        <SidebarHeader>
+          {({ getRootProps }) => {
+            return <div {...getRootProps()}></div>;
+          }}
+        </SidebarHeader>
+        <DateHeader unit="primaryHeader" />
+        <DateHeader />
+      </TimelineHeaders>
+    </Timeline>
+  );
   return (
     <div>
       <div style={{ height: "5vh" }}></div>
-      <Timeline
-        groups={scheduleGroup}
-        items={timelineData}
-        lineHeight={isMobile ? 60 : 80}
-        sidebarWidth={isMobile ? 100 : 130}
-        canResize={false} //サイズ固定
-        canMove={false} //位置固定
-        defaultTimeStart={moment(fesScope).add(isMobile ? -0.5 : -2, "hour")}
-        defaultTimeEnd={moment(fesScope).add(isMobile ? 0.5 : 2, "hour")}
-        minZoom={!isMobile ? 2 * 60 * 60 * 1000 : 0.5 * 60 * 60 * 1000}
-        maxZoom={!isMobile ? 24 * 60 * 60 * 1000 : 12 * 60 * 60 * 1000}
-        minResizeWidth={100}
-        selected={selectedItemIds}
-        onItemSelect={(itemId: number, _, __) => {
-          setSelectedItems([itemId]);
-          // アイテムが選択されたときにそのアイテムの情報を取得し、ステートに設定
-          const selectedItem = timelineData.find((item) => item.id === itemId);
-
-          if (selectedItem) {
-            setSelectedItemInfo(selectedItem);
-          }
-        }}
-        onItemDeselect={() => {
-          setSelectedItems([]);
-          setSelectedItemInfo(null); // 選択解除時に情報をリセット
-        }}
-        onTimeChange={function (
-          visibleTimeStart,
-          visibleTimeEnd,
-          updateScrollCanvas,
-        ) {
-          if (visibleTimeStart < minTime && visibleTimeEnd > maxTime) {
-            updateScrollCanvas(minTime, maxTime);
-          } else if (visibleTimeStart < minTime) {
-            updateScrollCanvas(
-              minTime,
-              minTime + (visibleTimeEnd - visibleTimeStart),
-            );
-          } else if (visibleTimeEnd > maxTime) {
-            updateScrollCanvas(
-              maxTime - (visibleTimeEnd - visibleTimeStart),
-              maxTime,
-            );
-          } else {
-            updateScrollCanvas(visibleTimeStart, visibleTimeEnd);
-          }
-        }}
-      >
-        <TimelineHeaders>
-          <SidebarHeader>
-            {({ getRootProps }) => {
-              const customStyle = {
-                backgroundColor: "var(--secondary-color)",
-                color: "white",
-              };
-              return <div {...getRootProps({ style: customStyle })}></div>;
-            }}
-          </SidebarHeader>
-          <DateHeader
-            unit="primaryHeader"
-            style={{
-              backgroundColor: "var(--secondary-color)",
-              color: "white",
-            }}
-          />
-          <DateHeader />
-        </TimelineHeaders>
-      </Timeline>
+      {timeline} {/* Timelineを描画 */}
+      <ScheduleMoveButton
+        setState={setEventMove}
+        state={0}
+        buttonText={"1日目"}
+      />
+      <ScheduleMoveButton
+        setState={setEventMove}
+        state={1}
+        buttonText={"2日目"}
+      />
+      <ScheduleMoveButton
+        setState={setEventMove}
+        state={2}
+        buttonText={"3日目"}
+      />
       {/* 選択されたアイテムの情報を表示 */}
       {selectedItemInfo ? (
         // selectedItemInfoが真の場合の表示内容
