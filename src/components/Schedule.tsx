@@ -268,8 +268,9 @@ export const Schedule = () => {
             backgroundColor: "var(--secondary-color)",
             color: "white",
           }}
+          labelFormat={"YYYY/MM/DD dddd"}
         />
-        <DateHeader labelFormat={"HH:MM"} />
+        <DateHeader labelFormat={"HH:00"} />
       </TimelineHeaders>
     </Timeline>
   );
