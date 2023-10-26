@@ -77,6 +77,10 @@ a {
   text-decoration: none;
 }
 
+a:hover rect{
+  fill: pink !important;
+}
+
 /* スクロールバーのスタイル */
 @media only screen and (min-width: 1024px) and (pointer: fine) {
   html body {

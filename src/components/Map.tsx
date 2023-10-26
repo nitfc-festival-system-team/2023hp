@@ -1,4 +1,5 @@
 import React from "react";
+import { TransformComponent, TransformWrapper } from "react-zoom-pan-pinch";
 
 import { useRouter } from "next/router";
 
@@ -36,7 +37,16 @@ export const Map = () => {
           height: isMobile ? "50vh" : "80vh",
         }}
       >
-        <VenueMap onAreaClick={handleAreaClick} />
+        <TransformWrapper
+          initialScale={1}
+          initialPositionX={0}
+          initialPositionY={0}
+          smooth={true}
+        >
+          <TransformComponent>
+            <VenueMap onAreaClick={handleAreaClick} />
+          </TransformComponent>
+        </TransformWrapper>
       </div>
     </>
   );
