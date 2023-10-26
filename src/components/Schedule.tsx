@@ -301,9 +301,9 @@ export const Schedule = () => {
   );
   return (
     <div>
-      <div style={{ height: "5vh" }}>
-        <span style={{ color: "red" }}>赤線</span>は現在時刻です
-      </div>
+      <p style={{ fontSize: "3.8vw" }}>
+        ※速く指を動かすと上手くスクロール出来ます
+      </p>
       {timeline} {/* Timelineを描画 */}
       <div
         style={{
