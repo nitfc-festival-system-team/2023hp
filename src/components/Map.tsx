@@ -1,11 +1,19 @@
 import React from "react";
 
+import { useRouter } from "next/router";
+
 import { useCheckIsMobile } from "@/hooks/checkIsMobile";
 
 import { VenueMap } from "./VenueImageMap";
 
 export const Map = () => {
   const [isMobile, _] = useCheckIsMobile();
+  const router = useRouter();
+
+  const handleAreaClick = (standNumber: number) => {
+    router.push(`/contents/stand?stand=${standNumber}`);
+  };
+
   return (
     <>
       <h1 style={{ marginTop: "1rem" }}>{"会場図案内"}</h1>
@@ -26,7 +34,7 @@ export const Map = () => {
           height: isMobile ? "50vh" : "80vh",
         }}
       >
-        <VenueMap />
+        <VenueMap onAreaClick={handleAreaClick} />
       </div>
     </>
   );
