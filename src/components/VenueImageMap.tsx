@@ -12,7 +12,7 @@ export const VenueMap = ({
   return (
     <>
       <img
-        src="image/venue_map.png"
+        src="image/venue_map.jpg"
         useMap="#ImageMap"
         alt="venue-map"
         style={{
@@ -111,7 +111,7 @@ export const VenueMap = ({
         />
         <area
           shape="rect"
-          coords="92,961,126,995"
+          coords="409,629,446,651"
           alt=""
           style={{ cursor: "pointer" }}
           onClick={() => onAreaClick(13)}
