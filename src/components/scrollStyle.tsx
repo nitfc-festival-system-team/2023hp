@@ -1,6 +1,6 @@
 import styled, { keyframes } from "styled-components";
 
-import { useCheckIsMobile } from "@/features/checkIsMobile";
+import { useCheckIsMobile } from "@/hooks/checkIsMobile";
 
 // Keyframesを定義
 const pathMoveAnimation = keyframes`

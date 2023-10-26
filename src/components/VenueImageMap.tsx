@@ -1,6 +1,6 @@
 import React from "react";
 
-import { useCheckIsMobile } from "@/features/checkIsMobile";
+import { useCheckIsMobile } from "@/hooks/checkIsMobile";
 
 export const VenueMap = ({
   onAreaClick,

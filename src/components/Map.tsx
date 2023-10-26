@@ -2,7 +2,7 @@ import React from "react";
 
 import { useRouter } from "next/router";
 
-import { useCheckIsMobile } from "@/features/checkIsMobile";
+import { useCheckIsMobile } from "@/hooks/checkIsMobile";
 
 import { VenueMap } from "./VenueImageMap";
 
