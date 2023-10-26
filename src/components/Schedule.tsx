@@ -81,11 +81,6 @@ const sortedPlaceSchedule = schedules.sort((a, b) => {
   }
 
   return 0; // 順序を変更しない
-
-  // 以下のソートロジックは前回と同じです
-  // ...
-
-  return 0; // 順序を変更しない
 });
 //placeが重複している要素をまとめた配列
 const uniqueSortedPlaceSchedule: ScheduleType[] = sortedPlaceSchedule.filter(
