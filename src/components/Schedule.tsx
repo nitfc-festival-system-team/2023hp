@@ -39,19 +39,36 @@ interface ItemInfo {
   // 他のプロパティを追加
 }
 
+interface PlaceCounts {
+  [key: string]: number;
+}
+
+const placeCounts: PlaceCounts = {};
+
+schedules.forEach((schedule) => {
+  const place = schedule.place.toLowerCase();
+  if (placeCounts[place]) {
+    placeCounts[place]++;
+  } else {
+    placeCounts[place] = 1;
+  }
+});
+
 const sortedPlaceSchedule = schedules.sort((a, b) => {
-  // 先に 'place' プロパティを比較
   const placeA = a.place.toLowerCase();
   const placeB = b.place.toLowerCase();
+  const placeCountA = placeCounts[placeA];
+  const placeCountB = placeCounts[placeB];
 
-  if (placeA < placeB) {
+  // 'place' プロパティが同じ場合、出現回数が多いものを前に配置
+  if (placeCountA > placeCountB) {
     return -1; // aをbの前に配置
   }
-  if (placeA > placeB) {
+  if (placeCountA < placeCountB) {
     return 1; // bをaの前に配置
   }
 
-  // 'place' プロパティが同じ場合、'startDate' プロパティを比較
+  // 'place' プロパティが同じかつ出現回数も同じ場合、'startDate' プロパティを比較
   const startDateA = a.startDate.getTime();
   const startDateB = b.startDate.getTime();
 
@@ -61,6 +78,11 @@ const sortedPlaceSchedule = schedules.sort((a, b) => {
   if (startDateA > startDateB) {
     return 1; // bをaの前に配置
   }
+
+  return 0; // 順序を変更しない
+
+  // 以下のソートロジックは前回と同じです
+  // ...
 
   return 0; // 順序を変更しない
 });
