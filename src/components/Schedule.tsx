@@ -140,7 +140,7 @@ export const Schedule = () => {
       : new Date(2023, 9, 28, 11, 0).getTime();
   } else {
     fesScope = isMobile
-      ? new Date(2023, 9, 29, 9, 50).getTime()
+      ? new Date(2023, 9, 29, 10, 20).getTime()
       : new Date(2023, 9, 29, 10, 0).getTime();
   }
 
