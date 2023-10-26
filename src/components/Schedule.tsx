@@ -1,5 +1,4 @@
-import React from "react";
-import { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "react-calendar-timeline/lib/Timeline.css";
 import Timeline, {
   TimelineHeaders,
@@ -10,6 +9,7 @@ import Timeline, {
 import moment from "moment";
 
 import { schedules } from "@/db/schedule";
+import { useCheckIsMobile } from "@/hooks/checkIsMobile";
 import { ScheduleType } from "@/types/schedule";
 
 interface GroupType {
@@ -116,25 +116,12 @@ const timelineData: TimelineDataType[] = sortedPlaceSchedule.map((item, i) => {
 
 export const Schedule = () => {
   // 事前レンダリング時の日時とブラウザでレンダリング日時を一致させる。
-  // ステートの初期値を null に設定
-  const [isMobile, setIsMobile] = useState<boolean | null>(null);
+  const [isMobile, _] = useCheckIsMobile();
+
   const [selectedItemIds, setSelectedItems] = useState<number[]>([]); // 選択されたアイテムのIDを格納するステート
   const [selectedItemInfo, setSelectedItemInfo] = useState<ItemInfo | null>(
     null,
   ); // 選択されたアイテムの情報を保持
-
-  useEffect(() => {
-    // クライアント側でユーザーエージェント情報を取得
-    const userAgent = window.navigator.userAgent;
-
-    const mobile =
-      userAgent.includes("iPhone") ||
-      userAgent.includes("Android") ||
-      userAgent.includes("iPad");
-
-    // isMobile ステートを更新
-    setIsMobile(mobile);
-  }, []);
 
   // ステートが null の場合にデフォルト値を表示
   if (isMobile === null) {
@@ -167,7 +154,7 @@ export const Schedule = () => {
         maxZoom={!isMobile ? 24 * 60 * 60 * 1000 : 12 * 60 * 60 * 1000}
         minResizeWidth={100}
         selected={selectedItemIds}
-        onItemSelect={(itemId: number, e, time) => {
+        onItemSelect={(itemId: number, _, __) => {
           setSelectedItems([itemId]);
           // アイテムが選択されたときにそのアイテムの情報を取得し、ステートに設定
           const selectedItem = timelineData.find((item) => item.id === itemId);
