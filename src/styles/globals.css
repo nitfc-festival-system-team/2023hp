@@ -1,8 +1,9 @@
 @font-face {
   font-family: "LIGHTNOVELPOPV2"; /* フォントファミリー名を指定 */
-  src: local("LIGHTNOVELPOPV2"), url("/fonts/LIGHTNOVELPOPV2.otf") format('opentype'); /* フォントファイルのパスを指定 */
+  src:
+    local("LIGHTNOVELPOPV2"),
+    url("/fonts/LIGHTNOVELPOPV2.otf") format("opentype"); /* フォントファイルのパスを指定 */
 }
-
 
 :root {
   /*全体で使う色を定義*/
@@ -90,11 +91,21 @@ a {
 
   ::-webkit-scrollbar {
     border-radius: 5px;
-    width: 2px;
-    background-color: #f73f3f44;
+    width: 5px;
+    height: 5px;
+    background: var(--accent-color);
   }
   ::-webkit-scrollbar-thumb {
     border-radius: 5px;
-    background-color: #d66363;
+    background: var(--primary-color);
+  }
+
+  ::-webkit-scrollbar-track {
+    border-radius: 5px;
+    background: var(--accent-color);
+  }
+
+  ::-webkit-scrollbar-corner {
+    display: none;
   }
 }

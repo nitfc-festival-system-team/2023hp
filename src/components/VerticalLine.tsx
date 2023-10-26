@@ -100,11 +100,11 @@ const MobileVerticalLine: React.FC = () => {
 
   const textStyle: React.CSSProperties = {
     position: "fixed",
-    left: "0",
+    left: "-1%",
     top: "30vw",
     writingMode: "vertical-rl",
     textAlign: "center",
-    fontSize: "6vw",
+    fontSize: "4.8vw",
     whiteSpace: "nowrap",
     fontFamily: "KomorebiFont",
     color: "white",
@@ -137,7 +137,7 @@ const PcVerticalLine: React.FC = () => {
     top: "10vw",
     writingMode: "vertical-rl",
     textAlign: "center",
-    fontSize: "3vw",
+    fontSize: "2rem",
     fontFamily: "KomorebiFont",
     color: "white",
     mixBlendMode: "difference", // スクロールバーと重なる部分の文字を白くする
