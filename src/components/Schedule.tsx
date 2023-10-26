@@ -38,7 +38,6 @@ interface TimelineDataType {
 interface ItemInfo {
   id: number;
   title: string;
-  // 他のプロパティを追加
 }
 
 const sortedPlaceSchedule = schedules.sort((a, b) => {
