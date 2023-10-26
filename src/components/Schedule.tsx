@@ -94,7 +94,6 @@ const timelineData: TimelineDataType[] = sortedPlaceSchedule.map((item, i) => {
   }
 
   item.group = id;
-  //push用
   //時間修正
   const fixedStartDate = new Date(
     item.startDate.setMonth(item.startDate.getMonth() - 1),
