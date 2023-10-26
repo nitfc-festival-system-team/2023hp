@@ -188,7 +188,7 @@ export const Schedule = () => {
       maxZoom={!isMobile ? 24 * 60 * 60 * 1000 : 12 * 60 * 60 * 1000}
       minResizeWidth={100}
       selected={selectedItemIds}
-      onItemSelect={(itemId: number, _, __) => {
+      onItemSelect={(itemId: number) => {
         setSelectedItems([itemId]);
         // アイテムが選択されたときにそのアイテムの情報を取得し、ステートに設定
         const selectedItem = timelineData.find((item) => item.id === itemId);
@@ -226,7 +226,7 @@ export const Schedule = () => {
       <TimelineHeaders>
         <SidebarHeader>
           {({ getRootProps }) => {
-            return <div {...getRootProps()}></div>;
+            return <div {...getRootProps()} />;
           }}
         </SidebarHeader>
         <DateHeader unit="primaryHeader" labelFormat={"YYYY/MM/DD dddd"} />
