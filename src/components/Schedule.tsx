@@ -146,22 +146,6 @@ export const Schedule = () => {
   if (isMobile === null) {
     return <div style={{ height: "50vh" }}>Loading...</div>;
   }
-  let fesScope;
-  if (eventMove == 0) {
-    fesScope = moment().valueOf();
-  } else if (eventMove == 1) {
-    fesScope = isMobile
-      ? new Date(2023, 9, 27, 12, 50).getTime()
-      : new Date(2023, 9, 27, 13, 0).getTime();
-  } else if (eventMove == 2) {
-    fesScope = isMobile
-      ? new Date(2023, 9, 28, 10, 50).getTime()
-      : new Date(2023, 9, 28, 11, 0).getTime();
-  } else {
-    fesScope = isMobile
-      ? new Date(2023, 9, 29, 10, 20).getTime()
-      : new Date(2023, 9, 29, 10, 0).getTime();
-  }
 
   let prevVisibleTimeStart: number = 0;
   let prevVisibleTimeEnd: number = 0;
@@ -219,10 +203,32 @@ export const Schedule = () => {
   };
 
   //UnixTimeが1月ずれているため9月にする
-  const fesStart = new Date(2023, 9, 27, 9, 0);
+  const fesStart = new Date(2023, 9, 27, 10, 0);
   const fesEnd = new Date(2023, 9, 29, 21, 0);
   const minTime = fesStart.getTime();
   const maxTime = fesEnd.getTime();
+
+  let fesScope;
+  if (eventMove == 0) {
+    fesScope =
+      moment().valueOf() < new Date(2023, 9, 27, 12, 50).getTime()
+        ? isMobile
+          ? new Date(2023, 9, 27, 12, 50)
+          : new Date(2023, 9, 27, 13, 0)
+        : moment();
+  } else if (eventMove == 1) {
+    fesScope = isMobile
+      ? new Date(2023, 9, 27, 12, 50).getTime()
+      : new Date(2023, 9, 27, 13, 0).getTime();
+  } else if (eventMove == 2) {
+    fesScope = isMobile
+      ? new Date(2023, 9, 28, 10, 50).getTime()
+      : new Date(2023, 9, 28, 11, 0).getTime();
+  } else {
+    fesScope = isMobile
+      ? new Date(2023, 9, 29, 10, 20).getTime()
+      : new Date(2023, 9, 29, 10, 0).getTime();
+  }
 
   const timeline = (
     <Timeline
