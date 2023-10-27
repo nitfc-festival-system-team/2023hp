@@ -107,9 +107,8 @@ const NoticeItem = ({
             onClick={handleNoticeClick}
             style={{
               cursor: "pointer",
-              // maxWidth: `${fontSize}vw`,
-              maxHeight: "1.5rem",
-              marginTop: "10%",
+              maxHeight: "1em",
+              translate: "0 1px",
               filter:
                 "invert(8%) sepia(100%) saturate(7044%) hue-rotate(227deg) brightness(100%) contrast(125%)",
             }}
