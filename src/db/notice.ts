@@ -8,7 +8,7 @@ export const notices: NoticeType[] = [
   },
   {
     label: "breaking",
-    title: `荒天により、露天を15時まで\n一次中止します。`,
+    title: `荒天により、露店を15時まで\n一次中止します。`,
     url: "",
     date: new Date(2023, 10, 27),
   },
