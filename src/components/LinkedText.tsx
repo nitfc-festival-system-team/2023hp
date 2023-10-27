@@ -9,7 +9,11 @@ export const LinkedText = (props: {
 
   useEffect(() => {
     const absolutePath = new URL(props.link, window.location.origin).pathname;
-    setAbsoluteLink(absolutePath);
+    if (props.link.includes("https://")) {
+      setAbsoluteLink(props.link);
+    } else {
+      setAbsoluteLink(absolutePath);
+    }
   }, [props.link]);
 
   return (
