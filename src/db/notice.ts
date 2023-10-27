@@ -6,6 +6,11 @@ export const notices: NoticeType[] = [
     url: "/notioce-pdfs/blood_donation.pdf",
     date: new Date(2023, 10, 27),
   },
+    label: "breaking",
+    title: `${荒天により、露天を15時まで\n一次中止します。}`,
+    url: "",
+    date: new Date(2023, 10, 27),
+  },
   {
     title: `15:00から露店再開!`,
     url: "",
