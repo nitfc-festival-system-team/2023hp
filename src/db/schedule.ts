@@ -59,6 +59,13 @@ export const schedules: ScheduleType[] = [
     endDate: new Date(2023, 10, 28, 17, 10),
   },
   {
+    title: "DJ",
+    place: "メインステージ",
+    description: "日本語ヒップホップ",
+    startDate: new Date(2023, 10, 28, 17, 0),
+    endDate: new Date(2023, 10, 28, 18, 0),
+  },
+  {
     title: "カラオケ大会",
     place: "サブステージ",
     description: "響けわれらの歌声よ!高専祭に華の音色を!!",

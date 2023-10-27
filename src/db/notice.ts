@@ -7,8 +7,7 @@ export const notices: NoticeType[] = [
     date: new Date(2023, 10, 27),
   },
   {
-    label: "breaking",
-    title: `雷注意発生に伴い、15時まで露店を\n一時中止しています。`,
+    title: `15:00から露店再開!`,
     url: "",
     date: new Date(2023, 10, 27, 13, 55),
   },
