@@ -5,6 +5,8 @@ import { useRouter } from "next/router";
 import { notices } from "@/db/notice";
 import { NoticeType } from "@/types/notice";
 
+const reverseNotices = [...notices].reverse();
+
 export const NoticeList = () => {
   const [isMobile, setIsMobile] = useState<boolean | null>(null);
 
@@ -27,7 +29,7 @@ const PcNoticeList = () => {
   }
   return (
     <>
-      {notices.map((notice: NoticeType, index) => {
+      {reverseNotices.map((notice: NoticeType, index) => {
         return <NoticeItem fontSize={2} key={index} notice={notice} />;
       })}
     </>
@@ -40,7 +42,7 @@ const MobileNoticeList = () => {
   }
   return (
     <>
-      {notices.map((notice: NoticeType, index) => {
+      {reverseNotices.map((notice: NoticeType, index) => {
         return <NoticeItem fontSize={3} key={index} notice={notice} />;
       })}
     </>
