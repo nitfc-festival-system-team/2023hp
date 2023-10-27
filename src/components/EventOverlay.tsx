@@ -4,6 +4,11 @@ import styled from "styled-components";
 
 import { schedules } from "@/db/schedule";
 
+const timeOffset = Math.abs(
+  //1月
+  new Date(1900, 0, 0, 0).getTime() - new Date(1900, 1, 0, 0, 0).getTime(),
+);
+
 const timeToDisplay = Math.abs(
   //10分で定義
   new Date(1900, 0, 1, 0, 0).getTime() - new Date(1900, 0, 1, 0, 10).getTime(),
@@ -80,14 +85,18 @@ export const EventHeader = () => {
   //未開催の内、開催時刻が現在時刻に近い順にソート
   const eventSorted = schedules
     .filter((event) => {
-      const startTime = event.startDate.getTime();
-      const endTime = event.endDate?.getTime();
+      const startTime = event.startDate.getTime() - timeOffset;
+      const endTime = event.endDate?.getTime() - timeOffset;
 
       return startTime > now.getTime() || !endTime || endTime >= now.getTime();
     })
     .sort((a, b) => {
-      const diffA = Math.abs(a.startDate.getTime() - now.getTime());
-      const diffB = Math.abs(b.startDate?.getTime() - now.getTime());
+      const diffA = Math.abs(
+        a.startDate.getTime() - timeOffset - now.getTime(),
+      );
+      const diffB = Math.abs(
+        b.startDate.getTime() - timeOffset - now.getTime(),
+      );
       return diffA - diffB;
     });
 
@@ -95,8 +104,8 @@ export const EventHeader = () => {
 
   //現在時刻が開催時刻と終了時刻の合間にあるイベントを取得
   const nowHeld = schedules.filter((event) => {
-    const startTime = event.startDate.getTime();
-    const endTime = event.endDate?.getTime();
+    const startTime = event.startDate.getTime() - timeOffset;
+    const endTime = event.endDate?.getTime() - timeOffset;
 
     return startTime <= now.getTime() && (!endTime || endTime >= now.getTime());
   });
@@ -117,8 +126,9 @@ export const EventHeader = () => {
                 <>
                   <SubTitle>
                     {nowHeld.length !== 0 &&
-                    nowHeld[0].startDate.getTime() >
-                      upcomingEvent.startDate.getTime()
+                    Math.abs(
+                      upcomingEvent.startDate.getTime() - timeToDisplay,
+                    ) > now.getTime()
                       ? "開催中！"
                       : "Next Event"}
                   </SubTitle>
