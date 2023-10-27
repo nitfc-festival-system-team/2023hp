@@ -55,7 +55,7 @@ const NoticeItem = ({
   fontSize: number;
 }) => {
   const router = useRouter();
-  const date = notice.date.getMonth() + "/" + notice.date.getDay();
+  const date = notice.date.getMonth() + "/" + notice.date.getDate();
 
   const handleNoticeClick = () => {
     if (notice.url) {
@@ -73,7 +73,11 @@ const NoticeItem = ({
     >
       <div>{date}</div>
       <p>&nbsp;&nbsp;&nbsp;</p>
-      <div style={{ whiteSpace: "nowrap" }}>{notice.title}</div>
+      <div>
+        {notice.title.split("\n").map((t, index) => (
+          <div key={index}>{t}</div>
+        ))}
+      </div>
       <p>&nbsp;&nbsp;</p>
       <div style={{ cursor: "pointer" }}>
         {notice.url && (
