@@ -22,4 +22,8 @@ export const notices: NoticeType[] = [
     url: "https://www.youtube.com/watch?v=rycGE3Kkr9k",
     date: new Date(2023, 10, 27),
   },
+  {
+    title: "MMCの次のバンドは17:30からです",
+    date: new Date(2023, 10, 27),
+  },
 ];
