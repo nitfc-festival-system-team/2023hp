@@ -1,5 +1,5 @@
 export type NoticeType = {
   title: string;
-  url: string;
+  url?: string;
   date: Date;
 };
