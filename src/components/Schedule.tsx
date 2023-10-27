@@ -147,6 +147,12 @@ export const Schedule = () => {
     return <div style={{ height: "50vh" }}>Loading...</div>;
   }
 
+  //UnixTimeが1月ずれているため9月にする
+  const fesStart = new Date(2023, 9, 27, 10, 0);
+  const fesEnd = new Date(2023, 9, 29, 21, 0);
+  const minTime = fesStart.getTime();
+  const maxTime = fesEnd.getTime();
+
   let prevVisibleTimeStart: number = 0;
   let prevVisibleTimeEnd: number = 0;
   let scrollDirection = 0;
@@ -202,20 +208,14 @@ export const Schedule = () => {
     }
   };
 
-  //UnixTimeが1月ずれているため9月にする
-  const fesStart = new Date(2023, 9, 27, 10, 0);
-  const fesEnd = new Date(2023, 9, 29, 21, 0);
-  const minTime = fesStart.getTime();
-  const maxTime = fesEnd.getTime();
-
   let fesScope;
   if (eventMove == 0) {
     fesScope =
       moment().valueOf() < new Date(2023, 9, 27, 12, 50).getTime()
         ? isMobile
-          ? new Date(2023, 9, 27, 12, 50)
-          : new Date(2023, 9, 27, 13, 0)
-        : moment();
+          ? new Date(2023, 9, 27, 12, 50).getTime()
+          : new Date(2023, 9, 27, 13, 0).getTime()
+        : moment().valueOf();
   } else if (eventMove == 1) {
     fesScope = isMobile
       ? new Date(2023, 9, 27, 12, 50).getTime()
