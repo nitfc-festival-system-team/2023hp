@@ -41,7 +41,7 @@ const MobileNoticeList = () => {
   return (
     <>
       {notices.map((notice: NoticeType, index) => {
-        return <NoticeItem fontSize={6} key={index} notice={notice} />;
+        return <NoticeItem fontSize={3} key={index} notice={notice} />;
       })}
     </>
   );
@@ -71,28 +71,30 @@ const NoticeItem = ({
         fontSize: `${fontSize}vw`,
       }}
     >
-      <div>{date}</div>
-      <p>&nbsp;&nbsp;&nbsp;</p>
+      <div style={{ marginRight: `${fontSize * 1}vw` }}>{date}</div>
       <div>
         {notice.title.split("\n").map((t, index) => (
-          <div key={index}>{t}</div>
+          <div key={index} style={{ whiteSpace: "nowrap" }}>
+            {t}
+          </div>
         ))}
       </div>
-      <p>&nbsp;&nbsp;</p>
+
       <div style={{ cursor: "pointer" }}>
         {notice.url && (
-          <span
-            onClick={handleNoticeClick}
-            style={{
-              cursor: "pointer",
-              filter:
-                "invert(8%) sepia(100%) saturate(7044%) hue-rotate(227deg) brightness(100%) contrast(125%)",
-            }}
-          >
+          <span>
             <img
               src="/image/gadget24.png"
               alt="link mark"
-              width={`${fontSize * 2.5}%`}
+              onClick={handleNoticeClick}
+              style={{
+                cursor: "pointer",
+                maxWidth: "40%",
+                maxHeight: "40%",
+                paddingTop: "10%",
+                filter:
+                  "invert(8%) sepia(100%) saturate(7044%) hue-rotate(227deg) brightness(100%) contrast(125%)",
+              }}
             />
           </span>
         )}
