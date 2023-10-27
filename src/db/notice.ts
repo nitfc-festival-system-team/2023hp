@@ -17,4 +17,9 @@ export const notices: NoticeType[] = [
     url: "",
     date: new Date(2023, 10, 27, 13, 55),
   },
+  {
+    title: "高専祭の模様を生配信中！",
+    url: "https://www.youtube.com/watch?v=rycGE3Kkr9k",
+    date: new Date(2023, 10, 27),
+  },
 ];
