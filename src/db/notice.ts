@@ -9,6 +9,6 @@ export const notices: NoticeType[] = [
   {
     title: `15:00から露店再開!`,
     url: "",
-    date: new Date(2023, 10, 27, 13, 41),
+    date: new Date(2023, 10, 27, 13, 55),
   },
 ];

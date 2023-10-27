@@ -76,7 +76,13 @@ const NoticeItem = ({
       <div style={{ marginRight: `${fontSize * 1}vw` }}>{date}</div>
       <div>
         {notice.title.split("\n").map((t, index) => (
-          <div key={index} style={{ whiteSpace: "nowrap" }}>
+          <div
+            key={index}
+            style={{
+              whiteSpace: "nowrap",
+              color: `${notice.label ? "red" : "black"}`,
+            }}
+          >
             {t}
           </div>
         ))}
