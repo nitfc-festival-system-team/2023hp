@@ -87,7 +87,14 @@ const StandItem = ({
           <span style={{ fontSize: "2.5vw" }}>{stand.number}:&nbsp;</span>
           <span style={{ fontSize: "2.5vw" }}>{stand.organizer}</span>
         </div>
-        <span style={{ fontSize: "3.3vw" }}>{stand.name}</span>
+        <span
+          style={{
+            fontSize: "3.3vw",
+            animation: stand.number === 14 ? "rainbow 1s infinite" : "none",
+          }}
+        >
+          {stand.name}
+        </span>
         <span style={{ fontSize: "1.7vw" }}>{stand.place}</span>
         {stand.url && (
           <span
